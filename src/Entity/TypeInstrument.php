@@ -27,6 +27,9 @@ class TypeInstrument
     #[ORM\OneToMany(mappedBy: 'idTypeInstrument', targetEntity: Instrument::class)]
     private Collection $instruments;
 
+    #[ORM\ManyToOne(inversedBy: 'typeInstruments')]
+    private ?ClasseInstrument $idClasseInstrument = null;
+
     public function __construct()
     {
         $this->cours = new ArrayCollection();
@@ -134,6 +137,18 @@ class TypeInstrument
                 $instrument->setIdTypeInstrument(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIdClasseInstrument(): ?ClasseInstrument
+    {
+        return $this->idClasseInstrument;
+    }
+
+    public function setIdClasseInstrument(?ClasseInstrument $idClasseInstrument): static
+    {
+        $this->idClasseInstrument = $idClasseInstrument;
 
         return $this;
     }
