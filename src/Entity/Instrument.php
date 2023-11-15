@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\InstrumentRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -31,6 +33,17 @@ class Instrument
 
     #[ORM\ManyToOne(inversedBy: 'idInstrument')]
     private ?Marque $marque = null;
+
+    #[ORM\ManyToOne(inversedBy: 'instruments')]
+    private ?TypeInstrument $idTypeInstrument = null;
+
+    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: ContratPrêt::class)]
+    private Collection $idContratPret;
+
+    public function __construct()
+    {
+        $this->idContratPret = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,6 +118,48 @@ class Instrument
     public function setMarque(?Marque $marque): static
     {
         $this->marque = $marque;
+
+        return $this;
+    }
+
+    public function getIdTypeInstrument(): ?TypeInstrument
+    {
+        return $this->idTypeInstrument;
+    }
+
+    public function setIdTypeInstrument(?TypeInstrument $idTypeInstrument): static
+    {
+        $this->idTypeInstrument = $idTypeInstrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ContratPrêt>
+     */
+    public function getIdContratPret(): Collection
+    {
+        return $this->idContratPret;
+    }
+
+    public function addIdContratPret(ContratPrêt $idContratPret): static
+    {
+        if (!$this->idContratPret->contains($idContratPret)) {
+            $this->idContratPret->add($idContratPret);
+            $idContratPret->setInstrument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdContratPret(ContratPrêt $idContratPret): static
+    {
+        if ($this->idContratPret->removeElement($idContratPret)) {
+            // set the owning side to null (unless already changed)
+            if ($idContratPret->getInstrument() === $this) {
+                $idContratPret->setInstrument(null);
+            }
+        }
 
         return $this;
     }
