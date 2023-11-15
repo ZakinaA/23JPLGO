@@ -29,6 +29,9 @@ class Instrument
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $cheminImage = null;
 
+    #[ORM\ManyToOne(inversedBy: 'idInstrument')]
+    private ?Marque $marque = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Instrument
     public function setCheminImage(?string $cheminImage): static
     {
         $this->cheminImage = $cheminImage;
+
+        return $this;
+    }
+
+    public function getMarque(): ?Marque
+    {
+        return $this->marque;
+    }
+
+    public function setMarque(?Marque $marque): static
+    {
+        $this->marque = $marque;
 
         return $this;
     }
