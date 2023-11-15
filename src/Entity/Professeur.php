@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProfesseurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProfesseurRepository::class)]
@@ -36,6 +38,18 @@ class Professeur
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $mail = null;
+
+    #[ORM\OneToMany(mappedBy: 'idProfesseur', targetEntity: Cours::class)]
+    private Collection $cours;
+
+    #[ORM\ManyToMany(targetEntity: TypeInstrument::class, inversedBy: 'professeurs')]
+    private Collection $idTypeInstrument;
+
+    public function __construct()
+    {
+        $this->cours = new ArrayCollection();
+        $this->idTypeInstrument = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -134,6 +148,60 @@ class Professeur
     public function setMail(?string $mail): static
     {
         $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cours>
+     */
+    public function getCours(): Collection
+    {
+        return $this->cours;
+    }
+
+    public function addCour(Cours $cour): static
+    {
+        if (!$this->cours->contains($cour)) {
+            $this->cours->add($cour);
+            $cour->setIdProfesseur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCour(Cours $cour): static
+    {
+        if ($this->cours->removeElement($cour)) {
+            // set the owning side to null (unless already changed)
+            if ($cour->getIdProfesseur() === $this) {
+                $cour->setIdProfesseur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TypeInstrument>
+     */
+    public function getIdTypeInstrument(): Collection
+    {
+        return $this->idTypeInstrument;
+    }
+
+    public function addIdTypeInstrument(TypeInstrument $idTypeInstrument): static
+    {
+        if (!$this->idTypeInstrument->contains($idTypeInstrument)) {
+            $this->idTypeInstrument->add($idTypeInstrument);
+        }
+
+        return $this;
+    }
+
+    public function removeIdTypeInstrument(TypeInstrument $idTypeInstrument): static
+    {
+        $this->idTypeInstrument->removeElement($idTypeInstrument);
 
         return $this;
     }

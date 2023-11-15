@@ -32,6 +32,18 @@ class Cours
     #[ORM\Column(nullable: true)]
     private ?int $ageMaxi = null;
 
+    #[ORM\ManyToOne(inversedBy: 'cours')]
+    private ?Jour $idJour = null;
+
+    #[ORM\ManyToOne(inversedBy: 'cours')]
+    private ?TypeCours $idTypeCours = null;
+
+    #[ORM\ManyToOne(inversedBy: 'cours')]
+    private ?Professeur $idProfesseur = null;
+
+    #[ORM\ManyToOne(inversedBy: 'cours')]
+    private ?TypeInstrument $idTypeInstrument = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +117,54 @@ class Cours
     public function setAgeMaxi(?int $ageMaxi): static
     {
         $this->ageMaxi = $ageMaxi;
+
+        return $this;
+    }
+
+    public function getIdJour(): ?Jour
+    {
+        return $this->idJour;
+    }
+
+    public function setIdJour(?Jour $idJour): static
+    {
+        $this->idJour = $idJour;
+
+        return $this;
+    }
+
+    public function getIdTypeCours(): ?TypeCours
+    {
+        return $this->idTypeCours;
+    }
+
+    public function setIdTypeCours(?TypeCours $idTypeCours): static
+    {
+        $this->idTypeCours = $idTypeCours;
+
+        return $this;
+    }
+
+    public function getIdProfesseur(): ?Professeur
+    {
+        return $this->idProfesseur;
+    }
+
+    public function setIdProfesseur(?Professeur $idProfesseur): static
+    {
+        $this->idProfesseur = $idProfesseur;
+
+        return $this;
+    }
+
+    public function getIdTypeInstrument(): ?TypeInstrument
+    {
+        return $this->idTypeInstrument;
+    }
+
+    public function setIdTypeInstrument(?TypeInstrument $idTypeInstrument): static
+    {
+        $this->idTypeInstrument = $idTypeInstrument;
 
         return $this;
     }
