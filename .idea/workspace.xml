@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c295fb20-0fe4-424c-96c4-8ea6d2e3fc58" name="Changes" comment="Init Symfony 6.1.99" />
+    <list default="true" id="c295fb20-0fe4-424c-96c4-8ea6d2e3fc58" name="Changes" comment="Création des entités Eleve et Responsable">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ContratPrêt.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/ContratPrêt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Eleve.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Eleve.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Responsable.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Responsable.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +20,26 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Yokamix"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="76128cff-ba1b-4672-8f82-f3b3bcbd290c" />
+        <option name="url" value="https://github.com/ZakinaA/23JPLGO.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="D:\wamp64\bin\php\php8.2.0\php.exe">
     <include_path>
@@ -159,8 +183,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/wamp64/www/JPLGO",
+    "git-widget-placeholder": "gestionnaire-liste-contrats-de-prêt",
+    "last_opened_file_path": "D:/wamp64/www/webstudent",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -186,7 +210,7 @@
       <updated>1700034015367</updated>
       <workItem from="1700034016428" duration="606000" />
       <workItem from="1700035032020" duration="438000" />
-      <workItem from="1700035493221" duration="522000" />
+      <workItem from="1700035493221" duration="7003000" />
     </task>
     <task id="LOCAL-00001" summary="Init Symfony 6.1.99">
       <option name="closed" value="true" />
@@ -196,7 +220,47 @@
       <option name="project" value="LOCAL" />
       <updated>1700035822351</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Init Symfony 6.1.99">
+      <option name="closed" value="true" />
+      <created>1700036038359</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700036038359</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Création de l'entité Intervention et mise à jour du chemin de connexion à la base de données">
+      <option name="closed" value="true" />
+      <created>1700038323162</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1700038323162</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Création de l'entité Intervention et mise à jour du chemin de connexion à la base de données">
+      <option name="closed" value="true" />
+      <created>1700039320250</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1700039320250</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Création des entités Eleve et Responsable">
+      <option name="closed" value="true" />
+      <created>1700040964483</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700040964483</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Création des entités Eleve et Responsable">
+      <option name="closed" value="true" />
+      <created>1700040975164</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700040975164</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +294,8 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="Init Symfony 6.1.99" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init Symfony 6.1.99" />
+    <MESSAGE value="Création de l'entité Intervention et mise à jour du chemin de connexion à la base de données" />
+    <MESSAGE value="Création des entités Eleve et Responsable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Création des entités Eleve et Responsable" />
   </component>
 </project>
