@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c295fb20-0fe4-424c-96c4-8ea6d2e3fc58" name="Changes" comment="Init Symfony 6.1.99" />
+    <list default="true" id="c295fb20-0fe4-424c-96c4-8ea6d2e3fc58" name="Changes" comment="Init Symfony 6.1.99">
+      <change afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,9 +17,16 @@
   </component>
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="D:\wamp64\bin\php\php8.2.0\php.exe">
@@ -159,7 +171,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "addInstruments",
     "last_opened_file_path": "D:/wamp64/www/JPLGO",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -187,6 +199,7 @@
       <workItem from="1700034016428" duration="606000" />
       <workItem from="1700035032020" duration="438000" />
       <workItem from="1700035493221" duration="522000" />
+      <workItem from="1700037130140" duration="2220000" />
     </task>
     <task id="LOCAL-00001" summary="Init Symfony 6.1.99">
       <option name="closed" value="true" />
@@ -201,6 +214,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
