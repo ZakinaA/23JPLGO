@@ -40,9 +40,20 @@ class Instrument
     #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: ContratPrêt::class)]
     private Collection $idContratPret;
 
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $idCouleurt = null;
+
+    #[ORM\ManyToMany(targetEntity: Couleur::class, inversedBy: 'instruments')]
+    private Collection $idCouleur;
+
+    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: Accessoire::class)]
+    private Collection $idAccessoire;
+
     public function __construct()
     {
         $this->idContratPret = new ArrayCollection();
+        $this->idCouleur = new ArrayCollection();
+        $this->idAccessoire = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -158,6 +169,72 @@ class Instrument
             // set the owning side to null (unless already changed)
             if ($idContratPret->getInstrument() === $this) {
                 $idContratPret->setInstrument(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getIdCouleurt(): ?string
+    {
+        return $this->idCouleurt;
+    }
+
+    public function setIdCouleurt(?string $idCouleurt): static
+    {
+        $this->idCouleurt = $idCouleurt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Couleur>
+     */
+    public function getIdCouleur(): Collection
+    {
+        return $this->idCouleur;
+    }
+
+    public function addIdCouleur(Couleur $idCouleur): static
+    {
+        if (!$this->idCouleur->contains($idCouleur)) {
+            $this->idCouleur->add($idCouleur);
+        }
+
+        return $this;
+    }
+
+    public function removeIdCouleur(Couleur $idCouleur): static
+    {
+        $this->idCouleur->removeElement($idCouleur);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Accessoire>
+     */
+    public function getIdAccessoire(): Collection
+    {
+        return $this->idAccessoire;
+    }
+
+    public function addIdAccessoire(Accessoire $idAccessoire): static
+    {
+        if (!$this->idAccessoire->contains($idAccessoire)) {
+            $this->idAccessoire->add($idAccessoire);
+            $idAccessoire->setInstrument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdAccessoire(Accessoire $idAccessoire): static
+    {
+        if ($this->idAccessoire->removeElement($idAccessoire)) {
+            // set the owning side to null (unless already changed)
+            if ($idAccessoire->getInstrument() === $this) {
+                $idAccessoire->setInstrument(null);
             }
         }
 
