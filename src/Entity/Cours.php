@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CoursRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -43,6 +45,14 @@ class Cours
 
     #[ORM\ManyToOne(inversedBy: 'cours')]
     private ?TypeInstrument $idTypeInstrument = null;
+
+    #[ORM\OneToMany(mappedBy: 'idCours', targetEntity: Inscription::class)]
+    private Collection $inscriptions;
+
+    public function __construct()
+    {
+        $this->inscriptions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -165,6 +175,36 @@ class Cours
     public function setIdTypeInstrument(?TypeInstrument $idTypeInstrument): static
     {
         $this->idTypeInstrument = $idTypeInstrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Inscription>
+     */
+    public function getInscriptions(): Collection
+    {
+        return $this->inscriptions;
+    }
+
+    public function addInscription(Inscription $inscription): static
+    {
+        if (!$this->inscriptions->contains($inscription)) {
+            $this->inscriptions->add($inscription);
+            $inscription->setIdCours($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInscription(Inscription $inscription): static
+    {
+        if ($this->inscriptions->removeElement($inscription)) {
+            // set the owning side to null (unless already changed)
+            if ($inscription->getIdCours() === $this) {
+                $inscription->setIdCours(null);
+            }
+        }
 
         return $this;
     }

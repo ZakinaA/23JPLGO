@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Consulter un cours !{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<h5>PAGE DE CONSULTATION D'UN COURS</h5>
+<p>
+<table >
+
+    <tr><td>Id : </td><td>{{cours.id}} </td></tr>
+    <tr><td>Jour : </td><td>{{cours.idJour.libelle}}</td>
+    <tr><td>Libelle : </td><td>{{cours.libelle}}</td>
+    <tr><td>Age minimum : </td><td>{{cours.ageMini}}</td></tr></tr>
+    <tr><td>Age maximum : </td><td>{{cours.ageMaxi}}</td></tr></tr>
+    <tr><td>Heure de début : </td><td>{{cours.heureDebut|date('H:i:s')}}</td></tr>
+    <tr><td>Heure de fin : </td><td>{{cours.heureFin|date('H:i:s')}}</td></tr>
+    <tr><td>Nombre de places : </td><td>{{cours.nbPlaces}}</td></tr>
+    <tr><td>Instrument : </td><td>{{cours.idTypeInstrument.libelle}}</td></tr>
+    <tr><td>Professeur : </td><td>{{cours.idProfesseur.nom}}  {{cours.idProfesseur.prenom}}</td></tr>
+
+</table>
+
+<h5>ELEVES INSCRITS</h5>
+
+{%  for inscriptions in cours.inscriptions %}
+    <li>{{ inscriptions.idEleve.nom }} {{ inscriptions.idEleve.prenom }}</li>
+{% endfor %}
+</body>
+</html>

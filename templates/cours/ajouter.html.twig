@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un cours</title>
+</head>
+<body>
+
+<h1>Ajouter un cours</h1>
+
+<form action="{{ path('coursAjouter') }}" method="post">
+    {{ form_start(form) }}
+
+    <label for="jour">Jour :</label>
+    {{ form_widget(form.jour) }}
+    <br>
+
+    <label for="libelle">Libellé :</label>
+    {{ form_widget(form.libelle) }}
+    <br>
+
+    <label for="ageMini">Âge minimum :</label>
+    {{ form_widget(form.ageMini) }}
+    <br>
+
+    <label for="ageMaxi">Âge maximum :</label>
+    {{ form_widget(form.ageMaxi) }}
+    <br>
+
+    <label for="heureDebut">Heure de début :</label>
+    {{ form_widget(form.heureDebut) }}
+    <br>
+
+    <label for="heureFin">Heure de fin :</label>
+    {{ form_widget(form.heureFin) }}
+    <br>
+
+    <label for="nbPlaces">Nombre de places :</label>
+    {{ form_widget(form.nbPlaces) }}
+    <br>
+
+    <label for="typeInstrument">Type d'instrument :</label>
+    {{ form_widget(form.idTypeInstrument.libelle) }}
+    <br>
+
+    <label for="nomProfesseur">Nom du Professeur :</label>
+    {{ form_widget(form.idProfesseur.nom) }}
+    <br>
+
+    <label for="prenomProfesseur">Prénom du Professeur :</label>
+    {{ form_widget(form.idProfesseur.prenom) }}
+    <br>
+
+    {{ form_end(form) }}
+    <br>
+
+    <button type="submit">Ajouter le cours</button>
+
+</form>
+
+</body>
+</html>
