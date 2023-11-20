@@ -19,14 +19,15 @@ class CoursType extends AbstractType
         $builder
             ->add('libelle')
             ->add('ageMini')
+            ->add('ageMaxi')
+            ->add('nbPlaces')
             ->add('heureDebut')
             ->add('heureFin')
-            ->add('nbPlaces')
-            ->add('ageMaxi')
-            ->add('idJour')
-            ->add('idTypeCours')
-            ->add('idProfesseur')
-            ->add('idTypeInstrument')
+            ->add('jour', EntityType::class, array('class' => 'App\Entity\Jour','choice_label' => 'libelle' ))
+            ->add('type', EntityType::class, array('class' => 'App\Entity\TypeCours','choice_label' => 'libelle' ))
+            ->add('professeur', EntityType::class, array('class' => 'App\Entity\Professeur','choice_label' => 'nom' ))
+            ->add('typeInstrument', EntityType::class, array('class' => 'App\Entity\TypeInstrument','choice_label' => 'libelle' ))
+            ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau Cours'))
         ;
     }
 
