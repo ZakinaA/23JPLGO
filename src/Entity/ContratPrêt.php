@@ -33,6 +33,9 @@ class ContratPrêt
     #[ORM\JoinColumn(nullable: false)]
     private ?Eleve $eleveId = null;
 
+    #[ORM\ManyToOne(inversedBy: 'ContratsPret')]
+    private ?Instrument $instrument = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +109,18 @@ class ContratPrêt
     public function setEleveId(?Eleve $eleveId): static
     {
         $this->eleveId = $eleveId;
+
+        return $this;
+    }
+
+    public function getInstrument(): ?Instrument
+    {
+        return $this->instrument;
+    }
+
+    public function setInstrument(?Instrument $instrument): static
+    {
+        $this->instrument = $instrument;
 
         return $this;
     }
