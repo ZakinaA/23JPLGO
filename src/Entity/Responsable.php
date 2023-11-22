@@ -39,12 +39,12 @@ class Responsable
     #[ORM\Column(length: 50)]
     private ?string $mail = null;
 
-    #[ORM\ManyToMany(targetEntity: Eleve::class, mappedBy: 'responsable')]
-    private Collection $eleve;
+    #[ORM\ManyToMany(targetEntity: Eleve::class, mappedBy: 'responsables')]
+    private Collection $eleves;
 
     public function __construct()
     {
-        $this->eleve = new ArrayCollection();
+        $this->eleves = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -151,15 +151,15 @@ class Responsable
     /**
      * @return Collection<int, Eleve>
      */
-    public function getEleve(): Collection
+    public function getEleves(): Collection
     {
-        return $this->eleve;
+        return $this->eleves;
     }
 
     public function addEleve(Eleve $eleve): static
     {
-        if (!$this->eleve->contains($eleve)) {
-            $this->eleve->add($eleve);
+        if (!$this->eleves->contains($eleve)) {
+            $this->eleves->add($eleve);
             $eleve->addResponsable($this);
         }
 
@@ -168,7 +168,7 @@ class Responsable
 
     public function removeEleve(Eleve $eleve): static
     {
-        if ($this->eleve->removeElement($eleve)) {
+        if ($this->eleves->removeElement($eleve)) {
             $eleve->removeResponsable($this);
         }
 

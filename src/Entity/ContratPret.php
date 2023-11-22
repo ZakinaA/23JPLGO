@@ -33,17 +33,17 @@ class ContratPret
 
     #[ORM\ManyToOne(inversedBy: 'contratsPrêt')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Eleve $eleveId = null;
+    private ?Eleve $eleve = null;
 
     #[ORM\ManyToOne(inversedBy: 'idContratPret')]
     private ?Instrument $instrument = null;
 
-    #[ORM\OneToMany(mappedBy: 'contratPret', targetEntity: InterPret::class, orphanRemoval: true)]
-    private Collection $contratPret;
+    #[ORM\OneToMany(mappedBy: 'contratPrets', targetEntity: InterPret::class, orphanRemoval: true)]
+    private Collection $contratPrets;
 
     public function __construct()
     {
-        $this->contratPret = new ArrayCollection();
+        $this->contratPrets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -111,14 +111,14 @@ class ContratPret
         return $this;
     }
 
-    public function getEleveId(): ?Eleve
+    public function getEleve(): ?Eleve
     {
-        return $this->eleveId;
+        return $this->eleve;
     }
 
-    public function setEleveId(?Eleve $eleveId): static
+    public function setEleve(?Eleve $eleve): static
     {
-        $this->eleveId = $eleveId;
+        $this->eleve = $eleve;
 
         return $this;
     }
@@ -138,15 +138,15 @@ class ContratPret
     /**
      * @return Collection<int, InterPret>
      */
-    public function getContratPret(): Collection
+    public function getContratPrets(): Collection
     {
-        return $this->contratPret;
+        return $this->contratPrets;
     }
 
     public function addContratPret(InterPret $contratPret): static
     {
-        if (!$this->contratPret->contains($contratPret)) {
-            $this->contratPret->add($contratPret);
+        if (!$this->contratPrets->contains($contratPret)) {
+            $this->contratPrets->add($contratPret);
             $contratPret->setContratPret($this);
         }
 
@@ -155,7 +155,7 @@ class ContratPret
 
     public function removeContratPret(InterPret $contratPret): static
     {
-        if ($this->contratPret->removeElement($contratPret)) {
+        if ($this->contratPrets->removeElement($contratPret)) {
             // set the owning side to null (unless already changed)
             if ($contratPret->getContratPret() === $this) {
                 $contratPret->setContratPret(null);

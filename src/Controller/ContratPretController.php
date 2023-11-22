@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContratPretController extends AbstractController
 {
-    #[Route('/contratPret', name: 'app_contratPret')]
+    #[Route('/contratPrets', name: 'app_contratPret')]
     public function index(): Response
     {
         return $this->render('contratPret/index.html.twig', [
@@ -50,7 +50,7 @@ class ContratPretController extends AbstractController
             );
         }
         return $this->render('contratPret/consulter.html.twig', [
-            'contratPret' => $contratPret,
+            'contratPrets' => $contratPret,
             'interventions' => $interventions,
         ]);
     }

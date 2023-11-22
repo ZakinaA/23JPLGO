@@ -16,11 +16,11 @@ class InterPret
     #[ORM\Column(length: 30)]
     private ?string $quotite = null;
 
-    #[ORM\ManyToOne(inversedBy: 'interPret')]
+    #[ORM\ManyToOne(inversedBy: 'interPrets')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Intervention $intervention = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contratPret')]
+    #[ORM\ManyToOne(inversedBy: 'contratPrets')]
     #[ORM\JoinColumn(nullable: false)]
     private ?ContratPret $contratPret = null;
 

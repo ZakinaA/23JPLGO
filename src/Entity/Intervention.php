@@ -32,11 +32,11 @@ class Intervention
     private ?Instrument $instrument = null;
 
     #[ORM\OneToMany(mappedBy: 'intervention', targetEntity: InterPret::class, orphanRemoval: true)]
-    private Collection $interPret;
+    private Collection $interPrets;
 
     public function __construct()
     {
-        $this->interPret = new ArrayCollection();
+        $this->interPrets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -107,15 +107,15 @@ class Intervention
     /**
      * @return Collection<int, InterPret>
      */
-    public function getInterPret(): Collection
+    public function getInterPrets(): Collection
     {
-        return $this->interPret;
+        return $this->interPrets;
     }
 
     public function addInterPret(InterPret $interPret): static
     {
-        if (!$this->interPret->contains($interPret)) {
-            $this->interPret->add($interPret);
+        if (!$this->interPrets->contains($interPret)) {
+            $this->interPrets->add($interPret);
             $interPret->setIntervention($this);
         }
 
@@ -124,7 +124,7 @@ class Intervention
 
     public function removeInterPret(InterPret $interPret): static
     {
-        if ($this->interPret->removeElement($interPret)) {
+        if ($this->interPrets->removeElement($interPret)) {
             // set the owning side to null (unless already changed)
             if ($interPret->getIntervention() === $this) {
                 $interPret->setIntervention(null);
