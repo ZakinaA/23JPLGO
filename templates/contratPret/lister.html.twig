@@ -11,22 +11,19 @@
 
 LISTE DES CONTRATS DE PRET</br>
 <table>
-    {% for e in pContratsPret %}
+
+    {% for c in pContratsPret %}
         <tr>
-        <td><a href="{{ path('app_contratPretConsulter', { 'id': e.id }) }}">Emprunt {{ e.id }}</a></td>
-        <td>effectué par {{ e.eleve.prenom ~ " " ~ e.eleve.nom }} dont les responsables sont {% for eleve in pEleves %}
-        <td>
-            {% for responsables in eleve.responsables %}
-                {{ responsables.prenom }} et
-            {% else %}
-                Pas de responsables
-            {% endfor %}
-        </td>
-    {% else %}
-        Pas d'élèves
-    {% endfor %}
-        </a></td>
-        <td>pour l'instrument {{ e.instrument.id }}</td>
+            <td><a href="{{ path('app_contratPretConsulter', { 'id': c.id }) }}">Emprunt {{ c.id }}</a></td>
+            <td>effectué par {{ c.eleve.prenom ~ " " ~ c.eleve.nom }} dont les responsables sont
+                {% for responsable in c.eleve.responsables %}
+                    <td>{{ responsable.prenom ~ " " ~ responsable.nom }} et</td>
+                {% else %}
+                    pas de responsables
+                {% endfor %}
+
+                </a></td>
+        <td>pour l'instrument {{ c.instrument.id }}</td>
     {% else %}
         </tr>
         <tr>

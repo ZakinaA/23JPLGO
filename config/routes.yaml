@@ -19,3 +19,6 @@ instrumentConsulter:
 app_contratPretConsulter:
     path: /contratPret/consulter/{id}
     controller: App\Controller\ContratPretController::consulter
+app_contratPretAjouter:
+    path: /contratPret/ajouter
+    controller: App\Controller\ContratPretController::ajouter
