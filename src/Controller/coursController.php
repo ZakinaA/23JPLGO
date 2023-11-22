@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Cours;
 use App\Entity\Maison;
-use App\Form\EtudiantType;
+use App\Form\CoursType;
 use App\Entity\Task;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -72,7 +72,7 @@ class coursController extends AbstractController
     public function ajouterCours(){
 
         $cours = new cours();
-        $form = $this->createForm(CoursType::class, $cours);
+        $form = $this->createForm(Cours::class, $cours);
         return $this->render('cours/ajouter.html.twig', array(
             'form' => $form->createView(), ));
     }

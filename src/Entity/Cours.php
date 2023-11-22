@@ -35,16 +35,16 @@ class Cours
     private ?int $ageMaxi = null;
 
     #[ORM\ManyToOne(inversedBy: 'cours')]
-    private ?Jour $idJour = null;
+    private ?Jour $jour = null;
 
     #[ORM\ManyToOne(inversedBy: 'cours')]
-    private ?TypeCours $idTypeCours = null;
+    private ?TypeCours $typeCours = null;
 
     #[ORM\ManyToOne(inversedBy: 'cours')]
-    private ?Professeur $idProfesseur = null;
+    private ?Professeur $professeur = null;
 
     #[ORM\ManyToOne(inversedBy: 'cours')]
-    private ?TypeInstrument $idTypeInstrument = null;
+    private ?TypeInstrument $typeInstrument = null;
 
     #[ORM\OneToMany(mappedBy: 'idCours', targetEntity: Inscription::class)]
     private Collection $inscriptions;

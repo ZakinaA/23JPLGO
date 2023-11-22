@@ -13,7 +13,7 @@
     {{ form_start(form) }}
 
     <label for="jour">Jour :</label>
-    {{ form_widget(form.jour) }}
+    {{ form_widget(form.idJour) }}
     <br>
 
     <label for="libelle">Libellé :</label>
@@ -41,21 +41,15 @@
     <br>
 
     <label for="typeInstrument">Type d'instrument :</label>
-    {{ form_widget(form.idTypeInstrument.libelle) }}
+    {{ form_widget(form.idTypeInstrument) }}
     <br>
 
     <label for="nomProfesseur">Nom du Professeur :</label>
-    {{ form_widget(form.idProfesseur.nom) }}
-    <br>
-
-    <label for="prenomProfesseur">Prénom du Professeur :</label>
-    {{ form_widget(form.idProfesseur.prenom) }}
+    {{ form_widget(form.idProfesseur) }}
     <br>
 
     {{ form_end(form) }}
     <br>
-
-    <button type="submit">Ajouter le cours</button>
 
 </form>
 
