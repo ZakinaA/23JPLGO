@@ -138,7 +138,7 @@ class Cours
 
     public function setJour(?Jour $jour): static
     {
-        $this->Jour = $jour;
+        $this->jour = $jour;
 
         return $this;
     }
@@ -150,31 +150,31 @@ class Cours
 
     public function setTypeCours(?TypeCours $typeCours): static
     {
-        $this->TypeCours = $typeCours;
+        $this->typeCours = $typeCours;
 
         return $this;
     }
 
     public function getProfesseur(): ?Professeur
     {
-        return $this->Professeur;
+        return $this->professeur;
     }
 
     public function setProfesseur(?Professeur $professeur): static
     {
-        $this->Professeur = $professeur;
+        $this->professeur = $professeur;
 
         return $this;
     }
 
     public function getTypeInstrument(): ?TypeInstrument
     {
-        return $this->TypeInstrument;
+        return $this->typeInstrument;
     }
 
     public function setTypeInstrument(?TypeInstrument $typeInstrument): static
     {
-        $this->TypeInstrument = $typeInstrument;
+        $this->typeInstrument = $typeInstrument;
 
         return $this;
     }

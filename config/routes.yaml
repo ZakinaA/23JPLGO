@@ -13,3 +13,7 @@ coursLister:
 coursAjouter:
     path: /cours/ajouter
     controller: App\Controller\coursController::ajouter
+
+coursModifier:
+    path: /cours/modifier/{id}
+    controller: App\Controller\coursController::modifier
