@@ -16,12 +16,12 @@ LISTE DES COURS
     {% for cours in pCours %}
 
         <tr><td><a href="{{ path('coursConsulter', { 'id': cours.id }) }}">{{ cours.libelle }}</a></td>
-        <tr><td>Jour : </td><td>{{cours.idJour.libelle}}</td>
+        <tr><td>Jour : </td><td>{{cours.jour.libelle}}</td>
         <tr><td>Age minimum :</td><td>{{ cours.ageMini }}</a></td>
         <tr><td>Age maximum :</td><td>{{ cours.ageMaxi }}</a></td>
         <tr><td>Heure de début :</td><td>{{ cours.heureDebut|date('H:i:s')}}</td>
         <tr><td>Heure de fin :</td><td>{{ cours.heureFin|date('H:i:s')}}</td>
-        <tr><td>Type d'Instrument :</td><td>{{ cours.idTypeInstrument.libelle}}</td>
+        <tr><td>Type d'Instrument :</td><td>{{ cours.typeInstrument.libelle}}</td>
         <tr><td></td><td></td>
         <tr><td></td><td></td>
         <tr><td></td><td></td>
