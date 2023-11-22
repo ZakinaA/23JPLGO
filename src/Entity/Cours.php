@@ -131,50 +131,50 @@ class Cours
         return $this;
     }
 
-    public function getIdJour(): ?Jour
+    public function getJour(): ?Jour
     {
-        return $this->idJour;
+        return $this->jour;
     }
 
-    public function setIdJour(?Jour $idJour): static
+    public function setJour(?Jour $jour): static
     {
-        $this->idJour = $idJour;
+        $this->Jour = $jour;
 
         return $this;
     }
 
-    public function getIdTypeCours(): ?TypeCours
+    public function getTypeCours(): ?TypeCours
     {
-        return $this->idTypeCours;
+        return $this->typeCours;
     }
 
-    public function setIdTypeCours(?TypeCours $idTypeCours): static
+    public function setTypeCours(?TypeCours $typeCours): static
     {
-        $this->idTypeCours = $idTypeCours;
+        $this->TypeCours = $typeCours;
 
         return $this;
     }
 
-    public function getIdProfesseur(): ?Professeur
+    public function getProfesseur(): ?Professeur
     {
-        return $this->idProfesseur;
+        return $this->Professeur;
     }
 
-    public function setIdProfesseur(?Professeur $idProfesseur): static
+    public function setProfesseur(?Professeur $professeur): static
     {
-        $this->idProfesseur = $idProfesseur;
+        $this->Professeur = $professeur;
 
         return $this;
     }
 
-    public function getIdTypeInstrument(): ?TypeInstrument
+    public function getTypeInstrument(): ?TypeInstrument
     {
-        return $this->idTypeInstrument;
+        return $this->TypeInstrument;
     }
 
-    public function setIdTypeInstrument(?TypeInstrument $idTypeInstrument): static
+    public function setTypeInstrument(?TypeInstrument $typeInstrument): static
     {
-        $this->idTypeInstrument = $idTypeInstrument;
+        $this->TypeInstrument = $typeInstrument;
 
         return $this;
     }

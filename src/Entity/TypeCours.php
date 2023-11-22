@@ -18,10 +18,10 @@ class TypeCours
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $libelle = null;
 
-    #[ORM\OneToMany(mappedBy: 'idTypeCours', targetEntity: Cours::class)]
+    #[ORM\OneToMany(mappedBy: 'typeCours', targetEntity: Cours::class)]
     private Collection $cours;
 
-    #[ORM\OneToMany(mappedBy: 'idTypeCours', targetEntity: Tarif::class)]
+    #[ORM\OneToMany(mappedBy: 'typeCours', targetEntity: Tarif::class)]
     private Collection $tarifs;
 
     public function __construct()
@@ -59,7 +59,7 @@ class TypeCours
     {
         if (!$this->cours->contains($cour)) {
             $this->cours->add($cour);
-            $cour->setIdTypeCours($this);
+            $cour->setTypeCours($this);
         }
 
         return $this;
@@ -69,8 +69,8 @@ class TypeCours
     {
         if ($this->cours->removeElement($cour)) {
             // set the owning side to null (unless already changed)
-            if ($cour->getIdTypeCours() === $this) {
-                $cour->setIdTypeCours(null);
+            if ($cour->getTypeCours() === $this) {
+                $cour->setTypeCours(null);
             }
         }
 
@@ -89,7 +89,7 @@ class TypeCours
     {
         if (!$this->tarifs->contains($tarif)) {
             $this->tarifs->add($tarif);
-            $tarif->setIdTypeCours($this);
+            $tarif->setTypeCours($this);
         }
 
         return $this;
@@ -99,8 +99,8 @@ class TypeCours
     {
         if ($this->tarifs->removeElement($tarif)) {
             // set the owning side to null (unless already changed)
-            if ($tarif->getIdTypeCours() === $this) {
-                $tarif->setIdTypeCours(null);
+            if ($tarif->getTypeCours() === $this) {
+                $tarif->setTypeCours(null);
             }
         }
 
