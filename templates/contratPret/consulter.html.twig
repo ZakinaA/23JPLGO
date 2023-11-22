@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<h5>PAGE DE CONSULTATION D'UN CONTRAT DE PRET</h5>
+<p>
+<table >
+    <tr><td>Id : </td><td>{{contratPret.id}} </td></tr>
+    <tr><td>numéro de l'instrument emprunté : </td><td>{{contratPret.instrument.id}} </td></tr>
+    <tr><td>élève ayant emprunté : </td><td>{{contratPret.eleveId.nom}} </td></tr>
+    <tr><td>Responsable de l'élève : </td><td>{{''}} </td></tr>
+    <tr><td>liste des interventions : </td>
+        {% for e in interventions %}
+        <td>{{ e.id }}</td>
+        {% else %}
+        <td>Aucune intervention n'a été trouvée.</td>
+    </tr>
+    {% endfor %}
+    </tr>
+
+
+</table>
+
+
+</body>
+</html>

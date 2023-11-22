@@ -39,7 +39,7 @@ class Eleve
     #[ORM\Column(length: 50)]
     private ?string $mail = null;
 
-    #[ORM\OneToMany(mappedBy: 'eleveId', targetEntity: ContratPrêt::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'eleveId', targetEntity: ContratPret::class, orphanRemoval: true)]
     private Collection $contratsPrêt;
 
     #[ORM\ManyToMany(targetEntity: Responsable::class, inversedBy: 'eleve')]
@@ -153,14 +153,14 @@ class Eleve
     }
 
     /**
-     * @return Collection<int, ContratPrêt>
+     * @return Collection<int, ContratPret>
      */
     public function getContratsPrêt(): Collection
     {
         return $this->contratsPrêt;
     }
 
-    public function addContratsPrT(ContratPrêt $contratsPrT): static
+    public function addContratsPrT(ContratPret $contratsPrT): static
     {
         if (!$this->contratsPrêt->contains($contratsPrT)) {
             $this->contratsPrêt->add($contratsPrT);
@@ -170,7 +170,7 @@ class Eleve
         return $this;
     }
 
-    public function removeContratsPrT(ContratPrêt $contratsPrT): static
+    public function removeContratsPrT(ContratPret $contratsPrT): static
     {
         if ($this->contratsPrêt->removeElement($contratsPrT)) {
             // set the owning side to null (unless already changed)

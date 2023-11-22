@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\InterventionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,14 @@ class Intervention
 
     #[ORM\ManyToOne(inversedBy: 'idIntervention')]
     private ?Instrument $instrument = null;
+
+    #[ORM\OneToMany(mappedBy: 'intervention', targetEntity: InterPret::class, orphanRemoval: true)]
+    private Collection $interPret;
+
+    public function __construct()
+    {
+        $this->interPret = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +100,36 @@ class Intervention
     public function setInstrument(?Instrument $instrument): static
     {
         $this->instrument = $instrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, InterPret>
+     */
+    public function getInterPret(): Collection
+    {
+        return $this->interPret;
+    }
+
+    public function addInterPret(InterPret $interPret): static
+    {
+        if (!$this->interPret->contains($interPret)) {
+            $this->interPret->add($interPret);
+            $interPret->setIntervention($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInterPret(InterPret $interPret): static
+    {
+        if ($this->interPret->removeElement($interPret)) {
+            // set the owning side to null (unless already changed)
+            if ($interPret->getIntervention() === $this) {
+                $interPret->setIntervention(null);
+            }
+        }
 
         return $this;
     }

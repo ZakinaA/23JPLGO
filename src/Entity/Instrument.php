@@ -37,7 +37,7 @@ class Instrument
     #[ORM\ManyToOne(inversedBy: 'instruments')]
     private ?TypeInstrument $idTypeInstrument = null;
 
-    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: ContratPrêt::class)]
+    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: ContratPret::class)]
     private Collection $idContratPret;
 
     #[ORM\Column(length: 50, nullable: true)]
@@ -150,14 +150,14 @@ class Instrument
     }
 
     /**
-     * @return Collection<int, ContratPrêt>
+     * @return Collection<int, ContratPret>
      */
     public function getIdContratPret(): Collection
     {
         return $this->idContratPret;
     }
 
-    public function addIdContratPret(ContratPrêt $idContratPret): static
+    public function addIdContratPret(ContratPret $idContratPret): static
     {
         if (!$this->idContratPret->contains($idContratPret)) {
             $this->idContratPret->add($idContratPret);
@@ -167,7 +167,7 @@ class Instrument
         return $this;
     }
 
-    public function removeIdContratPret(ContratPrêt $idContratPret): static
+    public function removeIdContratPret(ContratPret $idContratPret): static
     {
         if ($this->idContratPret->removeElement($idContratPret)) {
             // set the owning side to null (unless already changed)

@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\ContratPrêtRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContratPrêtRepository::class)]
-class ContratPrêt
+class ContratPret
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -35,6 +37,14 @@ class ContratPrêt
 
     #[ORM\ManyToOne(inversedBy: 'idContratPret')]
     private ?Instrument $instrument = null;
+
+    #[ORM\OneToMany(mappedBy: 'contratPret', targetEntity: InterPret::class, orphanRemoval: true)]
+    private Collection $contratPret;
+
+    public function __construct()
+    {
+        $this->contratPret = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -121,6 +131,36 @@ class ContratPrêt
     public function setInstrument(?Instrument $instrument): static
     {
         $this->instrument = $instrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, InterPret>
+     */
+    public function getContratPret(): Collection
+    {
+        return $this->contratPret;
+    }
+
+    public function addContratPret(InterPret $contratPret): static
+    {
+        if (!$this->contratPret->contains($contratPret)) {
+            $this->contratPret->add($contratPret);
+            $contratPret->setContratPret($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContratPret(InterPret $contratPret): static
+    {
+        if ($this->contratPret->removeElement($contratPret)) {
+            // set the owning side to null (unless already changed)
+            if ($contratPret->getContratPret() === $this) {
+                $contratPret->setContratPret(null);
+            }
+        }
 
         return $this;
     }
