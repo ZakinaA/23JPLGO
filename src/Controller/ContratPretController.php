@@ -50,7 +50,7 @@ class ContratPretController extends AbstractController
             );
         }
         return $this->render('contratPret/consulter.html.twig', [
-            'contratPrets' => $contratPret,
+            'contratPret' => $contratPret,
             'interventions' => $interventions,
         ]);
     }

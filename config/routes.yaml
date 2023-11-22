@@ -5,17 +5,17 @@ app_instrument:
     path: /instrument
     controller: App\Controller\InstrumentController::index
 app_contratPret:
-    path: /contratPrets
+    path: /contratPret
     controller: App\Controller\ContratPretController::index
 instrumentLister:
     path: /instrument/lister
     controller: App\Controller\InstrumentController::lister
 app_contratPretLister:
-    path: /contratPrets/lister
+    path: /contratPret/lister
     controller: App\Controller\ContratPretController::lister
 instrumentConsulter:
     path: /instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulter
 app_contratPretConsulter:
-    path: /contratPrets/consulter/{id}
+    path: /contratPret/consulter/{id}
     controller: App\Controller\ContratPretController::consulter
