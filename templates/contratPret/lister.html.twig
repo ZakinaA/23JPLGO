@@ -15,9 +15,9 @@ LISTE DES CONTRATS DE PRET</br>
     {% for c in pContratsPret %}
         <tr>
             <td><a href="{{ path('app_contratPretConsulter', { 'id': c.id }) }}">Emprunt {{ c.id }}</a></td>
-            <td>effectué par {{ c.eleve.prenom ~ " " ~ c.eleve.nom }} dont les responsables sont
+            <td>{{ 'Effectué par : ' ~ c.eleve.prenom ~ " " ~ c.eleve.nom ~}}
                 {% for responsable in c.eleve.responsables %}
-                    <td>{{ responsable.prenom ~ " " ~ responsable.nom }} et</td>
+                    {{ 'Responsables : ' ~ responsable.prenom ~ " " ~ responsable.nom }}
                 {% else %}
                     pas de responsables
                 {% endfor %}

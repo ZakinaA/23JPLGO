@@ -18,17 +18,17 @@ class TypeInstrument
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $libelle = null;
 
-    #[ORM\OneToMany(mappedBy: 'typeInstrument', targetEntity: Cours::class)]
+    #[ORM\OneToMany(mappedBy: 'idTypeInstrument', targetEntity: Cours::class)]
     private Collection $cours;
 
-    #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'typeInstrument')]
+    #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'idTypeInstrument')]
     private Collection $professeurs;
 
-    #[ORM\OneToMany(mappedBy: 'idTypeInstrument', targetEntity: Instrument::class)]
-    private Collection $instruments;
-
     #[ORM\ManyToOne(inversedBy: 'typeInstruments')]
-    private ?ClasseInstrument $idClasseInstrument = null;
+    private ?ClasseInstrument $ClasseInstrument = null;
+
+    #[ORM\OneToMany(mappedBy: 'TypeInstrument', targetEntity: Instrument::class)]
+    private Collection $instruments;
 
     public function __construct()
     {
@@ -66,7 +66,7 @@ class TypeInstrument
     {
         if (!$this->cours->contains($cour)) {
             $this->cours->add($cour);
-            $cour->setTypeInstrument($this);
+            $cour->setIdTypeInstrument($this);
         }
 
         return $this;
@@ -76,8 +76,8 @@ class TypeInstrument
     {
         if ($this->cours->removeElement($cour)) {
             // set the owning side to null (unless already changed)
-            if ($cour->getTypeInstrument() === $this) {
-                $cour->setTypeInstrument(null);
+            if ($cour->getIdTypeInstrument() === $this) {
+                $cour->setIdTypeInstrument(null);
             }
         }
 
@@ -96,7 +96,7 @@ class TypeInstrument
     {
         if (!$this->professeurs->contains($professeur)) {
             $this->professeurs->add($professeur);
-            $professeur->addTypeInstrument($this);
+            $professeur->addIdTypeInstrument($this);
         }
 
         return $this;
@@ -105,8 +105,20 @@ class TypeInstrument
     public function removeProfesseur(Professeur $professeur): static
     {
         if ($this->professeurs->removeElement($professeur)) {
-            $professeur->removeTypeInstrument($this);
+            $professeur->removeIdTypeInstrument($this);
         }
+
+        return $this;
+    }
+
+    public function getClasseInstrument(): ?ClasseInstrument
+    {
+        return $this->ClasseInstrument;
+    }
+
+    public function setClasseInstrument(?ClasseInstrument $ClasseInstrument): static
+    {
+        $this->ClasseInstrument = $ClasseInstrument;
 
         return $this;
     }
@@ -123,7 +135,7 @@ class TypeInstrument
     {
         if (!$this->instruments->contains($instrument)) {
             $this->instruments->add($instrument);
-            $instrument->setIdTypeInstrument($this);
+            $instrument->setTypeInstrument($this);
         }
 
         return $this;
@@ -133,22 +145,10 @@ class TypeInstrument
     {
         if ($this->instruments->removeElement($instrument)) {
             // set the owning side to null (unless already changed)
-            if ($instrument->getIdTypeInstrument() === $this) {
-                $instrument->setIdTypeInstrument(null);
+            if ($instrument->getTypeInstrument() === $this) {
+                $instrument->setTypeInstrument(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getIdClasseInstrument(): ?ClasseInstrument
-    {
-        return $this->idClasseInstrument;
-    }
-
-    public function setIdClasseInstrument(?ClasseInstrument $idClasseInstrument): static
-    {
-        $this->idClasseInstrument = $idClasseInstrument;
 
         return $this;
     }
