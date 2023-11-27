@@ -7,17 +7,23 @@
 <h5>PAGE DE CONSULTATION D'UN CONTRAT DE PRET</h5>
 <p>
 <table >
-    <tr><td>Id : </td><td>{{contratPret.id}} </td></tr>
-    <tr><td>numéro de l'instrument emprunté : </td><td>{{contratPret.instrument.id}} </td></tr>
-    <tr><td>élève ayant emprunté : </td><td>{{contratPret.eleve.nom}} </td></tr>
-    <tr><td>Responsable de l'élève : </td><td>{{''}} </td></tr>
-    <tr><td>liste des interventions : </td>
-        {% for e in interventions %}
-        <td>{{ e.id }}</td>
+    <tr><td>Id : </td><td>{{pContratsPret.id}} </td></tr>
+    <tr><td>numéro de l'instrument emprunté : </td><td>{{pContratsPret.instrument.id}} </td></tr>
+    <tr><td>élève ayant emprunté : </td><td>{{pContratsPret.eleve.nom}} </td></tr>
+    <tr><td>Responsable(s) de l'élève :
+        {% for responsable in pContratsPret.eleve.responsables %}
+            <td>{{ responsable.prenom ~ " " ~ responsable.nom }}, </td>
         {% else %}
-        <td>Aucune intervention n'a été trouvée.</td>
+            pas de responsables
+        {% endfor %}
     </tr>
-    {% endfor %}
+    <tr><td>liste des interventions : </td>
+        {% for interPret in pContratsPret.interPrets %}
+            <td>{{ interPret.intervention.id ~ " : " ~ interPret.intervention.descriptif }}, </td>
+        {% else %}
+            <td>pas d'interventions</td>
+        {% endfor %}
+    </tr>
     </tr>
 
 

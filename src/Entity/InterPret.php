@@ -20,7 +20,7 @@ class InterPret
     #[ORM\JoinColumn(nullable: false)]
     private ?Intervention $intervention = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contratPrets')]
+    #[ORM\ManyToOne(inversedBy: 'interPrets')]
     #[ORM\JoinColumn(nullable: false)]
     private ?ContratPret $contratPret = null;
 

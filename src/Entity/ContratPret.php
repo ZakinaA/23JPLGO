@@ -38,12 +38,12 @@ class ContratPret
     #[ORM\ManyToOne(inversedBy: 'idContratPret')]
     private ?Instrument $instrument = null;
 
-    #[ORM\OneToMany(mappedBy: 'contratPrets', targetEntity: InterPret::class, orphanRemoval: true)]
-    private Collection $contratPrets;
+    #[ORM\OneToMany(mappedBy: 'contratPret', targetEntity: InterPret::class, orphanRemoval: true)]
+    private Collection $interPrets;
 
     public function __construct()
     {
-        $this->contratPrets = new ArrayCollection();
+        $this->interPrets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -138,27 +138,27 @@ class ContratPret
     /**
      * @return Collection<int, InterPret>
      */
-    public function getContratPrets(): Collection
+    public function getInterPrets(): Collection
     {
-        return $this->contratPrets;
+        return $this->interPrets;
     }
 
-    public function addContratPret(InterPret $contratPret): static
+    public function addInterPret(InterPret $interPret): static
     {
-        if (!$this->contratPrets->contains($contratPret)) {
-            $this->contratPrets->add($contratPret);
-            $contratPret->setContratPret($this);
+        if (!$this->interPrets->contains($interPret)) {
+            $this->interPrets->add($interPret);
+            $interPret->setIntervention($this);
         }
 
         return $this;
     }
 
-    public function removeContratPret(InterPret $contratPret): static
+    public function removeInterPret(InterPret $interPret): static
     {
-        if ($this->contratPrets->removeElement($contratPret)) {
+        if ($this->interPrets->removeElement($interPret)) {
             // set the owning side to null (unless already changed)
-            if ($contratPret->getContratPret() === $this) {
-                $contratPret->setContratPret(null);
+            if ($interPret->getIntervention() === $this) {
+                $interPret->setIntervention(null);
             }
         }
 
