@@ -39,19 +39,20 @@ class Eleve
     #[ORM\Column(length: 50)]
     private ?string $mail = null;
 
-    #[ORM\OneToMany(mappedBy: 'eleveId', targetEntity: ContratPrêt::class, orphanRemoval: true)]
-    private Collection $contratsPrêt;
+    #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: ContratPret::class, orphanRemoval: true)]
+    private Collection $contratsPret;
 
     #[ORM\ManyToMany(targetEntity: Responsable::class, inversedBy: 'eleve')]
-    private Collection $responsable;
+    private Collection $responsables;
 
     #[ORM\OneToMany(mappedBy: 'idEleve', targetEntity: Inscription::class)]
     private Collection $inscriptions;
 
     public function __construct()
     {
-        $this->contratsPrêt = new ArrayCollection();
-        $this->responsable = new ArrayCollection();
+
+        $this->contratsPret = new ArrayCollection();
+        $this->responsables = new ArrayCollection();
         $this->inscriptions = new ArrayCollection();
     }
 
@@ -157,29 +158,29 @@ class Eleve
     }
 
     /**
-     * @return Collection<int, ContratPrêt>
+     * @return Collection<int, ContratPret>
      */
-    public function getContratsPrêt(): Collection
+    public function getContratsPret(): Collection
     {
-        return $this->contratsPrêt;
+        return $this->contratsPret;
     }
 
-    public function addContratsPrT(ContratPrêt $contratsPrT): static
+    public function addContratsPrT(ContratPret $contratsPrT): static
     {
-        if (!$this->contratsPrêt->contains($contratsPrT)) {
-            $this->contratsPrêt->add($contratsPrT);
-            $contratsPrT->setEleveId($this);
+        if (!$this->contratsPret->contains($contratsPrT)) {
+            $this->contratsPret->add($contratsPrT);
+            $contratsPrT->setEleve($this);
         }
 
         return $this;
     }
 
-    public function removeContratsPrT(ContratPrêt $contratsPrT): static
+    public function removeContratsPrT(ContratPret $contratsPrT): static
     {
-        if ($this->contratsPrêt->removeElement($contratsPrT)) {
+        if ($this->contratsPret->removeElement($contratsPrT)) {
             // set the owning side to null (unless already changed)
-            if ($contratsPrT->getEleveId() === $this) {
-                $contratsPrT->setEleveId(null);
+            if ($contratsPrT->getEleve() === $this) {
+                $contratsPrT->setEleve(null);
             }
         }
 
@@ -189,15 +190,15 @@ class Eleve
     /**
      * @return Collection<int, Responsable>
      */
-    public function getResponsable(): Collection
+    public function getResponsables(): Collection
     {
-        return $this->responsable;
+        return $this->responsables;
     }
 
     public function addResponsable(Responsable $responsable): static
     {
-        if (!$this->responsable->contains($responsable)) {
-            $this->responsable->add($responsable);
+        if (!$this->responsables->contains($responsable)) {
+            $this->responsables->add($responsable);
         }
 
         return $this;
@@ -205,7 +206,7 @@ class Eleve
 
     public function removeResponsable(Responsable $responsable): static
     {
-        $this->responsable->removeElement($responsable);
+        $this->responsables->removeElement($responsable);
 
         return $this;
     }

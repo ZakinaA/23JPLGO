@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<h5>PAGE DE CONSULTATION D'UN INSTRUMENT</h5>
+<p>
+<table >
+    <tr><td>Id : </td><td>{{instrument.id}} </td></tr>
+    <tr><td>Nom : </td><td>{{instrument.numSerie}}</td>
+        <td  rowspan="8" class="imgEtu">
+            {% set photo = 'img/instrument/'~ instrument.id ~'.jpg' %}
+            <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}"/></span></td></tr> </td>
+    <tr><td>Date d'achat : </td><td>{{instrument.dateAchat|date("d/m/Y")}}</td></tr></tr>
+    <tr><td>Prix d'achat : </td><td>{{instrument.prixAchat}}</td></tr></tr>
+    <tr><td>Utilisation : </td><td>{{instrument.utilisation}}</td></tr></tr>
+    <tr><td>Marque : </td><td>{{instrument.marque.libelle}}</td></tr></tr>
+    <tr><td>Type d'Instrument : </td><td>{{instrument.idTypeInstrument.libelle}}</td></tr></tr>
+    <tr><td>Couleur : </td><td>{{instrument.idCouleur.nom}}</td></tr></tr>
+
+
+
+</table>
+
+
+</body>
+</html>

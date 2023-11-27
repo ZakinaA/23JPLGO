@@ -24,10 +24,17 @@ class TypeInstrument
     #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'typeInstrument')]
     private Collection $professeurs;
 
+    #[ORM\OneToMany(mappedBy: 'idTypeInstrument', targetEntity: Instrument::class)]
+    private Collection $instruments;
+
+    #[ORM\ManyToOne(inversedBy: 'typeInstruments')]
+    private ?ClasseInstrument $idClasseInstrument = null;
+
     public function __construct()
     {
         $this->cours = new ArrayCollection();
         $this->professeurs = new ArrayCollection();
+        $this->instruments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -100,6 +107,48 @@ class TypeInstrument
         if ($this->professeurs->removeElement($professeur)) {
             $professeur->removeTypeInstrument($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Instrument>
+     */
+    public function getInstruments(): Collection
+    {
+        return $this->instruments;
+    }
+
+    public function addInstrument(Instrument $instrument): static
+    {
+        if (!$this->instruments->contains($instrument)) {
+            $this->instruments->add($instrument);
+            $instrument->setIdTypeInstrument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInstrument(Instrument $instrument): static
+    {
+        if ($this->instruments->removeElement($instrument)) {
+            // set the owning side to null (unless already changed)
+            if ($instrument->getIdTypeInstrument() === $this) {
+                $instrument->setIdTypeInstrument(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getIdClasseInstrument(): ?ClasseInstrument
+    {
+        return $this->idClasseInstrument;
+    }
+
+    public function setIdClasseInstrument(?ClasseInstrument $idClasseInstrument): static
+    {
+        $this->idClasseInstrument = $idClasseInstrument;
 
         return $this;
     }
