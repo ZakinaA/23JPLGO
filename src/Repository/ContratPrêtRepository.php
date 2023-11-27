@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\ContratPrêt;
+use App\Entity\ContratPret;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<ContratPrêt>
+ * @extends ServiceEntityRepository<ContratPret>
  *
- * @method ContratPrêt|null find($id, $lockMode = null, $lockVersion = null)
- * @method ContratPrêt|null findOneBy(array $criteria, array $orderBy = null)
- * @method ContratPrêt[]    findAll()
- * @method ContratPrêt[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ContratPret|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ContratPret|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ContratPret[]    findAll()
+ * @method ContratPret[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ContratPrêtRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ContratPrêt::class);
+        parent::__construct($registry, ContratPret::class);
     }
 
 //    /**
-//     * @return ContratPrêt[] Returns an array of ContratPrêt objects
+//     * @return ContratPret[] Returns an array of ContratPret objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class ContratPrêtRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?ContratPrêt
+//    public function findOneBySomeField($value): ?ContratPret
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CoursRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,16 +35,24 @@ class Cours
     private ?int $ageMaxi = null;
 
     #[ORM\ManyToOne(inversedBy: 'cours')]
-    private ?Jour $idJour = null;
+    private ?Jour $jour = null;
 
     #[ORM\ManyToOne(inversedBy: 'cours')]
-    private ?TypeCours $idTypeCours = null;
+    private ?TypeCours $typeCours = null;
 
     #[ORM\ManyToOne(inversedBy: 'cours')]
-    private ?Professeur $idProfesseur = null;
+    private ?Professeur $professeur = null;
 
     #[ORM\ManyToOne(inversedBy: 'cours')]
-    private ?TypeInstrument $idTypeInstrument = null;
+    private ?TypeInstrument $typeInstrument = null;
+
+    #[ORM\OneToMany(mappedBy: 'idCours', targetEntity: Inscription::class)]
+    private Collection $inscriptions;
+
+    public function __construct()
+    {
+        $this->inscriptions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -121,50 +131,80 @@ class Cours
         return $this;
     }
 
-    public function getIdJour(): ?Jour
+    public function getJour(): ?Jour
     {
-        return $this->idJour;
+        return $this->jour;
     }
 
-    public function setIdJour(?Jour $idJour): static
+    public function setJour(?Jour $jour): static
     {
-        $this->idJour = $idJour;
+        $this->jour = $jour;
 
         return $this;
     }
 
-    public function getIdTypeCours(): ?TypeCours
+    public function getTypeCours(): ?TypeCours
     {
-        return $this->idTypeCours;
+        return $this->typeCours;
     }
 
-    public function setIdTypeCours(?TypeCours $idTypeCours): static
+    public function setTypeCours(?TypeCours $typeCours): static
     {
-        $this->idTypeCours = $idTypeCours;
+        $this->typeCours = $typeCours;
 
         return $this;
     }
 
-    public function getIdProfesseur(): ?Professeur
+    public function getProfesseur(): ?Professeur
     {
-        return $this->idProfesseur;
+        return $this->professeur;
     }
 
-    public function setIdProfesseur(?Professeur $idProfesseur): static
+    public function setProfesseur(?Professeur $professeur): static
     {
-        $this->idProfesseur = $idProfesseur;
+        $this->professeur = $professeur;
 
         return $this;
     }
 
-    public function getIdTypeInstrument(): ?TypeInstrument
+    public function getTypeInstrument(): ?TypeInstrument
     {
-        return $this->idTypeInstrument;
+        return $this->typeInstrument;
     }
 
-    public function setIdTypeInstrument(?TypeInstrument $idTypeInstrument): static
+    public function setTypeInstrument(?TypeInstrument $typeInstrument): static
     {
-        $this->idTypeInstrument = $idTypeInstrument;
+        $this->typeInstrument = $typeInstrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Inscription>
+     */
+    public function getInscriptions(): Collection
+    {
+        return $this->inscriptions;
+    }
+
+    public function addInscription(Inscription $inscription): static
+    {
+        if (!$this->inscriptions->contains($inscription)) {
+            $this->inscriptions->add($inscription);
+            $inscription->setIdCours($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInscription(Inscription $inscription): static
+    {
+        if ($this->inscriptions->removeElement($inscription)) {
+            // set the owning side to null (unless already changed)
+            if ($inscription->getIdCours() === $this) {
+                $inscription->setIdCours(null);
+            }
+        }
 
         return $this;
     }
