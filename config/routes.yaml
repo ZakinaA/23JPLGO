@@ -22,3 +22,9 @@ app_contratPretConsulter:
 app_contratPretAjouter:
     path: /contratPret/ajouter
     controller: App\Controller\ContratPretController::ajouter
+app_contratPretSupprimer:
+    path: /contratPret/supprimer/{id}
+    controller: App\Controller\ContratPretController::supprimer
+app_contratPretModifier:
+    path: /contratPret/modifier
+    controller: App\Controller\ContratPretController::modifier

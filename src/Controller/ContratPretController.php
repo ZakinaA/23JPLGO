@@ -5,7 +5,10 @@ namespace App\Controller;
 use App\Entity\ContratPret;
 use App\Entity\Eleve;
 use App\Entity\Etudiant;
+use App\Entity\Personnage;
+use App\Entity\StatPersonnage;
 use App\Form\ContratPretType;
+use App\Form\PersonnageType;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -73,5 +76,40 @@ class ContratPretController extends AbstractController
         return $this->render('contratPret/ajouter.html.twig', [ // Change the template path
             'form' => $form->createView(),
         ]);
+    }
+
+    public function modifier(Request $request, PersistenceManagerRegistry $doctrine, ContratPret $contratPret, int $id):Response
+    {
+        $form = $this->createForm(ContratPretType::class, $contratPret);
+        $contratPret = $doctrine->getRepository(ContratPret::class)->find($id);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $doctrine->getManager();
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_contratPretAjouter', ['id' => $contratPret->getId()]);
+        }
+
+        return $this->render('contratPret/ajouter.html.twig', [
+            'form' => $form->createView(),
+            'contratPret' => $contratPret
+        ]);
+    }
+
+    public function supprimer(ManagerRegistry $doctrine, int $id)
+    {
+        $entityManager = $doctrine->getManager();
+        $contratPret = $entityManager->find(ContratPret::class, $id);
+
+        if (!$contratPret) {
+            throw $this->createNotFoundException("Ce contrat n'existe pas");
+        }
+
+        $entityManager->remove($contratPret);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_contratPretLister');
     }
 }
