@@ -46,7 +46,7 @@ class Instrument
     #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: Intervention::class)]
     private Collection $Intervention;
 
-    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: ContratPrêt::class)]
+    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: ContratPret::class)]
     private Collection $ContratsPret;
 
     public function __construct()
@@ -231,14 +231,14 @@ class Instrument
     }
 
     /**
-     * @return Collection<int, ContratPrêt>
+     * @return Collection<int, ContratPret>
      */
     public function getContratsPret(): Collection
     {
         return $this->ContratsPret;
     }
 
-    public function addContratsPret(ContratPrêt $contratsPret): static
+    public function addContratsPret(ContratPret $contratsPret): static
     {
         if (!$this->ContratsPret->contains($contratsPret)) {
             $this->ContratsPret->add($contratsPret);
@@ -248,7 +248,7 @@ class Instrument
         return $this;
     }
 
-    public function removeContratsPret(ContratPrêt $contratsPret): static
+    public function removeContratsPret(ContratPret $contratsPret): static
     {
         if ($this->ContratsPret->removeElement($contratsPret)) {
             // set the owning side to null (unless already changed)
