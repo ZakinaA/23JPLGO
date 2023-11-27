@@ -45,10 +45,15 @@ class Eleve
     #[ORM\ManyToMany(targetEntity: Responsable::class, inversedBy: 'eleve')]
     private Collection $responsables;
 
+    #[ORM\OneToMany(mappedBy: 'idEleve', targetEntity: Inscription::class)]
+    private Collection $inscriptions;
+
     public function __construct()
     {
+
         $this->contratsPret = new ArrayCollection();
         $this->responsables = new ArrayCollection();
+        $this->inscriptions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -202,6 +207,36 @@ class Eleve
     public function removeResponsable(Responsable $responsable): static
     {
         $this->responsables->removeElement($responsable);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Inscription>
+     */
+    public function getInscriptions(): Collection
+    {
+        return $this->inscriptions;
+    }
+
+    public function addInscription(Inscription $inscription): static
+    {
+        if (!$this->inscriptions->contains($inscription)) {
+            $this->inscriptions->add($inscription);
+            $inscription->setIdEleve($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInscription(Inscription $inscription): static
+    {
+        if ($this->inscriptions->removeElement($inscription)) {
+            // set the owning side to null (unless already changed)
+            if ($inscription->getIdEleve() === $this) {
+                $inscription->setIdEleve(null);
+            }
+        }
 
         return $this;
     }

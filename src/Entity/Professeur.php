@@ -39,16 +39,16 @@ class Professeur
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $mail = null;
 
-    #[ORM\OneToMany(mappedBy: 'idProfesseur', targetEntity: Cours::class)]
+    #[ORM\OneToMany(mappedBy: 'professeur', targetEntity: Cours::class)]
     private Collection $cours;
 
     #[ORM\ManyToMany(targetEntity: TypeInstrument::class, inversedBy: 'professeurs')]
-    private Collection $idTypeInstrument;
+    private Collection $TypeInstrument;
 
     public function __construct()
     {
         $this->cours = new ArrayCollection();
-        $this->idTypeInstrument = new ArrayCollection();
+        $this->TypeInstrument = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -164,7 +164,7 @@ class Professeur
     {
         if (!$this->cours->contains($cour)) {
             $this->cours->add($cour);
-            $cour->setIdProfesseur($this);
+            $cour->setProfesseur($this);
         }
 
         return $this;
@@ -174,8 +174,8 @@ class Professeur
     {
         if ($this->cours->removeElement($cour)) {
             // set the owning side to null (unless already changed)
-            if ($cour->getIdProfesseur() === $this) {
-                $cour->setIdProfesseur(null);
+            if ($cour->getProfesseur() === $this) {
+                $cour->setProfesseur(null);
             }
         }
 
@@ -185,23 +185,23 @@ class Professeur
     /**
      * @return Collection<int, TypeInstrument>
      */
-    public function getIdTypeInstrument(): Collection
+    public function getTypeInstrument(): Collection
     {
-        return $this->idTypeInstrument;
+        return $this->TypeInstrument;
     }
 
-    public function addIdTypeInstrument(TypeInstrument $idTypeInstrument): static
+    public function addTypeInstrument(TypeInstrument $typeInstrument): static
     {
-        if (!$this->idTypeInstrument->contains($idTypeInstrument)) {
-            $this->idTypeInstrument->add($idTypeInstrument);
+        if (!$this->TypeInstrument->contains($typeInstrument)) {
+            $this->TypeInstrument->add($typeInstrument);
         }
 
         return $this;
     }
 
-    public function removeIdTypeInstrument(TypeInstrument $idTypeInstrument): static
+    public function removeTypeInstrument(TypeInstrument $typeInstrument): static
     {
-        $this->idTypeInstrument->removeElement($idTypeInstrument);
+        $this->TypeInstrument->removeElement($typeInstrument);
 
         return $this;
     }

@@ -18,7 +18,7 @@ class Jour
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $libelle = null;
 
-    #[ORM\OneToMany(mappedBy: 'idJour', targetEntity: Cours::class)]
+    #[ORM\OneToMany(mappedBy: 'jour', targetEntity: Cours::class)]
     private Collection $cours;
 
     public function __construct()
@@ -55,7 +55,7 @@ class Jour
     {
         if (!$this->cours->contains($cour)) {
             $this->cours->add($cour);
-            $cour->setIdJour($this);
+            $cour->setJour($this);
         }
 
         return $this;
@@ -65,8 +65,8 @@ class Jour
     {
         if ($this->cours->removeElement($cour)) {
             // set the owning side to null (unless already changed)
-            if ($cour->getIdJour() === $this) {
-                $cour->setIdJour(null);
+            if ($cour->getJour() === $this) {
+                $cour->setJour(null);
             }
         }
 

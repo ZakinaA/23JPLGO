@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\TypeCoursRepository;
+use App\Repository\TrancheRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: TypeCoursRepository::class)]
-class TypeCours
+#[ORM\Entity(repositoryClass: TrancheRepository::class)]
+class Tranche
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,15 +18,14 @@ class TypeCours
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $libelle = null;
 
-    #[ORM\OneToMany(mappedBy: 'typeCours', targetEntity: Cours::class)]
-    private Collection $cours;
+    #[ORM\Column(nullable: true)]
+    private ?int $quotientMini = null;
 
-    #[ORM\OneToMany(mappedBy: 'typeCours', targetEntity: Tarif::class)]
+    #[ORM\OneToMany(mappedBy: 'idTranche', targetEntity: Tarif::class)]
     private Collection $tarifs;
 
     public function __construct()
     {
-        $this->cours = new ArrayCollection();
         $this->tarifs = new ArrayCollection();
     }
 
@@ -47,32 +46,14 @@ class TypeCours
         return $this;
     }
 
-    /**
-     * @return Collection<int, Cours>
-     */
-    public function getCours(): Collection
+    public function getQuotientMini(): ?int
     {
-        return $this->cours;
+        return $this->quotientMini;
     }
 
-    public function addCour(Cours $cour): static
+    public function setQuotientMini(?int $quotientMini): static
     {
-        if (!$this->cours->contains($cour)) {
-            $this->cours->add($cour);
-            $cour->setTypeCours($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCour(Cours $cour): static
-    {
-        if ($this->cours->removeElement($cour)) {
-            // set the owning side to null (unless already changed)
-            if ($cour->getTypeCours() === $this) {
-                $cour->setTypeCours(null);
-            }
-        }
+        $this->quotientMini = $quotientMini;
 
         return $this;
     }
@@ -89,7 +70,7 @@ class TypeCours
     {
         if (!$this->tarifs->contains($tarif)) {
             $this->tarifs->add($tarif);
-            $tarif->setTypeCours($this);
+            $tarif->setIdTranche($this);
         }
 
         return $this;
@@ -99,8 +80,8 @@ class TypeCours
     {
         if ($this->tarifs->removeElement($tarif)) {
             // set the owning side to null (unless already changed)
-            if ($tarif->getTypeCours() === $this) {
-                $tarif->setTypeCours(null);
+            if ($tarif->getIdTranche() === $this) {
+                $tarif->setIdTranche(null);
             }
         }
 
