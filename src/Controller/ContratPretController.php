@@ -4,11 +4,8 @@ namespace App\Controller;
 
 use App\Entity\ContratPret;
 use App\Entity\Eleve;
-use App\Entity\Etudiant;
-use App\Entity\Personnage;
-use App\Entity\StatPersonnage;
 use App\Form\ContratPretType;
-use App\Form\PersonnageType;
+use App\Form\CoursModifierType;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -42,7 +39,7 @@ class ContratPretController extends AbstractController
 
     }
 
-    public function consulter(ManagerRegistry $doctrine, int $id)
+    public function consulter(ManagerRegistry $doctrine, int $id): Response
     {
         $contratsPret = $doctrine->getRepository(ContratPret::class)->find($id);
 
@@ -52,7 +49,7 @@ class ContratPretController extends AbstractController
             );
         }
         return $this->render('contratPret/consulter.html.twig', [
-            'pContratsPret' => $contratsPret,
+            'contratsPret' => $contratsPret,
         ]);
     }
 
@@ -70,7 +67,7 @@ class ContratPretController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'ContratPret créé avec succès!'); // Change the flash message
-            return $this->redirectToRoute('app_contratPretAjouter');
+            return $this->redirectToRoute('app_contratPretLister');
         }
 
         return $this->render('contratPret/ajouter.html.twig', [ // Change the template path
@@ -78,10 +75,15 @@ class ContratPretController extends AbstractController
         ]);
     }
 
-    public function modifier(Request $request, PersistenceManagerRegistry $doctrine, ContratPret $contratPret, int $id):Response
+    public function modifier(Request $request, PersistenceManagerRegistry $doctrine, int $id): Response
     {
-        $form = $this->createForm(ContratPretType::class, $contratPret);
         $contratPret = $doctrine->getRepository(ContratPret::class)->find($id);
+
+        if (!$contratPret) {
+            throw $this->createNotFoundException('Le contrat de Prêt n\'existe pas');
+        }
+
+        $form = $this->createForm(ContratPretType::class, $contratPret);
 
         $form->handleRequest($request);
 
@@ -89,14 +91,15 @@ class ContratPretController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_contratPretAjouter', ['id' => $contratPret->getId()]);
+            return $this->redirectToRoute('app_contratPretModifier', ['id' => $contratPret->getId()]);
         }
 
         return $this->render('contratPret/ajouter.html.twig', [
             'form' => $form->createView(),
-            'contratPret' => $contratPret
+            'contratPret' => $contratPret,
         ]);
     }
+
 
     public function supprimer(ManagerRegistry $doctrine, int $id)
     {

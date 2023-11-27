@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method ContratPret[]    findAll()
  * @method ContratPret[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ContratPrêtRepository extends ServiceEntityRepository
+class ContratPretRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

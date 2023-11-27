@@ -47,6 +47,7 @@ app_contratPretSupprimer:
     path: /contratPret/supprimer/{id}
     controller: App\Controller\ContratPretController::supprimer
 app_contratPretModifier:
-    path: /contratPret/modifier
+    path: /contratPret/modifier/{id}
     controller: App\Controller\ContratPretController::modifier
+
 
