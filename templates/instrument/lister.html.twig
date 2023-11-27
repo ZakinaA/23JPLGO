@@ -14,11 +14,11 @@ LISTE DES INSTRUMENTS</br>
     {% for e in pInstruments %}
         <tr>
         <td><a href="{{ path('instrumentConsulter', { 'id': e.id }) }}">{{ e.NumSerie }}</a></td>
-        <td>{{ e.NumSerie }}</a></td>
-        <td>{{ e.dateAchat|date('d/m/Y') }}</td>
+        <td>{{ e.marque.libelle }}</a></td>
+        <td>{{ e.TypeInstrument.libelle }}</td>
     {% else %}
         <tr>
-            <td>Aucun etudiant n'a été trouvé.</td>
+            <td>Aucun instrument n'a été trouvé.</td>
         </tr>
     {% endfor %}
 </table>

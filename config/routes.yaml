@@ -1,52 +1,15 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
-    
-coursConsulter:
-    path: /cours/consulter/{id}
-    controller: App\Controller\coursController::consulter
-
-coursLister:
-    path: /cours/lister
-    controller: App\Controller\coursController::lister
-
-coursAjouter:
-    path: /cours/ajouter
-    controller: App\Controller\coursController::ajouter
-
-coursModifier:
-    path: /cours/modifier/{id}
-    controller: App\Controller\coursController::modifier
-
-coursSupprimer:
-    path: /cours/supprimer/{id}
-    controller: App\Controller\coursController::supprimer
-    
 app_instrument:
     path: /instrument
-    controller: App\Controller\InstrumentController::index
-app_contratPret:
-    path: /contratPret
-    controller: App\Controller\ContratPretController::index
+    controller: App\Controller\instrumentController::index
 instrumentLister:
     path: /instrument/lister
     controller: App\Controller\InstrumentController::lister
-app_contratPretLister:
-    path: /contratPret/lister
-    controller: App\Controller\ContratPretController::lister
 instrumentConsulter:
     path: /instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulter
-app_contratPretConsulter:
-    path: /contratPret/consulter/{id}
-    controller: App\Controller\ContratPretController::consulter
-app_contratPretAjouter:
-    path: /contratPret/ajouter
-    controller: App\Controller\ContratPretController::ajouter
-app_contratPretSupprimer:
-    path: /contratPret/supprimer/{id}
-    controller: App\Controller\ContratPretController::supprimer
-app_contratPretModifier:
-    path: /contratPret/modifier
-    controller: App\Controller\ContratPretController::modifier
-
+instrumentAjouter:
+    path: /instrument/ajouter
+    controller: App\Controller\InstrumentController::ajouter

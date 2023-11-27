@@ -46,6 +46,9 @@ class ContratPret
         $this->interPrets = new ArrayCollection();
     }
 
+    #[ORM\ManyToOne(inversedBy: 'ContratsPret')]
+    private ?Instrument $instrument = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -161,6 +164,18 @@ class ContratPret
                 $interPret->setIntervention(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getInstrument(): ?Instrument
+    {
+        return $this->instrument;
+    }
+
+    public function setInstrument(?Instrument $instrument): static
+    {
+        $this->instrument = $instrument;
 
         return $this;
     }
