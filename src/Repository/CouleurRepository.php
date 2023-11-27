@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\ContratPret;
+use App\Entity\Couleur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<ContratPret>
+ * @extends ServiceEntityRepository<Couleur>
  *
- * @method ContratPret|null find($id, $lockMode = null, $lockVersion = null)
- * @method ContratPret|null findOneBy(array $criteria, array $orderBy = null)
- * @method ContratPret[]    findAll()
- * @method ContratPret[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Couleur|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Couleur|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Couleur[]    findAll()
+ * @method Couleur[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ContratPrêtRepository extends ServiceEntityRepository
+class CouleurRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ContratPret::class);
+        parent::__construct($registry, Couleur::class);
     }
 
 //    /**
-//     * @return ContratPret[] Returns an array of ContratPret objects
+//     * @return Couleur[] Returns an array of Couleur objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class ContratPrêtRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?ContratPret
+//    public function findOneBySomeField($value): ?Couleur
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

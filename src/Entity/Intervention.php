@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\InterventionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,6 +27,17 @@ class Intervention
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $prix = null;
+
+    #[ORM\ManyToOne(inversedBy: 'idIntervention')]
+    private ?Instrument $instrument = null;
+
+    #[ORM\OneToMany(mappedBy: 'intervention', targetEntity: InterPret::class, orphanRemoval: true)]
+    private Collection $interPrets;
+
+    public function __construct()
+    {
+        $this->interPrets = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -75,6 +88,48 @@ class Intervention
     public function setPrix(?string $prix): static
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getInstrument(): ?Instrument
+    {
+        return $this->instrument;
+    }
+
+    public function setInstrument(?Instrument $instrument): static
+    {
+        $this->instrument = $instrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, InterPret>
+     */
+    public function getInterPrets(): Collection
+    {
+        return $this->interPrets;
+    }
+
+    public function addInterPret(InterPret $interPret): static
+    {
+        if (!$this->interPrets->contains($interPret)) {
+            $this->interPrets->add($interPret);
+            $interPret->setIntervention($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInterPret(InterPret $interPret): static
+    {
+        if ($this->interPrets->removeElement($interPret)) {
+            // set the owning side to null (unless already changed)
+            if ($interPret->getIntervention() === $this) {
+                $interPret->setIntervention(null);
+            }
+        }
 
         return $this;
     }
