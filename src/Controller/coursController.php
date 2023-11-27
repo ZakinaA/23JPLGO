@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Etudiant;
+use App\Form\CoursModifierType;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -77,28 +78,47 @@ class coursController extends AbstractController
             'form' => $form->createView(), ));
     }
 
-    public function modifierCours(ManagerRegistry $doctrine, $id, Request $request,)
+    public function modifier(Request $request, PersistenceManagerRegistry $doctrine, int $id): Response
     {
-
+        // Récupérer le cours depuis la base de données
         $cours = $doctrine->getRepository(Cours::class)->find($id);
 
+        // Vérifier si le cours existe
         if (!$cours) {
-            throw $this->createNotFoundException('Aucun cours trouvé avec cet ID ' . $id);
-        } else {
-            $form = $this->createForm(CoursModifierType::class, $cours);
-            $form->handleRequest($request);
-
-            if ($form->isSubmitted() && $form->isValid()) {
-
-                $cours = $form->getData();
-                $entityManager = $doctrine->getManager();
-                $entityManager->persist($cours);
-                $entityManager->flush();
-                return $this->render('cours/consulter.html.twig', ['cours' => $cours,]);
-            } else {
-                return $this->render('cours/ajouter.html.twig', array('form' => $form->createView(),));
-            }
+            throw $this->createNotFoundException('Le cours n\'existe pas');
         }
 
+        // Créer le formulaire en utilisant l'objet récupéré depuis la base de données
+        $form = $this->createForm(CoursModifierType::class, $cours);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $doctrine->getManager();
+            $entityManager->flush();
+
+            return $this->redirectToRoute('coursModifier', ['id' => $cours->getId()]);
+        }
+
+        return $this->render('cours/ajouter.html.twig', [
+            'form' => $form->createView(),
+            'cours' => $cours,
+        ]);
+    }
+
+    
+    public function supprimer(ManagerRegistry $doctrine, int $id)
+    {
+        $entityManager = $doctrine->getManager();
+        $cours = $entityManager->find(Cours::class, $id);
+
+        if (!$cours) {
+            throw $this->createNotFoundException("Pas de cours avec et ID !");
+        }
+
+        $entityManager->remove($cours);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('coursLister');
     }
 }

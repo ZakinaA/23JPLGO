@@ -24,17 +24,19 @@ LISTE DES COURS
         <tr><td>Type d'Instrument :</td><td>{{ cours.typeInstrument.libelle}}</td>
         <tr><td></td><td></td>
         <tr><td></td><td></td>
-        <tr><td></td><td></td>
-        <tr><td></td><td></td>
-        <tr><td>--------------------------</td><td></td>
-        <tr><td></td><td></td>
-        <tr><td></td><td></td>
-        <tr><td></td><td></td>
-        <tr><td></td><td></td>
+    </tr>
+        <td>
+            <form action="{{  path('coursModifier', {'id': cours.id}) }}" method="post">
+                    <input type="hidden" name="_method" value="UPDATE">
+                    <button type="submit">Modifier</button>
+            </form>
 
+            <form action="{{  path('coursSupprimer', {'id': cours.id}) }}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit">Supprimer</button>
+            </form>
 
-
-
+        </td>
         <br>
     {% else %}
         <tr>

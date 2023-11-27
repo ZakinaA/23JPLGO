@@ -14,18 +14,24 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class CoursModifierType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('libelle', TextType::class, array('label' => 'libelle', 'disabled'=> true))
+            ->add('libelle')
+            ->add('ageMini')
+            ->add('ageMaxi')
+            ->add('nbPlaces')
+            ->add('heureDebut')
+            ->add('heureFin')
+            ->add('jour', EntityType::class, array('class' => 'App\Entity\Jour','choice_label' => 'libelle' ))
+            ->add('typeCours', EntityType::class, array('class' => 'App\Entity\TypeCours','choice_label' => 'libelle' ))
+            ->add('professeur', EntityType::class, array('class' => 'App\Entity\Professeur','choice_label' => 'nom' ))
+            ->add('typeInstrument', EntityType::class, array('class' => 'App\Entity\TypeInstrument','choice_label' => 'libelle' ))
             ->add('enregistrer', SubmitType::class, array('label' => 'Modifier le cours'))
         ;
-
     }
 
-
-
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Cours::class,
