@@ -16,14 +16,14 @@ class Marque
     private ?int $id = null;
 
     #[ORM\OneToMany(mappedBy: 'marque', targetEntity: Instrument::class)]
-    private Collection $idInstrument;
+    private Collection $instruments;
 
     #[ORM\Column(length: 50)]
     private ?string $libelle = null;
 
     public function __construct()
     {
-        $this->idInstrument = new ArrayCollection();
+        $this->instrument = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -36,25 +36,25 @@ class Marque
      */
     public function getIdInstrument(): Collection
     {
-        return $this->idInstrument;
+        return $this->instrument;
     }
 
-    public function addIdInstrument(Instrument $idInstrument): static
+    public function addInstrument(Instrument $instrument): static
     {
-        if (!$this->idInstrument->contains($idInstrument)) {
-            $this->idInstrument->add($idInstrument);
-            $idInstrument->setMarque($this);
+        if (!$this->instrument->contains($instrument)) {
+            $this->instrument->add($instrument);
+            $instrument->setMarque($this);
         }
 
         return $this;
     }
 
-    public function removeIdInstrument(Instrument $idInstrument): static
+    public function removeInstrument(Instrument $instrument): static
     {
-        if ($this->idInstrument->removeElement($idInstrument)) {
+        if ($this->instrument->removeElement($instrument)) {
             // set the owning side to null (unless already changed)
-            if ($idInstrument->getMarque() === $this) {
-                $idInstrument->setMarque(null);
+            if ($instrument->getMarque() === $this) {
+                $instrument->setMarque(null);
             }
         }
 

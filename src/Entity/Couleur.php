@@ -18,7 +18,7 @@ class Couleur
     #[ORM\Column(length: 50)]
     private ?string $nom = null;
 
-    #[ORM\ManyToMany(targetEntity: Instrument::class, mappedBy: 'idCouleur')]
+    #[ORM\ManyToMany(targetEntity: Instrument::class, mappedBy: 'couleur')]
     private Collection $instruments;
 
     public function __construct()
@@ -55,7 +55,7 @@ class Couleur
     {
         if (!$this->instruments->contains($instrument)) {
             $this->instruments->add($instrument);
-            $instrument->addIdCouleur($this);
+            $instrument->addCouleur($this);
         }
 
         return $this;
@@ -64,7 +64,7 @@ class Couleur
     public function removeInstrument(Instrument $instrument): static
     {
         if ($this->instruments->removeElement($instrument)) {
-            $instrument->removeIdCouleur($this);
+            $instrument->removeCouleur($this);
         }
 
         return $this;

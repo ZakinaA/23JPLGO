@@ -24,11 +24,11 @@ class TypeInstrument
     #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'typeInstrument')]
     private Collection $professeurs;
 
-    #[ORM\OneToMany(mappedBy: 'idTypeInstrument', targetEntity: Instrument::class)]
+    #[ORM\OneToMany(mappedBy: 'typeInstrument', targetEntity: Instrument::class)]
     private Collection $instruments;
 
     #[ORM\ManyToOne(inversedBy: 'typeInstruments')]
-    private ?ClasseInstrument $idClasseInstrument = null;
+    private ?ClasseInstrument $classeInstrument = null;
 
     public function __construct()
     {
@@ -62,22 +62,22 @@ class TypeInstrument
         return $this->cours;
     }
 
-    public function addCour(Cours $cour): static
+    public function addCours(Cours $cours): static
     {
-        if (!$this->cours->contains($cour)) {
-            $this->cours->add($cour);
-            $cour->setTypeInstrument($this);
+        if (!$this->cours->contains($cours)) {
+            $this->cours->add($cours);
+            $cours->setTypeInstrument($this);
         }
 
         return $this;
     }
 
-    public function removeCour(Cours $cour): static
+    public function removeCour(Cours $cours): static
     {
-        if ($this->cours->removeElement($cour)) {
+        if ($this->cours->removeElement($cours)) {
             // set the owning side to null (unless already changed)
-            if ($cour->getTypeInstrument() === $this) {
-                $cour->setTypeInstrument(null);
+            if ($cours->getTypeInstrument() === $this) {
+                $cours->setTypeInstrument(null);
             }
         }
 
@@ -123,7 +123,7 @@ class TypeInstrument
     {
         if (!$this->instruments->contains($instrument)) {
             $this->instruments->add($instrument);
-            $instrument->setIdTypeInstrument($this);
+            $instrument->setTypeInstrument($this);
         }
 
         return $this;
@@ -133,22 +133,22 @@ class TypeInstrument
     {
         if ($this->instruments->removeElement($instrument)) {
             // set the owning side to null (unless already changed)
-            if ($instrument->getIdTypeInstrument() === $this) {
-                $instrument->setIdTypeInstrument(null);
+            if ($instrument->getTypeInstrument() === $this) {
+                $instrument->setTypeInstrument(null);
             }
         }
 
         return $this;
     }
 
-    public function getIdClasseInstrument(): ?ClasseInstrument
+    public function getClasseInstrument(): ?ClasseInstrument
     {
-        return $this->idClasseInstrument;
+        return $this->classeInstrument;
     }
 
-    public function setIdClasseInstrument(?ClasseInstrument $idClasseInstrument): static
+    public function setClasseInstrument(?ClasseInstrument $classeInstrument): static
     {
-        $this->idClasseInstrument = $idClasseInstrument;
+        $this->classeInstrument = $classeInstrument;
 
         return $this;
     }

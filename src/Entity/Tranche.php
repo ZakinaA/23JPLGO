@@ -21,7 +21,7 @@ class Tranche
     #[ORM\Column(nullable: true)]
     private ?int $quotientMini = null;
 
-    #[ORM\OneToMany(mappedBy: 'idTranche', targetEntity: Tarif::class)]
+    #[ORM\OneToMany(mappedBy: 'tranche', targetEntity: Tarif::class)]
     private Collection $tarifs;
 
     public function __construct()
@@ -70,7 +70,7 @@ class Tranche
     {
         if (!$this->tarifs->contains($tarif)) {
             $this->tarifs->add($tarif);
-            $tarif->setIdTranche($this);
+            $tarif->setTranche($this);
         }
 
         return $this;
@@ -80,8 +80,8 @@ class Tranche
     {
         if ($this->tarifs->removeElement($tarif)) {
             // set the owning side to null (unless already changed)
-            if ($tarif->getIdTranche() === $this) {
-                $tarif->setIdTranche(null);
+            if ($tarif->getTranche() === $this) {
+                $tarif->setTranche(null);
             }
         }
 

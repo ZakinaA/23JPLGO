@@ -31,7 +31,7 @@ class ContratPret
     #[ORM\Column(length: 255)]
     private ?string $etatDetailleRetour = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contratsPrêt')]
+    #[ORM\ManyToOne(inversedBy: 'contratsPret')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Eleve $eleve = null;
 
