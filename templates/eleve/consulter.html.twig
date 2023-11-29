@@ -2,30 +2,24 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Consulter un cours !{% endblock %}</title>
+    <title>{% block title %}Consulter un élève !{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
-<h5>PAGE DE CONSULTATION D'UN COURS</h5>
+<h5>PAGE DE CONSULTATION D'UN ELEVE</h5>
 <p>
 <table >
 
-    <tr><td>Id : </td><td>{{cours.id}} </td></tr>
-    <tr><td>Jour : </td><td>{{cours.jour.libelle}}</td>
-    <tr><td>Libelle : </td><td>{{cours.libelle}}</td>
-    <tr><td>Age minimum : </td><td>{{cours.ageMini}}</td></tr></tr>
-    <tr><td>Age maximum : </td><td>{{cours.ageMaxi}}</td></tr></tr>
-    <tr><td>Heure de début : </td><td>{{cours.heureDebut|date('H:i:s')}}</td></tr>
-    <tr><td>Heure de fin : </td><td>{{cours.heureFin|date('H:i:s')}}</td></tr>
-    <tr><td>Nombre de places : </td><td>{{cours.nbPlaces}}</td></tr>
-    <tr><td>Professeur : </td><td>{{cours.professeur.nom}}  {{cours.professeur.prenom}}</td></tr>
+    <tr><td>Nom : </td><td>{{eleve.nom}}</td>
+    <tr><td>Prenom : </td><td>{{eleve.prenom}}</td>
+    <tr><td>Numéro de Rue :</td><td>{{ eleve.numRue }}</a></td>
+    <tr><td>Rue :</td><td>{{ eleve.rue }}</a></td>
+    <tr><td>Code Postal :</td><td>{{ eleve.copos }}</td>
+    <tr><td>Ville :</td><td>{{ eleve.ville }}</td>
+    <tr><td>Tel :</td><td>{{ eleve.tel }}</td>
+    <tr><td>Mail :</td><td>{{ eleve.mail }}</td></tr>
 
 </table>
 
-<h5>ELEVES INSCRITS</h5>
-
-{%  for inscriptions in cours.inscriptions %}
-    <li>{{ inscriptions.idEleve.nom }} {{ inscriptions.idEleve.prenom }}</li>
-{% endfor %}
 </body>
 </html>

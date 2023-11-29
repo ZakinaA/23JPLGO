@@ -3,49 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un cours !</title>
+    <title>Ajouter un élève !</title>
 </head>
 <body>
 
-<h1>Ajouter un cours</h1>
+<h1>Ajouter un élève</h1>
 
-<form action="{{ path('coursAjouter') }}" method="post">
+<form action="{{ path('eleveAjouter') }}" method="post">
     {{ form_start(form) }}
 
-    <label for="jour">Jour :</label>
-    {{ form_widget(form.jour) }}
+    <label for="nom">Nom :</label>
+    {{ form_widget(form.nom) }}
     <br>
 
-    <label for="libelle">Libellé :</label>
-    {{ form_widget(form.libelle) }}
+    <label for="prenom">Prénom :</label>
+    {{ form_widget(form.prenom) }}
     <br>
 
-    <label for="ageMini">Âge minimum :</label>
-    {{ form_widget(form.ageMini) }}
+    <label for="numRue">Numéro de Rue :</label>
+    {{ form_widget(form.numRue) }}
     <br>
 
-    <label for="ageMaxi">Âge maximum :</label>
-    {{ form_widget(form.ageMaxi) }}
+    <label for="rue">Rue :</label>
+    {{ form_widget(form.rue) }}
     <br>
 
-    <label for="heureDebut">Heure de début :</label>
-    {{ form_widget(form.heureDebut) }}
+    <label for="copos">Code Postal :</label>
+    {{ form_widget(form.copos) }}
     <br>
 
-    <label for="heureFin">Heure de fin :</label>
-    {{ form_widget(form.heureFin) }}
+    <label for="ville">Ville :</label>
+    {{ form_widget(form.ville) }}
     <br>
 
-    <label for="nbPlaces">Nombre de places :</label>
-    {{ form_widget(form.nbPlaces) }}
+    <label for="tel">Téléphone :</label>
+    {{ form_widget(form.tel) }}
     <br>
 
-    <label for="typeInstrument">Type d'instrument :</label>
-    {{ form_widget(form.typeInstrument) }}
-    <br>
-
-    <label for="nomProfesseur">Nom du Professeur :</label>
-    {{ form_widget(form.professeur) }}
+    <label for="mail">Mail :</label>
+    {{ form_widget(form.mail) }}
     <br>
 
     {{ form_end(form) }}
