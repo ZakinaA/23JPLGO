@@ -152,16 +152,4 @@ class TypeInstrument
 
         return $this;
     }
-
-    public function getClasseInstrument(): ?ClasseInstrument
-    {
-        return $this->classeInstrument;
-    }
-
-    public function setClasseInstrument(?ClasseInstrument $classeInstrument): static
-    {
-        $this->classeInstrument = $classeInstrument;
-
-        return $this;
-    }
 }

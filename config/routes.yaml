@@ -1,21 +1,37 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+# Routes Instruments
 app_instrument:
     path: /instrument
     controller: App\Controller\InstrumentController::index
-contratPret:
-    path: /contratPret
-    controller: App\Controller\ContratPretController::index
 instrumentLister:
     path: /instrument/lister
     controller: App\Controller\InstrumentController::lister
-contratPretLister:
-    path: /contratPret/lister
-    controller: App\Controller\ContratPretController::lister
 instrumentConsulter:
     path: /instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulter
+
+# Routes Cours
+coursLister:
+    path: /cours/lister
+    controller: App\Controller\CoursController::lister
+coursConsulter:
+    path: /cours/consulter/{id}
+    controller: App\Controller\CoursController::consulter
+coursAjouter:
+    path: /cours/ajouter
+    controller: App\Controller\CoursController::ajouter
+coursSupprimer:
+    path: /cours/supprimer/{id}
+    controller: App\Controller\CoursController::supprimer
+coursModifier:
+    path: /cours/modifier/{id}
+    controller: App\Controller\CoursController::modifier
+# Routes Contrats de prêt
+contratPretLister:
+    path: /contratPret/lister
+    controller: App\Controller\ContratPretController::lister
 contratPretConsulter:
     path: /contratPret/consulter/{id}
     controller: App\Controller\ContratPretController::consulter
