@@ -45,7 +45,7 @@ class Eleve
     #[ORM\ManyToMany(targetEntity: Responsable::class, inversedBy: 'eleve')]
     private Collection $responsables;
 
-    #[ORM\OneToMany(mappedBy: 'idEleve', targetEntity: Inscription::class)]
+    #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: Inscription::class)]
     private Collection $inscriptions;
 
     public function __construct()
@@ -223,7 +223,7 @@ class Eleve
     {
         if (!$this->inscriptions->contains($inscription)) {
             $this->inscriptions->add($inscription);
-            $inscription->setIdEleve($this);
+            $inscription->setEleve($this);
         }
 
         return $this;
@@ -233,8 +233,8 @@ class Eleve
     {
         if ($this->inscriptions->removeElement($inscription)) {
             // set the owning side to null (unless already changed)
-            if ($inscription->getIdEleve() === $this) {
-                $inscription->setIdEleve(null);
+            if ($inscription->getEleve() === $this) {
+                $inscription->setEleve(null);
             }
         }
 
