@@ -15,14 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContratPretController extends AbstractController
 {
-    #[Route('/contratPrets', name: 'app_contratPret')]
-    public function index(): Response
-    {
-        return $this->render('contratPret/index.html.twig', [
-            'controller_name' => 'InstrumentController',
-        ]);
-    }
-
     public function lister(ManagerRegistry $doctrine)
     {
 
@@ -33,8 +25,8 @@ class ContratPretController extends AbstractController
         $eleves= $repository->findAll();
 
         return $this->render('contratPret/lister.html.twig', [
-            'pContratsPret' => $contratsPret,
-            'pEleves' => $eleves,
+            'contratsPret' => $contratsPret,
+            'eleves' => $eleves,
             ]);
 
     }
@@ -67,7 +59,7 @@ class ContratPretController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'ContratPret créé avec succès!'); // Change the flash message
-            return $this->redirectToRoute('app_contratPretLister');
+            return $this->redirectToRoute('contratPretLister');
         }
 
         return $this->render('contratPret/ajouter.html.twig', [ // Change the template path
@@ -91,7 +83,7 @@ class ContratPretController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_contratPretModifier', ['id' => $contratPret->getId()]);
+            return $this->redirectToRoute('ontratPretModifier', ['id' => $contratPret->getId()]);
         }
 
         return $this->render('contratPret/ajouter.html.twig', [
@@ -113,6 +105,6 @@ class ContratPretController extends AbstractController
         $entityManager->remove($contratPret);
         $entityManager->flush();
 
-        return $this->redirectToRoute('app_contratPretLister');
+        return $this->redirectToRoute('contratPretLister');
     }
 }
