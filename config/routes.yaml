@@ -1,7 +1,9 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
-    
+
+# Routes cours
+
 coursConsulter:
     path: /cours/consulter/{id}
     controller: App\Controller\coursController::consulter
@@ -21,33 +23,70 @@ coursModifier:
 coursSupprimer:
     path: /cours/supprimer/{id}
     controller: App\Controller\coursController::supprimer
-    
+
+
+# Routes instrument
+
 app_instrument:
     path: /instrument
     controller: App\Controller\InstrumentController::index
+
 app_contratPret:
     path: /contratPret
     controller: App\Controller\ContratPretController::index
+
 instrumentLister:
     path: /instrument/lister
     controller: App\Controller\InstrumentController::lister
-app_contratPretLister:
-    path: /contratPret/lister
-    controller: App\Controller\ContratPretController::lister
+
 instrumentConsulter:
     path: /instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulter
+
+
+# Routes contrat pret
+
+app_contratPretLister:
+    path: /contratPret/lister
+    controller: App\Controller\ContratPretController::lister
+
 app_contratPretConsulter:
     path: /contratPret/consulter/{id}
     controller: App\Controller\ContratPretController::consulter
+
 app_contratPretAjouter:
     path: /contratPret/ajouter
     controller: App\Controller\ContratPretController::ajouter
+
 app_contratPretSupprimer:
     path: /contratPret/supprimer/{id}
     controller: App\Controller\ContratPretController::supprimer
+
 app_contratPretModifier:
     path: /contratPret/modifier/{id}
     controller: App\Controller\ContratPretController::modifier
+
+
+# Routes élèves
+
+eleveConsulter:
+    path: /eleve/consulter/{id}
+    controller: App\Controller\eleveController::consulter
+
+eleveLister:
+    path: /eleve/lister
+    controller: App\Controller\eleveController::lister
+
+eleveAjouter:
+    path: /eleve/ajouter
+    controller: App\Controller\eleveController::ajouter
+
+eleveModifier:
+    path: /eleve/modifier/{id}
+    controller: App\Controller\eleveController::modifier
+
+eleveSupprimer:
+    path: /eleve/supprimer/{id}
+    controller: App\Controller\eleveController::supprimer
 
 
