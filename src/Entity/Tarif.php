@@ -17,10 +17,10 @@ class Tarif
     private ?int $montant = null;
 
     #[ORM\ManyToOne(inversedBy: 'tarifs')]
-    private ?TypeCours $idTypeCours = null;
+    private ?TypeCours $typeCours = null;
 
     #[ORM\ManyToOne(inversedBy: 'tarifs')]
-    private ?Tranche $idTranche = null;
+    private ?Tranche $tranche = null;
 
     public function getId(): ?int
     {
@@ -39,26 +39,26 @@ class Tarif
         return $this;
     }
 
-    public function getIdTypeCours(): ?TypeCours
+    public function getTypeCours(): ?TypeCours
     {
-        return $this->idTypeCours;
+        return $this->typeCours;
     }
 
-    public function setIdTypeCours(?TypeCours $idTypeCours): static
+    public function setTypeCours(?TypeCours $typeCours): static
     {
-        $this->idTypeCours = $idTypeCours;
+        $this->typeCours = $typeCours;
 
         return $this;
     }
 
-    public function getIdTranche(): ?Tranche
+    public function getTranche(): ?Tranche
     {
-        return $this->idTranche;
+        return $this->tranche;
     }
 
-    public function setIdTranche(?Tranche $idTranche): static
+    public function setTranche(?Tranche $tranche): static
     {
-        $this->idTranche = $idTranche;
+        $this->tranche = $tranche;
 
         return $this;
     }

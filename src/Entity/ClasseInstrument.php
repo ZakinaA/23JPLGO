@@ -18,7 +18,7 @@ class ClasseInstrument
     #[ORM\Column(length: 50)]
     private ?string $libelle = null;
 
-    #[ORM\OneToMany(mappedBy: 'ClasseInstrument', targetEntity: TypeInstrument::class)]
+    #[ORM\OneToMany(mappedBy: 'classeInstrument', targetEntity: TypeInstrument::class)]
     private Collection $typeInstruments;
 
     public function __construct()

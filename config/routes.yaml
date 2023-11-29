@@ -31,40 +31,13 @@ app_instrument:
     path: /instrument
     controller: App\Controller\InstrumentController::index
 
-app_contratPret:
-    path: /contratPret
-    controller: App\Controller\ContratPretController::index
-
 instrumentLister:
     path: /instrument/lister
     controller: App\Controller\InstrumentController::lister
-
+    
 instrumentConsulter:
     path: /instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulter
-
-
-# Routes contrat pret
-
-app_contratPretLister:
-    path: /contratPret/lister
-    controller: App\Controller\ContratPretController::lister
-
-app_contratPretConsulter:
-    path: /contratPret/consulter/{id}
-    controller: App\Controller\ContratPretController::consulter
-
-app_contratPretAjouter:
-    path: /contratPret/ajouter
-    controller: App\Controller\ContratPretController::ajouter
-
-app_contratPretSupprimer:
-    path: /contratPret/supprimer/{id}
-    controller: App\Controller\ContratPretController::supprimer
-
-app_contratPretModifier:
-    path: /contratPret/modifier/{id}
-    controller: App\Controller\ContratPretController::modifier
 
 
 # Routes élèves
@@ -89,4 +62,24 @@ eleveSupprimer:
     path: /eleve/supprimer/{id}
     controller: App\Controller\eleveController::supprimer
 
-
+    
+# Routes Contrats de prêt
+contratPretLister:
+    path: /contratPret/lister
+    controller: App\Controller\ContratPretController::lister
+    
+contratPretConsulter:
+    path: /contratPret/consulter/{id}
+    controller: App\Controller\ContratPretController::consulter
+    
+contratPretAjouter:
+    path: /contratPret/ajouter
+    controller: App\Controller\ContratPretController::ajouter
+    
+contratPretSupprimer:
+    path: /contratPret/supprimer/{id}
+    controller: App\Controller\ContratPretController::supprimer
+    
+contratPretModifier:
+    path: /contratPret/modifier/{id}
+    controller: App\Controller\ContratPretController::modifier
