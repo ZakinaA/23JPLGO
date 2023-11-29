@@ -83,7 +83,7 @@ class ContratPretController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->flush();
 
-            return $this->redirectToRoute('ontratPretModifier', ['id' => $contratPret->getId()]);
+            return $this->redirectToRoute('contratPretModifier', ['id' => $contratPret->getId()]);
         }
 
         return $this->render('contratPret/ajouter.html.twig', [
