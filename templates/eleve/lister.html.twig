@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Liste des élèves !{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+
+LISTE DES ELEVES
+
+<table>
+
+    {% for eleve in pEleve %}
+
+        <tr><td><a href="{{ path('eleveConsulter', { 'id': eleve.id }) }}">{{ eleve.nom }}{{ eleve.prenom }}</a></td>
+        <tr><td>Nom : </td><td>{{eleve.nom}}</td>
+        <tr><td>Prenom : </td><td>{{eleve.prenom}}</td>
+        <tr><td>Numéro de Rue :</td><td>{{ eleve.numRue }}</a></td>
+        <tr><td>Rue :</td><td>{{ eleve.rue }}</a></td>
+        <tr><td>Code Postal :</td><td>{{ eleve.copos }}</td>
+        <tr><td>Ville :</td><td>{{ eleve.ville }}</td>
+        <tr><td>Tel :</td><td>{{ eleve.tel }}</td>
+        <tr><td>Mail :</td><td>{{ eleve.mail }}</td>
+
+        <tr><td></td><td></td>
+        <tr><td></td><td></td>
+    </tr>
+        <td>
+            <form action="{{  path('eleveModifier', {'id': eleve.id}) }}" method="post">
+                    <input type="hidden" name="_method" value="UPDATE">
+                    <button type="submit">Modifier</button>
+            </form>
+
+            <form action="{{  path('eleveSupprimer', {'id': eleve.id}) }}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit">Supprimer</button>
+            </form>
+
+        </td>
+        <br>
+    {% else %}
+        <tr>
+            <td>Aucun élève n'a été trouvé.</td>
+        </tr>
+    {% endfor %}
+
+
+</table>
+
+
+</body>
+</html>
+
