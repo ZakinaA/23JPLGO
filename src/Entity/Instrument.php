@@ -147,7 +147,7 @@ class Instrument
     }
 
     /**
-     * @return Collection<int, ContratPret>
+     * @return Collection<int, Couleur>
      */
     public function getContratPret(): Collection
     {
@@ -177,7 +177,7 @@ class Instrument
     }
 
     /**
-     * @return Collection<int, Couleur>
+     * @return Collection<int, Accessoire>
      */
     public function getCouleur(): Collection
     {
@@ -201,7 +201,7 @@ class Instrument
     }
 
     /**
-     * @return Collection<int, Accessoire>
+     * @return Collection<int, Intervention>
      */
     public function getAccessoire(): Collection
     {
@@ -231,7 +231,7 @@ class Instrument
     }
 
     /**
-     * @return Collection<int, Intervention>
+     * @return Collection<int, ContratPrêt>
      */
     public function getIntervention(): Collection
     {

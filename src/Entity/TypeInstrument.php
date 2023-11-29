@@ -18,10 +18,10 @@ class TypeInstrument
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $libelle = null;
 
-    #[ORM\OneToMany(mappedBy: 'typeInstrument', targetEntity: Cours::class)]
+    #[ORM\OneToMany(mappedBy: 'idTypeInstrument', targetEntity: Cours::class)]
     private Collection $cours;
 
-    #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'typeInstrument')]
+    #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'idTypeInstrument')]
     private Collection $professeurs;
 
     #[ORM\OneToMany(mappedBy: 'typeInstrument', targetEntity: Instrument::class)]
@@ -96,7 +96,7 @@ class TypeInstrument
     {
         if (!$this->professeurs->contains($professeur)) {
             $this->professeurs->add($professeur);
-            $professeur->addTypeInstrument($this);
+            $professeur->addIdTypeInstrument($this);
         }
 
         return $this;
@@ -105,8 +105,20 @@ class TypeInstrument
     public function removeProfesseur(Professeur $professeur): static
     {
         if ($this->professeurs->removeElement($professeur)) {
-            $professeur->removeTypeInstrument($this);
+            $professeur->removeIdTypeInstrument($this);
         }
+
+        return $this;
+    }
+
+    public function getClasseInstrument(): ?ClasseInstrument
+    {
+        return $this->ClasseInstrument;
+    }
+
+    public function setClasseInstrument(?ClasseInstrument $ClasseInstrument): static
+    {
+        $this->ClasseInstrument = $ClasseInstrument;
 
         return $this;
     }
