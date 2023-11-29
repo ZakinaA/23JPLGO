@@ -20,7 +20,7 @@ class Inscription
     private ?\DateTimeInterface $dateInscription = null;
 
     #[ORM\ManyToOne(inversedBy: 'inscriptions')]
-    private ?Eleve $idEleve = null;
+    private ?Eleve $eleve = null;
 
     #[ORM\ManyToOne(inversedBy: 'inscriptions')]
     private ?Cours $idCours = null;
@@ -50,14 +50,14 @@ class Inscription
         return $this;
     }
 
-    public function getIdEleve(): ?Eleve
+    public function getEleve(): ?Eleve
     {
-        return $this->idEleve;
+        return $this->eleve;
     }
 
-    public function setIdEleve(?Eleve $idEleve): static
+    public function setEleve(?Eleve $eleve): static
     {
-        $this->idEleve = $idEleve;
+        $this->eleve = $eleve;
 
         return $this;
     }
