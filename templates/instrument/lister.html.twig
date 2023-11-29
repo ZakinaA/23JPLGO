@@ -16,6 +16,7 @@ LISTE DES INSTRUMENTS</br>
         <td><a href="{{ path('instrumentConsulter', { 'id': e.id }) }}">{{ e.NumSerie }}</a></td>
         <td>{{ e.marque.libelle }}</a></td>
         <td>{{ e.TypeInstrument.libelle }}</td>
+        <td>{{ e.TypeInstrument.ClasseInstrument.libelle }}</td>
     {% else %}
         <tr>
             <td>Aucun instrument n'a été trouvé.</td>

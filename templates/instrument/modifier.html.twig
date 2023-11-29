@@ -1,0 +1,48 @@
+<!-- templates/instrument/edit.html.twig -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modification d'un Instrument</title>
+</head>
+<body>
+<h5>MODIFICATION D'UN INSTRUMENT</h5>
+
+<form method="post" action="{{ path('edit_instrument', {'id': instrument.id}) }}">
+    {{ form_start(form) }}
+
+    <label for="numSerie">Nom :</label>
+    {{ form_row(form.numSerie) }}
+
+    <label for="dateAchat">Date d'achat :</label>
+    {{ form_row(form.dateAchat) }}
+
+    <label for="prixAchat">Prix d'achat :</label>
+    {{ form_row(form.prixAchat) }}
+
+    <label for="utilisation">Utilisation :</label>
+    {{ form_row(form.utilisation) }}
+
+    <label for="marque">Marque :</label>
+    {{ form_row(form.marque) }}
+
+    <label for="TypeInstrument">Type d'Instrument :</label>
+    {{ form_row(form.TypeInstrument) }}
+
+    <label for="couleurs">Couleur :</label>
+    {{ form_row(form.couleurs) }}
+
+    <!-- You can keep the image field as it is, assuming it's for displaying the image, not for editing -->
+    <label for="cheminImage">Image :</label>
+    {% set photo = 'img/instrument/' ~ instrument.cheminImage ~ '.jpg' %}
+    <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}" width="300" height="200"/></span>
+
+    <button type="submit">Modifier</button>
+
+    {{ form_end(form) }}
+</form>
+
+<!-- Add a link to go back to the consultation page -->
+<a href="{{ path('view_instrument', {'id': instrument.id}) }}">Retour à la consultation</a>
+</body>
+</html>

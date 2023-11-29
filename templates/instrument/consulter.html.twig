@@ -19,9 +19,10 @@
     <tr><td>Utilisation : </td><td>{{ instrument.utilisation }}</td></tr>
     <tr><td>Marque : </td><td>{{ instrument.marque.libelle }}</td></tr>
     <tr><td>Type d'Instrument : </td><td>{{ instrument.TypeInstrument.libelle }}</td></tr>
+    <tr><td>Classe Instrument : </td><td>{{ instrument.TypeInstrument.ClasseInstrument.libelle }}</td></tr>
     <tr><td>Couleur : </td>
         <td>
-            <ul>
+            <ul>-
                 {% for couleur in instrument.couleurs %}
                     <li>{{ couleur.Nom }}</li>
                 {% endfor %}
