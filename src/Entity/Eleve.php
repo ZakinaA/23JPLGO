@@ -45,7 +45,7 @@ class Eleve
     #[ORM\ManyToMany(targetEntity: Responsable::class, inversedBy: 'eleve')]
     private Collection $responsables;
 
-    #[ORM\OneToMany(mappedBy: 'idEleve', targetEntity: Inscription::class)]
+    #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: Inscription::class)]
     private Collection $inscriptions;
 
     public function __construct()
@@ -165,22 +165,22 @@ class Eleve
         return $this->contratsPret;
     }
 
-    public function addContratsPrT(ContratPret $contratsPrT): static
+    public function addContratsPret(ContratPret $contratsPret): static
     {
-        if (!$this->contratsPret->contains($contratsPrT)) {
-            $this->contratsPret->add($contratsPrT);
-            $contratsPrT->setEleve($this);
+        if (!$this->contratsPret->contains($contratsPret)) {
+            $this->contratsPret->add($contratsPret);
+            $contratsPret->setEleve($this);
         }
 
         return $this;
     }
 
-    public function removeContratsPrT(ContratPret $contratsPrT): static
+    public function removeContratsPret(ContratPret $contratsPret): static
     {
-        if ($this->contratsPret->removeElement($contratsPrT)) {
+        if ($this->contratsPret->removeElement($contratsPret)) {
             // set the owning side to null (unless already changed)
-            if ($contratsPrT->getEleve() === $this) {
-                $contratsPrT->setEleve(null);
+            if ($contratsPret->getEleve() === $this) {
+                $contratsPret->setEleve(null);
             }
         }
 
@@ -223,7 +223,7 @@ class Eleve
     {
         if (!$this->inscriptions->contains($inscription)) {
             $this->inscriptions->add($inscription);
-            $inscription->setIdEleve($this);
+            $inscription->setEleve($this);
         }
 
         return $this;
@@ -233,8 +233,8 @@ class Eleve
     {
         if ($this->inscriptions->removeElement($inscription)) {
             // set the owning side to null (unless already changed)
-            if ($inscription->getIdEleve() === $this) {
-                $inscription->setIdEleve(null);
+            if ($inscription->getEleve() === $this) {
+                $inscription->setEleve(null);
             }
         }
 

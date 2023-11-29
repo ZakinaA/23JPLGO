@@ -20,17 +20,17 @@ class Inscription
     private ?\DateTimeInterface $dateInscription = null;
 
     #[ORM\ManyToOne(inversedBy: 'inscriptions')]
-    private ?Eleve $idEleve = null;
+    private ?Eleve $eleve = null;
 
     #[ORM\ManyToOne(inversedBy: 'inscriptions')]
-    private ?Cours $idCours = null;
+    private ?Cours $cours = null;
 
     #[ORM\OneToMany(mappedBy: 'inscription', targetEntity: Paiement::class)]
-    private Collection $idPaiement;
+    private Collection $paiement;
 
     public function __construct()
     {
-        $this->idPaiement = new ArrayCollection();
+        $this->paiement = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -50,26 +50,26 @@ class Inscription
         return $this;
     }
 
-    public function getIdEleve(): ?Eleve
+    public function getEleve(): ?Eleve
     {
-        return $this->idEleve;
+        return $this->eleve;
     }
 
-    public function setIdEleve(?Eleve $idEleve): static
+    public function setEleve(?Eleve $eleve): static
     {
-        $this->idEleve = $idEleve;
+        $this->eleve = $eleve;
 
         return $this;
     }
 
-    public function getIdCours(): ?Cours
+    public function getCours(): ?Cours
     {
-        return $this->idCours;
+        return $this->cours;
     }
 
-    public function setIdCours(?Cours $idCours): static
+    public function setCours(?Cours $cours): static
     {
-        $this->idCours = $idCours;
+        $this->cours = $cours;
 
         return $this;
     }
@@ -79,25 +79,25 @@ class Inscription
      */
     public function getIdPaiement(): Collection
     {
-        return $this->idPaiement;
+        return $this->paiement;
     }
 
-    public function addIdPaiement(Paiement $idPaiement): static
+    public function addPaiement(Paiement $paiement): static
     {
-        if (!$this->idPaiement->contains($idPaiement)) {
-            $this->idPaiement->add($idPaiement);
-            $idPaiement->setInscription($this);
+        if (!$this->paiement->contains($paiement)) {
+            $this->paiement->add($paiement);
+            $paiement->setInscription($this);
         }
 
         return $this;
     }
 
-    public function removeIdPaiement(Paiement $idPaiement): static
+    public function removepaiement(Paiement $paiement): static
     {
-        if ($this->idPaiement->removeElement($idPaiement)) {
+        if ($this->paiement->removeElement($paiement)) {
             // set the owning side to null (unless already changed)
-            if ($idPaiement->getInscription() === $this) {
-                $idPaiement->setInscription(null);
+            if ($paiement->getInscription() === $this) {
+                $paiement->setInscription(null);
             }
         }
 

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ContratPrêtRepository;
+use App\Repository\ContratPretRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ContratPrêtRepository::class)]
+#[ORM\Entity(repositoryClass: ContratPretRepository::class)]
 class ContratPret
 {
     #[ORM\Id]
@@ -31,12 +31,9 @@ class ContratPret
     #[ORM\Column(length: 255)]
     private ?string $etatDetailleRetour = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contratsPrêt')]
+    #[ORM\ManyToOne(inversedBy: 'contratsPret')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Eleve $eleve = null;
-
-    #[ORM\ManyToOne(inversedBy: 'idContratPret')]
-    private ?Instrument $instrument = null;
 
     #[ORM\OneToMany(mappedBy: 'contratPret', targetEntity: InterPret::class, orphanRemoval: true)]
     private Collection $interPrets;

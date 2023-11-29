@@ -20,7 +20,7 @@ class Paiement
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $datePaiement = null;
 
-    #[ORM\ManyToOne(inversedBy: 'idPaiement')]
+    #[ORM\ManyToOne(inversedBy: 'paiements')]
     private ?Inscription $inscription = null;
 
     public function getId(): ?int

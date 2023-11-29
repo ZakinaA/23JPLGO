@@ -18,7 +18,7 @@ class Couleur
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\ManyToMany(targetEntity: Instrument::class, mappedBy: 'Couleurs')]
+    #[ORM\ManyToMany(targetEntity: Instrument::class, mappedBy: 'couleur')]
     private Collection $instruments;
 
     public function __construct()

@@ -46,7 +46,7 @@ class Cours
     #[ORM\ManyToOne(inversedBy: 'cours')]
     private ?TypeInstrument $typeInstrument = null;
 
-    #[ORM\OneToMany(mappedBy: 'idCours', targetEntity: Inscription::class)]
+    #[ORM\OneToMany(mappedBy: 'cours', targetEntity: Inscription::class)]
     private Collection $inscriptions;
 
     public function __construct()
@@ -191,7 +191,7 @@ class Cours
     {
         if (!$this->inscriptions->contains($inscription)) {
             $this->inscriptions->add($inscription);
-            $inscription->setIdCours($this);
+            $inscription->setCours($this);
         }
 
         return $this;
@@ -201,8 +201,8 @@ class Cours
     {
         if ($this->inscriptions->removeElement($inscription)) {
             // set the owning side to null (unless already changed)
-            if ($inscription->getIdCours() === $this) {
-                $inscription->setIdCours(null);
+            if ($inscription->getCours() === $this) {
+                $inscription->setCours(null);
             }
         }
 

@@ -160,22 +160,22 @@ class Professeur
         return $this->cours;
     }
 
-    public function addCour(Cours $cour): static
+    public function addCour(Cours $cours): static
     {
-        if (!$this->cours->contains($cour)) {
-            $this->cours->add($cour);
-            $cour->setProfesseur($this);
+        if (!$this->cours->contains($cours)) {
+            $this->cours->add($cours);
+            $cours->setProfesseur($this);
         }
 
         return $this;
     }
 
-    public function removeCour(Cours $cour): static
+    public function removeCour(Cours $cours): static
     {
-        if ($this->cours->removeElement($cour)) {
+        if ($this->cours->removeElement($cours)) {
             // set the owning side to null (unless already changed)
-            if ($cour->getProfesseur() === $this) {
-                $cour->setProfesseur(null);
+            if ($cours->getProfesseur() === $this) {
+                $cours->setProfesseur(null);
             }
         }
 

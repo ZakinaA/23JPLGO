@@ -55,22 +55,22 @@ class TypeCours
         return $this->cours;
     }
 
-    public function addCour(Cours $cour): static
+    public function addCours(Cours $cours): static
     {
-        if (!$this->cours->contains($cour)) {
-            $this->cours->add($cour);
-            $cour->setTypeCours($this);
+        if (!$this->cours->contains($cours)) {
+            $this->cours->add($cours);
+            $cours->setTypeCours($this);
         }
 
         return $this;
     }
 
-    public function removeCour(Cours $cour): static
+    public function removeCours(Cours $cours): static
     {
-        if ($this->cours->removeElement($cour)) {
+        if ($this->cours->removeElement($cours)) {
             // set the owning side to null (unless already changed)
-            if ($cour->getTypeCours() === $this) {
-                $cour->setTypeCours(null);
+            if ($cours->getTypeCours() === $this) {
+                $cours->setTypeCours(null);
             }
         }
 

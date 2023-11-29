@@ -3,13 +3,28 @@ controllers:
     type: attribute
 app_instrument:
     path: /instrument
-    controller: App\Controller\instrumentController::index
+    controller: App\Controller\InstrumentController::index
+contratPret:
+    path: /contratPret
+    controller: App\Controller\ContratPretController::index
 instrumentLister:
     path: /instrument/lister
     controller: App\Controller\InstrumentController::lister
+contratPretLister:
+    path: /contratPret/lister
+    controller: App\Controller\ContratPretController::lister
 instrumentConsulter:
     path: /instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulter
-instrumentAjouter:
-    path: /instrument/ajouter
-    controller: App\Controller\InstrumentController::ajouter
+contratPretConsulter:
+    path: /contratPret/consulter/{id}
+    controller: App\Controller\ContratPretController::consulter
+contratPretAjouter:
+    path: /contratPret/ajouter
+    controller: App\Controller\ContratPretController::ajouter
+contratPretSupprimer:
+    path: /contratPret/supprimer/{id}
+    controller: App\Controller\ContratPretController::supprimer
+contratPretModifier:
+    path: /contratPret/modifier/{id}
+    controller: App\Controller\ContratPretController::modifier
