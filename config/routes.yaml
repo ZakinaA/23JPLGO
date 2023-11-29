@@ -1,27 +1,6 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
-    
-coursConsulter:
-    path: /cours/consulter/{id}
-    controller: App\Controller\coursController::consulter
-
-coursLister:
-    path: /cours/lister
-    controller: App\Controller\coursController::lister
-
-coursAjouter:
-    path: /cours/ajouter
-    controller: App\Controller\coursController::ajouter
-
-coursModifier:
-    path: /cours/modifier/{id}
-    controller: App\Controller\coursController::modifier
-
-coursSupprimer:
-    path: /cours/supprimer/{id}
-    controller: App\Controller\coursController::supprimer
-    
 app_instrument:
     path: /instrument
     controller: App\Controller\InstrumentController::index
@@ -49,5 +28,3 @@ contratPretSupprimer:
 contratPretModifier:
     path: /contratPret/modifier/{id}
     controller: App\Controller\ContratPretController::modifier
-
-
