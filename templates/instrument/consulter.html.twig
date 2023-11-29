@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Consulter un cours !{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+
 </head>
 <body>
-<h5>PAGE DE CONSULTATION D'UN COURS</h5>
+<h5>PAGE DE CONSULTATION D'UN INSTRUMENT</h5>
 <p>
 <table >
-
-    <tr><td>Id : </td><td>{{cours.id}} </td></tr>
-    <tr><td>Jour : </td><td>{{cours.jour.libelle}}</td>
-    <tr><td>Libelle : </td><td>{{cours.libelle}}</td>
-    <tr><td>Age minimum : </td><td>{{cours.ageMini}}</td></tr></tr>
-    <tr><td>Age maximum : </td><td>{{cours.ageMaxi}}</td></tr></tr>
-    <tr><td>Heure de début : </td><td>{{cours.heureDebut|date('H:i:s')}}</td></tr>
-    <tr><td>Heure de fin : </td><td>{{cours.heureFin|date('H:i:s')}}</td></tr>
-    <tr><td>Nombre de places : </td><td>{{cours.nbPlaces}}</td></tr>
-    <tr><td>Instrument : </td><td>{{cours.typeInstrument.libelle}}</td></tr>
-    <tr><td>Professeur : </td><td>{{cours.professeur.nom}}  {{cours.professeur.prenom}}</td></tr>
-
+    <tr><td>Id : </td><td>{{ instrument.id }} </td></tr>
+    <tr><td>Nom : </td><td>{{ instrument.numSerie }}</td>
+        <td rowspan="8" class="imgEtu">
+            {% set photo = 'img/instrument/' ~ instrument.cheminImage ~ '.jpg' %}
+            <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}" width="300" height="200"/></span>
+        </td>
+    </tr>
+    <tr><td>Date d'achat : </td><td>{{ instrument.dateAchat | date("d/m/Y") }}</td></tr>
+    <tr><td>Prix d'achat : </td><td>{{ instrument.prixAchat }}</td></tr>
+    <tr><td>Utilisation : </td><td>{{ instrument.utilisation }}</td></tr>
+    <tr><td>Marque : </td><td>{{ instrument.marque.libelle }}</td></tr>
+    <tr><td>Type d'Instrument : </td><td>{{ instrument.TypeInstrument.libelle }}</td></tr>
+    <tr><td>Classe Instrument : </td><td>{{ instrument.TypeInstrument.ClasseInstrument.libelle }}</td></tr>
+    <tr><td>Couleur : </td>
+        <td>
+            <ul>-
+                {% for couleur in instrument.couleurs %}
+                    <li>{{ couleur.Nom }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+    </tr>
 </table>
-
-<h5>ELEVES INSCRITS</h5>
-
-{%  for inscriptions in cours.inscriptions %}
-    <li>{{ inscriptions.idEleve.nom }} {{ inscriptions.idEleve.prenom }}</li>
-{% endfor %}
 </body>
 </html>
