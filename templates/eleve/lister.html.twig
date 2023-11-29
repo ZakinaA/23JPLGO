@@ -15,7 +15,7 @@ LISTE DES ELEVES
 
     {% for eleve in pEleve %}
 
-        <tr><td><a href="{{ path('eleveConsulter', { 'id': eleve.id }) }}">{{ eleve.nom }}{{ eleve.prenom }}</a></td>
+        <tr><td><a href="{{ path('eleveConsulter', { 'id': eleve.id }) }}">{{ eleve.nom }} {{ eleve.prenom }}</a></td>
         <tr><td>Nom : </td><td>{{eleve.nom}}</td>
         <tr><td>Prenom : </td><td>{{eleve.prenom}}</td>
         <tr><td>Numéro de Rue :</td><td>{{ eleve.numRue }}</a></td>
