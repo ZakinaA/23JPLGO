@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Validator\Constraints\Range;
 
 class CoursType extends AbstractType
 {
@@ -18,9 +19,12 @@ class CoursType extends AbstractType
     {
         $builder
             ->add('libelle')
-            ->add('ageMini')
-            ->add('ageMaxi')
-            ->add('nbPlaces')
+            ->add('ageMini', null,
+                ['constraints' => [new Range(['min' => 0])],])
+            ->add('ageMaxi', null,
+                ['constraints' => [new Range(['min' => 0])],])
+            ->add('nbPlaces', null,
+                ['constraints' => [new Range(['min' => 0])],])
             ->add('heureDebut')
             ->add('heureFin')
             ->add('jour', EntityType::class, array('class' => 'App\Entity\Jour','choice_label' => 'libelle' ))

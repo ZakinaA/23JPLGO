@@ -142,13 +142,23 @@ class Instrument
     public function setTypeInstrument(?TypeInstrument $typeInstrument): static
     {
         $this->typeInstrument = $typeInstrument;
-
         return $this;
     }
 
     /**
      * @return Collection<int, Couleur>
      */
+  
+    public function getCouleurs(): Collection
+    {
+        return $this->Couleurs;
+    }
+
+    public function addCouleur(Couleur $couleur): static
+    {
+        if (!$this->Couleurs->contains($couleur)) {
+            $this->Couleurs->add($couleur);
+
     public function getContratPret(): Collection
     {
         return $this->contratPret;
@@ -171,11 +181,33 @@ class Instrument
             if ($contratPret->getInstrument() === $this) {
                 $contratPret->setInstrument(null);
             }
+
         }
 
         return $this;
     }
 
+    public function removeCouleur(Couleur $couleur): static
+    {
+        $this->Couleurs->removeElement($couleur);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Accessoire>
+     */
+    public function getAccessoires(): Collection
+    {
+        return $this->Accessoires;
+    }
+
+    public function addAccessoire(Accessoire $accessoire): static
+    {
+        if (!$this->Accessoires->contains($accessoire)) {
+            $this->Accessoires->add($accessoire);
+            $accessoire->setInstrument($this);
+          
     /**
      * @return Collection<int, Accessoire>
      */
@@ -188,21 +220,33 @@ class Instrument
     {
         if (!$this->couleur->contains($couleur)) {
             $this->couleur->add($couleur);
+
         }
 
         return $this;
     }
 
-    public function removeCouleur(Couleur $couleur): static
-    {
-        $this->couleur->removeElement($couleur);
 
-        return $this;
+    public function removeAccessoire(Accessoire $accessoire): static
+    {
+        if ($this->Accessoires->removeElement($accessoire)) {
+            // set the owning side to null (unless already changed)
+            if ($accessoire->getInstrument() === $this) {
+                $accessoire->setInstrument(null);
+            }
+        }
+
+    public function getIntervention(): Collection
+    {
+        return $this->Intervention;
     }
 
-    /**
-     * @return Collection<int, Intervention>
-     */
+    public function addIntervention(Intervention $intervention): static
+    {
+        if (!$this->Intervention->contains($intervention)) {
+            $this->Intervention->add($intervention);
+            $intervention->setInstrument($this);
+
     public function getAccessoire(): Collection
     {
         return $this->accessoire;
@@ -218,6 +262,7 @@ class Instrument
         return $this;
     }
 
+
     public function removeAccessoire(Accessoire $accessoire): static
     {
         if ($this->accessoire->removeElement($accessoire)) {
@@ -230,7 +275,13 @@ class Instrument
         return $this;
     }
 
-    /**
+
+    public function addContratsPret(ContratPret $contratsPret): static
+    {
+        if (!$this->ContratsPret->contains($contratsPret)) {
+            $this->ContratsPret->add($contratsPret);
+            $contratsPret->setInstrument($this);
+
      * @return Collection<int, ContratPrêt>
      */
     public function getIntervention(): Collection
@@ -248,12 +299,21 @@ class Instrument
         return $this;
     }
 
+
+    public function removeContratsPret(ContratPret $contratsPret): static
+    {
+        if ($this->ContratsPret->removeElement($contratsPret)) {
+            // set the owning side to null (unless already changed)
+            if ($contratsPret->getInstrument() === $this) {
+                $contratsPret->setInstrument(null);
+
     public function removeIntervention(Intervention $intervention): static
     {
         if ($this->intervention->removeElement($intervention)) {
             // set the owning side to null (unless already changed)
             if ($intervention->getInstrument() === $this) {
                 $intervention->setInstrument(null);
+
             }
         }
 

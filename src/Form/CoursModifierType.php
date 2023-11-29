@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Validator\Constraints\Range;
 
 class CoursModifierType extends AbstractType
 {
@@ -18,15 +19,18 @@ class CoursModifierType extends AbstractType
     {
         $builder
             ->add('libelle')
-            ->add('ageMini')
-            ->add('ageMaxi')
-            ->add('nbPlaces')
+            ->add('ageMini', null,
+                ['constraints' => [new Range(['min' => 0])],])
+            ->add('ageMaxi', null,
+                ['constraints' => [new Range(['min' => 0])],])
+            ->add('nbPlaces', null,
+                ['constraints' => [new Range(['min' => 0])],])
             ->add('heureDebut')
             ->add('heureFin')
-            ->add('jour', EntityType::class, array('class' => 'App\Entity\Jour','choice_label' => 'libelle' ))
-            ->add('typeCours', EntityType::class, array('class' => 'App\Entity\TypeCours','choice_label' => 'libelle' ))
-            ->add('professeur', EntityType::class, array('class' => 'App\Entity\Professeur','choice_label' => 'nom' ))
-            ->add('typeInstrument', EntityType::class, array('class' => 'App\Entity\TypeInstrument','choice_label' => 'libelle' ))
+            ->add('jour', EntityType::class, array('class' => 'App\Entity\Jour', 'choice_label' => 'libelle'))
+            ->add('typeCours', EntityType::class, array('class' => 'App\Entity\TypeCours', 'choice_label' => 'libelle'))
+            ->add('professeur', EntityType::class, array('class' => 'App\Entity\Professeur', 'choice_label' => 'nom'))
+            ->add('typeInstrument', EntityType::class, array('class' => 'App\Entity\TypeInstrument', 'choice_label' => 'libelle'))
             ->add('enregistrer', SubmitType::class, array('label' => 'Modifier le cours'))
         ;
     }
