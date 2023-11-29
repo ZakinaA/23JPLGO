@@ -38,7 +38,14 @@ instrumentLister:
 instrumentConsulter:
     path: /instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulter
-
+    
+instrumentModifier:
+    path: /instrument/modifier/{id}
+    controller: App\Controller\InstrumentController::modifier
+    
+instrumentSupprimer:
+    path: /instrument/supprimer/{id}
+    controller: App\Controller\InstrumentController::supprimer
 
 # Routes élèves
 
