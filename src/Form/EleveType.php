@@ -35,7 +35,7 @@ class EleveType extends AbstractType
                 },
                 'multiple' => true,
                 'expanded' => false,
-                'consraints' => [
+                'constraints' => [
                     new Count(['max' => 2, 'maxMessage' => 'Vous ne pouvez sélectionner que deux responsables maximum']),
                 ],
             ])
