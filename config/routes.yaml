@@ -34,7 +34,7 @@ app_instrument:
 instrumentLister:
     path: /instrument/lister
     controller: App\Controller\InstrumentController::lister
-    
+
 instrumentConsulter:
     path: /instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulter
@@ -46,7 +46,7 @@ instrumentAjouter:
 instrumentModifier:
     path: /instrument/modifier/{id}
     controller: App\Controller\InstrumentController::modifier
-    
+
 instrumentSupprimer:
     path: /instrument/supprimer/{id}
     controller: App\Controller\InstrumentController::supprimer
@@ -73,24 +73,53 @@ eleveSupprimer:
     path: /eleve/supprimer/{id}
     controller: App\Controller\eleveController::supprimer
 
-    
+
 # Routes Contrats de prêt
 contratPretLister:
     path: /contratPret/lister
     controller: App\Controller\ContratPretController::lister
-    
+
 contratPretConsulter:
     path: /contratPret/consulter/{id}
     controller: App\Controller\ContratPretController::consulter
-    
+
 contratPretAjouter:
     path: /contratPret/ajouter
     controller: App\Controller\ContratPretController::ajouter
-    
+
 contratPretSupprimer:
     path: /contratPret/supprimer/{id}
     controller: App\Controller\ContratPretController::supprimer
-    
+
 contratPretModifier:
     path: /contratPret/modifier/{id}
     controller: App\Controller\ContratPretController::modifier
+
+# Routes responsables
+
+responsableConsulter:
+    path: /responsable/consulter/{id}
+    controller: App\Controller\ResponsableController::consulter
+
+responsableLister:
+    path: /responsable/lister
+    controller: App\Controller\ResponsableController::lister
+
+responsableAjouter:
+    path: /responsable/ajouter
+    controller: App\Controller\ResponsableController::ajouter
+
+responsableModifier:
+    path: /responsable/modifier/{id}
+    controller: App\Controller\ResponsableController::modifier
+
+responsableSupprimer:
+    path: /responsable/supprimer/{id}
+    controller: App\Controller\ResponsableController::supprimer
+
+
+# Route inscription élève à un cours
+
+inscription_eleve_cours:
+    path: /inscription/{idCours}/{idEleve}
+    controller: App\Controller\InscriptionController::inscrireEleveCours
