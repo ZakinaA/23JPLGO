@@ -16,7 +16,7 @@ class Accessoire
     #[ORM\Column(length: 50)]
     private ?string $libelle = null;
 
-    #[ORM\ManyToOne(inversedBy: 'accessoires')]
+    #[ORM\ManyToOne(inversedBy: 'Accessoires')]
     private ?Instrument $instrument = null;
 
     public function getId(): ?int
