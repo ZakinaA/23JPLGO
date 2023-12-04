@@ -11,6 +11,10 @@
 
 <p>Merci, votre inscription a été confirmée avec succès !</p>
 
+<form action="{{ path('coursLister') }}">
+    <input type="hidden" name="_method" value="GET">
+    <button type="submit">Liste des Cours</button>
+</form>
 
 </body>
 </html>
