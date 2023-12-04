@@ -9,10 +9,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GreaterThan;
 
 class InstrumentType extends AbstractType
 {
@@ -21,7 +23,15 @@ class InstrumentType extends AbstractType
         $builder
             ->add('numSerie', TextType::class)
             ->add('dateAchat')
-            ->add('prixAchat')
+            ->add('prixAchat', MoneyType::class, [
+                'currency' => 'EUR', // Adjust the currency based on your requirements
+                'constraints' => [
+                    new GreaterThan([
+                        'value' => 0,
+                        'message' => 'Le prix d\'achat doit être supérieur à zéro.',
+                    ]),
+                ],
+            ])
             ->add('utilisation', TextType::class)
             ->add('cheminImage', TextType::class)
             ->add('marque', EntityType::class, array('class' => 'App\Entity\Marque','choice_label' => 'libelle' ))
