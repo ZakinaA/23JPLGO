@@ -2,29 +2,6 @@ controllers:
     resource: ../src/Controller/
     type: attribute
 
-# Routes cours
-
-coursConsulter:
-    path: /cours/consulter/{id}
-    controller: App\Controller\coursController::consulter
-
-coursLister:
-    path: /cours/lister
-    controller: App\Controller\coursController::lister
-
-coursAjouter:
-    path: /cours/ajouter
-    controller: App\Controller\coursController::ajouter
-
-coursModifier:
-    path: /cours/modifier/{id}
-    controller: App\Controller\coursController::modifier
-
-coursSupprimer:
-    path: /cours/supprimer/{id}
-    controller: App\Controller\coursController::supprimer
-
-
 # Routes instrument
 
 app_instrument:
@@ -116,3 +93,25 @@ responsableModifier:
 responsableSupprimer:
     path: /responsable/supprimer/{id}
     controller: App\Controller\ResponsableController::supprimer
+
+# Routes cours
+
+coursConsulter:
+    path: /cours/consulter/{id}
+    controller: App\Controller\coursController::consulter
+
+coursLister:
+    path: /cours/lister
+    controller: App\Controller\coursController::lister
+
+coursAjouter:
+    path: /cours/ajouter
+    controller: App\Controller\coursController::ajouter
+
+coursModifier:
+    path: /cours/modifier/{id}
+    controller: App\Controller\coursController::modifier
+
+coursSupprimer:
+    path: /cours/supprimer/{id}
+    controller: App\Controller\coursController::supprimer
