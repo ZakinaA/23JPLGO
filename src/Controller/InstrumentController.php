@@ -75,11 +75,16 @@ class InstrumentController extends AbstractController
     }
 
     /**
-     * @Route("/instrument/modifier/{id}", name="edit_instrument")
+     * @Route("/instrument/modifier/{id}", name="instrumentModifier")
      */
-    public function modifier(Request $request, PersistenceManagerRegistry $doctrine, Instrument $instrument): Response
+    public function modifier(Request $request, ManagerRegistry $doctrine, int $id): Response
     {
-        // Utilisez le nouveau formulaire de modification
+        $instrument = $doctrine->getRepository(Instrument::class)->find($id);
+
+        if (!$instrument) {
+            throw $this->createNotFoundException('Instrument not found.');
+        }
+
         $form = $this->createForm(InstrumentModifierType::class, $instrument);
 
         $form->handleRequest($request);
@@ -89,14 +94,34 @@ class InstrumentController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'Instrument mis à jour avec succès !');
-            return $this->redirectToRoute('view_instrument', ['id' => $instrument->getId()]);
+            return $this->redirectToRoute('instrumentConsulter', ['id' => $instrument->getId()]);
         }
 
-        return $this->render('instrument/edit.html.twig', [
+        return $this->render('instrument/modifier.html.twig', [
             'form' => $form->createView(),
             'instrument' => $instrument,
         ]);
     }
+    /**
+     * @Route("/instrument/supprimer/{id}", name="instrumentSupprimer")
+     */
+    public function supprimer(ManagerRegistry $doctrine, int $id): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $instrument = $entityManager->getRepository(Instrument::class)->find($id);
 
+        if (!$instrument) {
+            throw $this->createNotFoundException('Instrument not found.');
+        }
 
+        // Remove the instrument
+        $entityManager->remove($instrument);
+        $entityManager->flush();
+
+        // Add a flash message to indicate successful deletion
+        $this->addFlash('success', 'Instrument supprimé avec succès !');
+
+        // Redirect to the list page or any other route
+        return $this->redirectToRoute('instrumentLister');
     }
+}

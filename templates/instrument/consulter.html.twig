@@ -22,7 +22,7 @@
     <tr><td>Classe Instrument : </td><td>{{ instrument.TypeInstrument.ClasseInstrument.libelle }}</td></tr>
     <tr><td>Couleur : </td>
         <td>
-            <ul>-
+            <ul>
                 {% for couleur in instrument.couleurs %}
                     <li>{{ couleur.Nom }}</li>
                 {% endfor %}
@@ -30,5 +30,7 @@
         </td>
     </tr>
 </table>
+<!-- Button to go back to the list of instruments -->
+<a href="{{ path('instrumentLister') }}">Retour à la liste des instruments</a>
 </body>
 </html>
