@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Eleve;
+use App\Entity\Responsable;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,6 +27,12 @@ class EleveType extends AbstractType
             ->add('ville')
             ->add('tel')
             ->add('mail')
+            ->add('responsables', EntityType::class, [
+                'class' => Responsable::class,
+                'choice_label' => 'nom', // Replace 'name' with the actual property you want to display
+                'multiple' => true,
+                'expanded' => false, // If you want checkboxes instead of a dropdown
+            ])
             ->add('enregistrer', SubmitType::class, array('label' => 'Nouvel Eleve'))
         ;
     }
