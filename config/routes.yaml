@@ -83,3 +83,25 @@ contratPretSupprimer:
 contratPretModifier:
     path: /contratPret/modifier/{id}
     controller: App\Controller\ContratPretController::modifier
+
+# Routes responsables
+
+responsableConsulter:
+    path: /responsable/consulter/{id}
+    controller: App\Controller\ResponsableController::consulter
+
+responsableLister:
+    path: /responsable/lister
+    controller: App\Controller\ResponsableController::lister
+
+responsableAjouter:
+    path: /responsable/ajouter
+    controller: App\Controller\ResponsableController::ajouter
+
+responsableModifier:
+    path: /responsable/modifier/{id}
+    controller: App\Controller\ResponsableController::modifier
+
+responsableSupprimer:
+    path: /responsable/supprimer/{id}
+    controller: App\Controller\ResponsableController::supprimer
