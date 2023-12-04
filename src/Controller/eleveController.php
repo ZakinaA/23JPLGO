@@ -96,10 +96,10 @@ class eleveController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->flush();
 
-            return $this->redirectToRoute('eleveModifier', ['id' => $eleve->getId()]);
+            return $this->redirectToRoute('eleveConsulter', ['id' => $eleve->getId()]);
         }
 
-        return $this->render('eleve/ajouter.html.twig', [
+        return $this->render('eleve/modifier.html.twig', [
             'form' => $form->createView(),
             'eleve' => $eleve,
         ]);
