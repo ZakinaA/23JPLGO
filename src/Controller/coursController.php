@@ -19,7 +19,6 @@ class coursController extends AbstractController
 {
     public function consulter(ManagerRegistry $doctrine, int $id)
     {
-
         $cours = $doctrine->getRepository(Cours::class)->find($id);
 
         if (!$cours) {
@@ -28,10 +27,16 @@ class coursController extends AbstractController
             );
         }
 
-        //return new Response('Cours : '.$cours->getLibelle());
+        $inscriptions = $cours->getInscriptions();
+
+        // Autres traitements éventuels...
+
         return $this->render('cours/consulter.html.twig', [
-            'cours' => $cours,]);
+            'cours' => $cours,
+            'inscriptions' => $inscriptions,
+        ]);
     }
+
 
 
     public function lister(ManagerRegistry $doctrine)

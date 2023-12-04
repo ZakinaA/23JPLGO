@@ -23,8 +23,9 @@
 
 <h5>ELEVES INSCRITS</h5>
 
-{%  for inscriptions in cours.inscriptions %}
-    <li>{{ inscriptions.idEleve.nom }} {{ inscriptions.idEleve.prenom }}</li>
+{%  for inscription in cours.inscriptions %}
+    <li>{{ inscription.eleve.nom }} {{ inscription.eleve.prenom }}</li>
 {% endfor %}
+
 </body>
 </html>
