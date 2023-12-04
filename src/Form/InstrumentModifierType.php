@@ -13,6 +13,7 @@ use App\Entity\Instrument;
 use App\Entity\Marque;
 use App\Entity\TypeInstrument;
 use App\Entity\Couleur;
+use Symfony\Component\Validator\Constraints\Range;
 
 class InstrumentModifierType extends AbstractType
 {
@@ -27,6 +28,12 @@ class InstrumentModifierType extends AbstractType
             ])
             ->add('prixAchat', MoneyType::class, [
                 'label' => 'Prix d\'achat',
+                'constraints' => [
+                    new Range([
+                        'min' => 0, // Set the minimum value to 0
+                        'minMessage' => 'Le prix d\'achat ne peut pas être négatif.',
+                    ]),
+                ],
             ])
             ->add('utilisation', TextareaType::class, [
                 'label' => 'Utilisation',
@@ -47,7 +54,12 @@ class InstrumentModifierType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label' => 'Couleur',
+            ])
+            ->add('cheminImage', TextType::class, [ // Add this block
+                'label' => 'Chemin de l\'Image',
+                'required' => false, // Depending on your requirements
             ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
