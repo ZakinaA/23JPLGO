@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <!-- Add your head content if needed -->
 </head>
 <body>
 <h5>PAGE DE CONSULTATION D'UN CONTRAT DE PRET</h5>
 <p>
-<table >
-    <tr><td>Id : </td><td>{{contratsPret.id}} </td></tr>
-    <tr><td>numéro de l'instrument emprunté : </td><td>{{contratsPret.instrument.id}} </td></tr>
-    <tr><td>élève ayant emprunté : </td><td>{{contratsPret.eleve.nom}} </td></tr>
-    <tr><td>Responsable(s) de l'élève :
-        {% for responsable in contratsPret.eleve.responsables %}
+<table>
+    <tr><td>Id : </td><td>{{ 'contratPret.id' }} </td></tr>
+    <tr><td>numéro de l'instrument emprunté : </td><td>{{ contratPret.instrument.id }} </td></tr>
+    <tr><td>élève ayant emprunté : </td><td>{{ contratPret.eleve.nom }} </td></tr>
+    <tr>
+        <td>Responsable(s) de l'élève :</td>
+        {% for responsable in contratPret.eleve.responsables %}
             <td>{{ responsable.prenom ~ " " ~ responsable.nom }}, </td>
         {% else %}
             pas de responsables
         {% endfor %}
     </tr>
-    <tr><td>liste des interventions : </td>
-        {% for interPret in contratsPret.interPrets %}
+    <tr>
+        <td>liste des interventions : </td>
+        {% for interPret in contratPret.interPrets %}
             <td>{{ interPret.intervention.id ~ " : " ~ interPret.intervention.descriptif }}, </td>
         {% else %}
             <td>pas d'interventions</td>
         {% endfor %}
     </tr>
-    </tr>
-
-
 </table>
-
-
+</p>
 </body>
 </html>

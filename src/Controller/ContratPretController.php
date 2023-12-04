@@ -5,13 +5,11 @@ namespace App\Controller;
 use App\Entity\ContratPret;
 use App\Entity\Eleve;
 use App\Form\ContratPretType;
-use App\Form\CoursModifierType;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 class ContratPretController extends AbstractController
 {
@@ -21,27 +19,22 @@ class ContratPretController extends AbstractController
         $repository = $doctrine->getRepository(ContratPret::class);
         $contratsPret= $repository->findAll();
 
-        $repository = $doctrine->getRepository(Eleve::class);
-        $eleves= $repository->findAll();
-
         return $this->render('contratPret/lister.html.twig', [
             'contratsPret' => $contratsPret,
-            'eleves' => $eleves,
             ]);
 
     }
 
     public function consulter(ManagerRegistry $doctrine, int $id): Response
     {
-        $contratsPret = $doctrine->getRepository(ContratPret::class)->find($id);
+        $contratPret = $doctrine->getRepository(ContratPret::class)->find($id);
 
-        if (!$contratsPret) {
+        if (!$contratPret) {
             throw $this->createNotFoundException(
-                'Aucun instrument trouvé avec l\'ID '.$id
-            );
+                'Aucun instrument trouvé avec l\'ID '.$id);
         }
         return $this->render('contratPret/consulter.html.twig', [
-            'contratsPret' => $contratsPret,
+            'contratPret' => $contratPret,
         ]);
     }
 
