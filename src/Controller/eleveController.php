@@ -120,4 +120,19 @@ class eleveController extends AbstractController
 
         return $this->redirectToRoute('eleveLister');
     }
+
+    public function listerEleves(): Response
+    {
+        $pEleve = $this->getDoctrine()->getRepository(Eleve::class)->findAll();
+
+        $pEleve = new ArrayCollection($pEleve);
+        $pEleve = $pEleve->matching($pEleve->getIterator()->getIterator()->getArrayCopy());
+        $pEleve = $pEleve->matching($pEleve->getIterator()->getIterator()->getArrayCopy())->getValues();
+
+        return $this->render('eleve/lister.html.twig', [
+            'pEleve' => $pEleve,
+        ]);
+    }
+
+
 }
