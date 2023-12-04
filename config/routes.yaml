@@ -123,3 +123,7 @@ responsableSupprimer:
 inscription_eleve_cours:
     path: /inscription/{idCours}/{idEleve}
     controller: App\Controller\InscriptionController::inscrireEleveCours
+
+confirmation_inscription:
+    path: /confirmation_inscription
+    controller: App\Controller\ConfirmationController::confirmationInscription
