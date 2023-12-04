@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Cours;
 use App\Form\CoursType;
+use App\Entity\Task;
 use Symfony\Component\HttpFoundation\Request;
 
 

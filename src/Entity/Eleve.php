@@ -42,7 +42,7 @@ class Eleve
     #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: ContratPret::class, orphanRemoval: true)]
     private Collection $contratsPret;
 
-    #[ORM\ManyToMany(targetEntity: Responsable::class, inversedBy: 'eleve')]
+    #[ORM\ManyToMany(targetEntity: Responsable::class, inversedBy: 'eleves')]
     private Collection $responsables;
 
     #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: Inscription::class)]

@@ -5,6 +5,7 @@ namespace App\Controller;
 
 // Import the necessary classes at the top of your controller
 use App\Entity\Instrument;
+use App\Form\InstrumentModifierType;
 use App\Form\InstrumentType; // Make sure to adjust the namespace based on your project structure
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -70,6 +71,30 @@ class InstrumentController extends AbstractController
 
         return $this->render('instrument/ajouter.html.twig', [ // Change the template path
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/instrument/modifier/{id}", name="edit_instrument")
+     */
+    public function modifier(Request $request, PersistenceManagerRegistry $doctrine, Instrument $instrument): Response
+    {
+        // Utilisez le nouveau formulaire de modification
+        $form = $this->createForm(InstrumentModifierType::class, $instrument);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $doctrine->getManager();
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Instrument mis à jour avec succès !');
+            return $this->redirectToRoute('view_instrument', ['id' => $instrument->getId()]);
+        }
+
+        return $this->render('instrument/edit.html.twig', [
+            'form' => $form->createView(),
+            'instrument' => $instrument,
         ]);
     }
 

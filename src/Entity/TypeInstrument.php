@@ -30,6 +30,7 @@ class TypeInstrument
     #[ORM\ManyToOne(inversedBy: 'typeInstruments')]
     private ?ClasseInstrument $classeInstrument = null;
 
+
     public function __construct()
     {
         $this->cours = new ArrayCollection();
@@ -64,6 +65,7 @@ class TypeInstrument
 
     public function addCours(Cours $cours): static
     {
+
         if (!$this->cours->contains($cours)) {
             $this->cours->add($cours);
             $cours->setTypeInstrument($this);
@@ -76,6 +78,7 @@ class TypeInstrument
     {
         if ($this->cours->removeElement($cours)) {
             // set the owning side to null (unless already changed)
+
             if ($cours->getTypeInstrument() === $this) {
                 $cours->setTypeInstrument(null);
             }
@@ -149,18 +152,6 @@ class TypeInstrument
                 $instrument->setTypeInstrument(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getClasseInstrument(): ?ClasseInstrument
-    {
-        return $this->classeInstrument;
-    }
-
-    public function setClasseInstrument(?ClasseInstrument $classeInstrument): static
-    {
-        $this->classeInstrument = $classeInstrument;
 
         return $this;
     }
