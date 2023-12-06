@@ -21,13 +21,13 @@
             <tr><td>Heure de fin : </td><td>{{cours.heureFin|date('H:i:s')}}</td></tr>
             <tr><td>Nombre de places : </td><td>{{cours.nbPlaces}}</td></tr>
             <tr><td>Professeur : </td><td>{{cours.professeur.nom}}  {{cours.professeur.prenom}}</td></tr>
-
         </table>
 
         <h5>ELEVES INSCRITS</h5>
 
-        {%  for inscriptions in cours.inscriptions %}
-            <li>{{ inscriptions.idEleve.nom }} {{ inscriptions.idEleve.prenom }}</li>
-        {% endfor %}
+        {%  for inscription in cours.inscriptions %}
+    <li>{{ inscription.eleve.nom }} {{ inscription.eleve.prenom }}</li>
+{% endfor %}
     </div>
 {% endblock %}
+
