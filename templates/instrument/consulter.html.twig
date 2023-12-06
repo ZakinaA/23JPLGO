@@ -11,10 +11,11 @@
         <div class="page-content">
             <h5>PAGE DE CONSULTATION D'UN INSTRUMENT</h5>
             <p>
-            <table >
+            <table>
+                <!-- Your existing instrument details -->
                 <tr><td>Id : </td><td>{{ instrument.id }} </td></tr>
                 <tr><td>Nom : </td><td>{{ instrument.numSerie }}</td>
-                    <td rowspan="8" class="imgEtu">
+                    <td rowspan="9" class="imgEtu">
                         {% set photo = 'img/instrument/' ~ instrument.cheminImage ~ '.jpg' %}
                         <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}" width="300" height="200"/></span>
                     </td>
@@ -30,6 +31,21 @@
                         <ul>
                             {% for couleur in instrument.couleurs %}
                                 <li>{{ couleur.Nom }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- Display interventions -->
+                <tr>
+                    <td colspan="3">
+                        <h6>Interventions:</h6>
+                        <ul>
+                            {% for intervention in instrument.Intervention %}
+                                <li>
+                                    {{ intervention.dateDebut|date("d/m/Y") }} - {{ intervention.dateFin|date("d/m/Y") }}:
+                                    {{ intervention.descriptif }} (Prix: {{ intervention.prix }} €)
+                                </li>
                             {% endfor %}
                         </ul>
                     </td>
