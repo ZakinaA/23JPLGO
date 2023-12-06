@@ -26,17 +26,24 @@ class InstrumentController extends AbstractController
         ]);
     }
 
-    public function lister(ManagerRegistry $doctrine)
+    #[Route('/instrument/lister', name: 'instrumentLister')]
+    public function lister(Request $request, ManagerRegistry $doctrine): Response
     {
-
+        $searchTerm = $request->query->get('search');
         $repository = $doctrine->getRepository(Instrument::class);
 
-        $instruments = $repository->findAll();
+        // Use a custom repository method to handle the search logic
+        if ($searchTerm !== null) {
+            $instruments = $repository->findBySearchTerm($searchTerm);
+        } else {
+            // If $searchTerm is null, fetch all instruments (or handle it as needed)
+            $instruments = $repository->findAll();
+        }
+
         return $this->render('instrument/lister.html.twig', [
-            'pInstruments' => $instruments,]);
-
+            'pInstruments' => $instruments,
+        ]);
     }
-
 
     public function consulter(ManagerRegistry $doctrine, int $id)
     {
@@ -123,5 +130,21 @@ class InstrumentController extends AbstractController
 
         // Redirect to the list page or any other route
         return $this->redirectToRoute('instrumentLister');
+    }
+
+    public function findBySearchTerm(string $searchTerm)
+    {
+        // Customize this method based on your entity associations
+        $queryBuilder = $this->createQueryBuilder('i')
+            ->leftJoin('i.marque', 'm')
+            ->leftJoin('i.TypeInstrument', 't')
+            ->leftJoin('t.ClasseInstrument', 'c')
+            ->where('i.numSerie LIKE :searchTerm')
+            ->orWhere('m.libelle LIKE :searchTerm')
+            ->orWhere('t.libelle LIKE :searchTerm')
+            ->orWhere('c.libelle LIKE :searchTerm')
+            ->setParameter('searchTerm', '%'.$searchTerm.'%');
+
+        return $queryBuilder->getQuery()->getResult();
     }
 }

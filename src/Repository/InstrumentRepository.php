@@ -20,7 +20,20 @@ class InstrumentRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Instrument::class);
     }
-
+    public function findBySearchTerm(string $searchTerm)
+    {
+        return $this->createQueryBuilder('i')
+            ->leftJoin('i.marque', 'm')
+            ->leftJoin('i.TypeInstrument', 't')
+            ->leftJoin('t.ClasseInstrument', 'c')
+            ->where('i.numSerie LIKE :searchTerm')
+            ->orWhere('m.libelle LIKE :searchTerm')
+            ->orWhere('t.libelle LIKE :searchTerm')
+            ->orWhere('c.libelle LIKE :searchTerm')
+            ->setParameter('searchTerm', '%'.$searchTerm.'%')
+            ->getQuery()
+            ->getResult();
+    }
 //    /**
 //     * @return Instrument[] Returns an array of Instrument objects
 //     */
