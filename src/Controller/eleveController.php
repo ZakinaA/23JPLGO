@@ -96,10 +96,10 @@ class eleveController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->flush();
 
-            return $this->redirectToRoute('eleveModifier', ['id' => $eleve->getId()]);
+            return $this->redirectToRoute('eleveConsulter', ['id' => $eleve->getId()]);
         }
 
-        return $this->render('eleve/ajouter.html.twig', [
+        return $this->render('eleve/modifier.html.twig', [
             'form' => $form->createView(),
             'eleve' => $eleve,
         ]);
@@ -120,4 +120,19 @@ class eleveController extends AbstractController
 
         return $this->redirectToRoute('eleveLister');
     }
+
+    public function listerEleves(): Response
+    {
+        $pEleve = $this->getDoctrine()->getRepository(Eleve::class)->findAll();
+
+        $pEleve = new ArrayCollection($pEleve);
+        $pEleve = $pEleve->matching($pEleve->getIterator()->getIterator()->getArrayCopy());
+        $pEleve = $pEleve->matching($pEleve->getIterator()->getIterator()->getArrayCopy())->getValues();
+
+        return $this->render('eleve/lister.html.twig', [
+            'pEleve' => $pEleve,
+        ]);
+    }
+
+
 }
