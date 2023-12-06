@@ -1,25 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Consulter un élève !{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-</head>
-<body>
-<h5>PAGE DE CONSULTATION D'UN ELEVE</h5>
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="page-content">
+        <h5>PAGE DE CONSULTATION D'UN ELEVE</h5>
 <p>
-<table >
-
-    <tr><td>Nom : </td><td>{{eleve.nom}}</td>
-    <tr><td>Prenom : </td><td>{{eleve.prenom}}</td>
-    <tr><td>Numéro de Rue :</td><td>{{ eleve.numRue }}</a></td>
-    <tr><td>Rue :</td><td>{{ eleve.rue }}</a></td>
-    <tr><td>Code Postal :</td><td>{{ eleve.copos }}</td>
-    <tr><td>Ville :</td><td>{{ eleve.ville }}</td>
-    <tr><td>Tel :</td><td>{{ eleve.tel }}</td>
+<table>
+    <tr><td>Nom :</td><td>{{ eleve.nom }}</td></tr>
+    <tr><td>Prenom :</td><td>{{ eleve.prenom }}</td></tr>
+    <tr><td>Numéro de Rue :</td><td>{{ eleve.numRue }}</td></tr>
+    <tr><td>Rue :</td><td>{{ eleve.rue }}</td></tr>
+    <tr><td>Code Postal :</td><td>{{ eleve.copos }}</td></tr>
+    <tr><td>Ville :</td><td>{{ eleve.ville }}</td></tr>
+    <tr><td>Tel :</td><td>{{ eleve.tel }}</td></tr>
     <tr><td>Mail :</td><td>{{ eleve.mail }}</td></tr>
-
+    <tr>
+        <td>Responsable :</td>
+        <td>
+            {% for responsable in eleve.responsables %}
+                {{ responsable.prenom ~ " " ~ responsable.nom }}
+            {% else %}
+                Pas de responsable
+            {% endfor %}
+        </td>
+    </tr>
 </table>
-
-</body>
-</html>
+</p>
+    </div>
+{% endblock %}

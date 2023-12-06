@@ -1,14 +1,15 @@
-{# templates/etudiant/ajouter.html.twig #}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un Instrument</title>
-    <!-- Add your stylesheets or other head content here -->
-</head>
-<body>
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="page-content">
 <h5>AJOUTER UN INSTRUMENT</h5>
 
 <form method="post" action="{{ path('instrumentAjouter') }}">
@@ -21,5 +22,6 @@
 <a href="{{ path('instrumentLister') }}">Voir la liste des instruments</a>
 
 <!-- Add any additional content or scripts as needed -->
-</body>
-</html>
+    </div>
+{% endblock %}
+

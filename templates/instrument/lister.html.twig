@@ -1,16 +1,16 @@
-<!-- templates/instrument/lister.html.twig -->
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Liste des Instruments{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-</head>
-<body>
-{% block body %}
+{% extends 'base.html.twig' %}
 
-    <h2>LISTE DES INSTRUMENTS</h2>
+	{% block head %}
+        {{ parent() }}
+    {% endblock %}
+
+	{% block header %}
+        {{ parent() }}
+    {% endblock %}
+	{% block body %}
+        <div class="page-content">
+                <h2>LISTE DES INSTRUMENTS</h2>
 
     <!-- Search Bar -->
     <form method="get" action="{{ path('instrumentLister') }}">
@@ -61,8 +61,6 @@
             <a href="{{ path('instrumentLister') }}">Revenir à la liste complète</a>
         </p>
     {% endif %}
+        </div>
+    {% endblock %}
 
-{% endblock %}
-{% block javascripts %}{% endblock %}
-</body>
-</html>

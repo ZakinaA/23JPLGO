@@ -1,56 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Liste des élèves !{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-</head>
-<body>
-{% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
+{% extends 'base.html.twig' %}
 
-LISTE DES ELEVES
+{% block head %}
+    {{ parent() }}
+{% endblock %}
 
-<table>
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="page-content">
+       <h1>LISTE DES ELEVES</h1>
+
+<table border="1">
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Numéro de Rue</th>
+        <th>Rue</th>
+        <th>Code Postal</th>
+        <th>Ville</th>
+        <th>Téléphone</th>
+        <th>Mail</th>
+        <th>Actions</th>
+    </tr>
 
     {% for eleve in pEleve %}
-
-        <tr><td><a href="{{ path('eleveConsulter', { 'id': eleve.id }) }}">{{ eleve.nom }}{{ eleve.prenom }}</a></td>
-        <tr><td>Nom : </td><td>{{eleve.nom}}</td>
-        <tr><td>Prenom : </td><td>{{eleve.prenom}}</td>
-        <tr><td>Numéro de Rue :</td><td>{{ eleve.numRue }}</a></td>
-        <tr><td>Rue :</td><td>{{ eleve.rue }}</a></td>
-        <tr><td>Code Postal :</td><td>{{ eleve.copos }}</td>
-        <tr><td>Ville :</td><td>{{ eleve.ville }}</td>
-        <tr><td>Téléphone :</td><td>{{ eleve.tel }}</td>
-        <tr><td>Mail :</td><td>{{ eleve.mail }}</td>
-
-        <tr><td></td><td></td>
-        <tr><td></td><td></td>
-    </tr>
-        <td>
-            <form action="{{  path('eleveModifier', {'id': eleve.id}) }}" method="post">
+        <tr>
+            <td><a href="{{ path('eleveConsulter', { 'id': eleve.id }) }}">{{ eleve.nom }}</a></td>
+            <td>{{ eleve.prenom }}</td>
+            <td>{{ eleve.numRue }}</td>
+            <td>{{ eleve.rue }}</td>
+            <td>{{ eleve.copos }}</td>
+            <td>{{ eleve.ville }}</td>
+            <td>{{ eleve.tel }}</td>
+            <td>{{ eleve.mail }}</td>
+            <td>
+                <form action="{{ path('eleveModifier', {'id': eleve.id}) }}" method="post">
                     <input type="hidden" name="_method" value="UPDATE">
                     <button type="submit">Modifier</button>
-            </form>
+                </form>
 
-            <form action="{{  path('eleveSupprimer', {'id': eleve.id}) }}" method="post">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit">Supprimer</button>
-            </form>
-
-        </td>
-        <br>
+                <form action="{{ path('eleveSupprimer', {'id': eleve.id}) }}" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit">Supprimer</button>
+                </form>
+            </td>
+        </tr>
     {% else %}
         <tr>
-            <td>Aucun élève n'a été trouvé.</td>
+            <td colspan="9">Aucun élève n'a été trouvé.</td>
         </tr>
     {% endfor %}
-
-
 </table>
-
-
-</body>
-</html>
-
+    </div>
+{% endblock %}

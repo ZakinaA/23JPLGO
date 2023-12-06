@@ -1,53 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Liste des cours !{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-</head>
-<body>
-{% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
+{% extends 'base.html.twig' %}
 
-LISTE DES COURS
+{% block head %}
+    {{ parent() }}
+{% endblock %}
 
-<table>
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="page-content">
+       <h1>LISTE DES COURS</h1>
+
+<table border="1">
+    <tr>
+        <th>Libellé</th>
+        <th>Jour</th>
+        <th>Age minimum</th>
+        <th>Age maximum</th>
+        <th>Heure de début</th>
+        <th>Heure de fin</th>
+        <th>Actions</th>
+    </tr>
 
     {% for cours in pCours %}
-
-        <tr><td><a href="{{ path('coursConsulter', { 'id': cours.id }) }}">{{ cours.libelle }}</a></td>
-        <tr><td>Jour : </td><td>{{cours.jour.libelle}}</td>
-        <tr><td>Age minimum :</td><td>{{ cours.ageMini }}</a></td>
-        <tr><td>Age maximum :</td><td>{{ cours.ageMaxi }}</a></td>
-        <tr><td>Heure de début :</td><td>{{ cours.heureDebut|date('H:i:s')}}</td>
-        <tr><td>Heure de fin :</td><td>{{ cours.heureFin|date('H:i:s')}}</td>
-
-        <tr><td></td><td></td>
-        <tr><td></td><td></td>
-    </tr>
-        <td>
-            <form action="{{  path('coursModifier', {'id': cours.id}) }}" method="post">
+        <tr>
+            <td><a href="{{ path('coursConsulter', { 'id': cours.id }) }}">{{ cours.libelle }}</a></td>
+            <td>{{ cours.jour.libelle }}</td>
+            <td>{{ cours.ageMini }}</td>
+            <td>{{ cours.ageMaxi }}</td>
+            <td>{{ cours.heureDebut|date('H:i:s') }}</td>
+            <td>{{ cours.heureFin|date('H:i:s') }}</td>
+            <td>
+                <form action="{{ path('coursModifier', {'id': cours.id}) }}" method="post">
                     <input type="hidden" name="_method" value="UPDATE">
                     <button type="submit">Modifier</button>
-            </form>
+                </form>
 
-            <form action="{{  path('coursSupprimer', {'id': cours.id}) }}" method="post">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit">Supprimer</button>
-            </form>
-
-        </td>
-        <br>
+                <form action="{{ path('coursSupprimer', {'id': cours.id}) }}" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit">Supprimer</button>
+                </form>
+            </td>
+        </tr>
     {% else %}
         <tr>
-            <td>Aucun cours n'a été trouvé.</td>
+            <td colspan="7">Aucun cours n'a été trouvé.</td>
         </tr>
     {% endfor %}
-
-
 </table>
-
-
-</body>
-</html>
-
+    </div>
+{% endblock %}
