@@ -26,22 +26,40 @@ class InstrumentController extends AbstractController
         ]);
     }
 
-    #[Route('/instrument/lister', name: 'instrumentLister')]
+    /**
+     * @Route("/instrument/lister", name="instrumentLister")
+     */
     public function lister(Request $request, ManagerRegistry $doctrine): Response
     {
         $searchTerm = $request->query->get('search');
-        $repository = $doctrine->getRepository(Instrument::class);
+        $sortField = $request->query->get('sort', 'numSerie');
+        $sortOrder = $request->query->get('order', 'asc');
 
-        // Use a custom repository method to handle the search logic
-        if ($searchTerm !== null) {
-            $instruments = $repository->findBySearchTerm($searchTerm);
-        } else {
-            // If $searchTerm is null, fetch all instruments (or handle it as needed)
-            $instruments = $repository->findAll();
+        $repository = $doctrine->getRepository(Instrument::class);
+        $queryBuilder = $repository->createQueryBuilder('i');
+
+        // Join the related entities for sorting
+        $queryBuilder
+            ->leftJoin('i.marque', 'm')
+            ->leftJoin('i.TypeInstrument', 'ti')
+            ->leftJoin('ti.ClasseInstrument', 'ci');
+
+        // Add search condition if a search term is provided
+        if ($searchTerm) {
+            $queryBuilder
+                ->andWhere('i.numSerie LIKE :searchTerm OR m.libelle LIKE :searchTerm OR ti.libelle LIKE :searchTerm OR ci.libelle LIKE :searchTerm')
+                ->setParameter('searchTerm', '%' . $searchTerm . '%');
         }
+
+        // Add sorting
+        $queryBuilder->orderBy("i.{$sortField}", $sortOrder);
+
+        $instruments = $queryBuilder->getQuery()->getResult();
 
         return $this->render('instrument/lister.html.twig', [
             'pInstruments' => $instruments,
+            'sortField' => $sortField,
+            'sortOrder' => $sortOrder,
         ]);
     }
 

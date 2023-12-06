@@ -34,6 +34,14 @@ class InstrumentRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findAllSorted(string $sortField, string $sortOrder): array
+    {
+        return $this->createQueryBuilder('i')
+            ->orderBy('i.' . $sortField, $sortOrder)
+            ->getQuery()
+            ->getResult();
+    }
 //    /**
 //     * @return Instrument[] Returns an array of Instrument objects
 //     */
