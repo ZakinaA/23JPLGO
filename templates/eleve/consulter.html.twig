@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Consulter un élève !{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-</head>
-<body>
-<h5>PAGE DE CONSULTATION D'UN ELEVE</h5>
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="page-content">
+        <h5>PAGE DE CONSULTATION D'UN ELEVE</h5>
 <p>
 <table>
     <tr><td>Nom :</td><td>{{ eleve.nom }}</td></tr>
@@ -29,5 +32,5 @@
     </tr>
 </table>
 </p>
-</body>
-</html>
+    </div>
+{% endblock %}

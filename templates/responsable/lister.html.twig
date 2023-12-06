@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+	{% block head %}
+        {{ parent() }}
+    {% endblock %}
+
+	{% block header %}
+        {{ parent() }}
+    {% endblock %}
+	{% block body %}
+        <div class="page-content">
+            LISTE DES ELEVES
+
+            <table>
+
+                {% for responsable in responsables %}
+
+                    <tr><td><a href="{{ path('responsableConsulter', { 'id': responsable.id }) }}">{{ responsable.nom }}{{ responsable.prenom }}</a></td>
+                    <tr><td>Nom : </td><td>{{responsable.nom}}</td>
+                    <tr><td>Prenom : </td><td>{{responsable.prenom}}</td>
+                    <tr><td>Numéro de Rue :</td><td>{{ responsable.numRue }}</a></td>
+                    <tr><td>Rue :</td><td>{{ responsable.rue }}</a></td>
+                    <tr><td>Code Postal :</td><td>{{ responsable.copos }}</td>
+                    <tr><td>Ville :</td><td>{{ responsable.ville }}</td>
+                    <tr><td>Téléphone :</td><td>{{ responsable.tel }}</td>
+                    <tr><td>Mail :</td><td>{{ responsable.mail }}</td>
+
+                    <tr><td></td><td></td>
+                    <tr><td></td><td></td>
+                    </tr>
+                    <td>
+                        <form action="{{  path('responsableModifier', {'id': responsable.id}) }}" method="post">
+                            <input type="hidden" name="_method" value="UPDATE">
+                            <button type="submit">Modifier</button>
+                        </form>
+
+                        <form action="{{  path('responsableSupprimer', {'id': responsable.id}) }}" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit">Supprimer</button>
+                        </form>
+
+                    </td>
+                    <br>
+                {% else %}
+                    <tr>
+                        <td>Aucun élève n'a été trouvé.</td>
+                    </tr>
+                {% endfor %}
+
+
+            </table>
+        </div>
+    {% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="page-content">
+        <h5>MODIFICATION D'UN INSTRUMENT</h5>
+
+        <form method="post" action="{{ path('instrumentModifier', {'id': instrument.id}) }}">
+            {{ form_start(form) }}
+
+            <label for="numSerie">Numéro de Série:</label>
+            {{ form_row(form.numSerie) }}
+
+            <label for="dateAchat"></label>
+            {{ form_row(form.dateAchat) }}
+
+            <label for="prixAchat"></label>
+            {{ form_row(form.prixAchat) }}
+
+            <label for="utilisation">Utilisation :</label>
+            {{ form_row(form.utilisation) }}
+
+            <label for="marque"></label>
+            {{ form_row(form.marque) }}
+
+            <label for="TypeInstrument"></label>
+            {{ form_row(form.TypeInstrument) }}
+
+            <label for="couleurs"></label>
+            {{ form_row(form.couleurs) }}
+
+            <!-- Add input field for cheminImage -->
+            <label for="cheminImage"></label>
+            {{ form_row(form.cheminImage) }}
+
+            <!-- Display the image -->
+            <label for="currentImage">Image actuelle :</label>
+            {% set photo = 'img/instrument/' ~ instrument.cheminImage ~ '.jpg' %}
+            <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}" width="300" height="200"/></span>
+
+            <button type="submit">Modifier</button>
+
+            {{ form_end(form) }}
+        </form>
+
+        <!-- Add a link to go back to the consultation page -->
+        <a href="{{ path('instrumentConsulter', {'id': instrument.id}) }}">Retour à la consultation</a>
+    </div>
+{% endblock %}

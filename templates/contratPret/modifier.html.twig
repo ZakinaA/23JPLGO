@@ -1,0 +1,47 @@
+{# templates/contratPret/modifier.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="page-content">
+        <h1>Modifier un contrat de prêt</h1>
+
+        <form action="{{ path('contratPretModifier', {'id': contratPret.id}) }}" method="post">
+            {{ form_start(form) }}
+
+            <label for="instrument">Instrument :</label>
+            {{ form_widget(form.instrument) }}
+            <br>
+
+            <label for="dateDebut">Date de debut :</label>
+            {{ form_widget(form.dateDebut) }}
+            <br>
+
+            <label for="dateFin">Numéro de Rue :</label>
+            {{ form_widget(form.dateFin) }}
+            <br>
+
+            <label for="attestationAssurance">Rue :</label>
+            {{ form_widget(form.attestationAssurance) }}
+            <br>
+
+            <label for="etatDetailleDebut">Code Postal :</label>
+            {{ form_widget(form.etatDetailleDebut) }}
+            <br>
+
+            <label for="etatDetailleRetour">Ville :</label>
+            {{ form_widget(form.etatDetailleRetour) }}
+            <br>
+
+            {{ form_end(form) }}
+            <br>
+
+        </form>
+    </div>
+{% endblock %}

@@ -1,38 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-</head>
-<body>
-{% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
+{# templates/contratPret/lister.html.twig #}
+{% extends 'base.html.twig' %}
 
-LISTE DES CONTRATS DE PRET</br>
-<table>
+{% block head %}
+    {{ parent() }}
+{% endblock %}
 
-    {% for contratPret in contratsPret %}
-        <tr>
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="page-content">
+        LISTE DES CONTRATS DE PRET</br>
+        <table>
 
-            <td><a href="{{ path('contratPretConsulter', { 'id': contratPret.id }) }}">Emprunt {{ contratPret.id }}</a></td>
-            <td>effectué par {{ contratPret.eleve.prenom ~ " " ~ contratPret.eleve.nom }} dont les responsables sont
-                {% for responsable in contratPret.eleve.responsables %}
-                    <td>{{ responsable.prenom ~ " " ~ responsable.nom }} et</td>
-                {% else %}
-                    pas de responsables
-                {% endfor %}
+            {% for contratPret in contratsPret %}
+                <tr>
+
+                <td><a href="{{ path('contratPretConsulter', { 'id': contratPret.id }) }}">Emprunt {{ contratPret.id }}</a></td>
+                <td>effectué par {{ contratPret.eleve.prenom ~ " " ~ contratPret.eleve.nom }} dont les responsables sont
+            {% for responsable in contratPret.eleve.responsables %}
+                <td>{{ responsable.prenom ~ " " ~ responsable.nom }} et</td>
+            {% else %}
+                pas de responsables
+            {% endfor %}
 
                 </a></td>
-        <td>pour l'instrument {{ contratPret.instrument.id }}</td>
-    {% else %}
-        </tr>
-        <tr>
-            <td>Aucun contrat de prêt n'a été trouvé.</td>
-        </tr>
-    {% endfor %}
-</table>
-
-
-</body>
-</html>
+                <td>pour l'instrument {{ contratPret.instrument.id }}</td>
+            {% else %}
+                </tr>
+                <tr>
+                    <td>Aucun contrat de prêt n'a été trouvé.</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

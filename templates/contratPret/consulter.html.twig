@@ -1,34 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
+{# templates/contratPret/consulter.html.twig #}
+{% extends 'base.html.twig' %}
 
-</head>
-<body>
-<h5>PAGE DE CONSULTATION D'UN CONTRAT DE PRET</h5>
-<p>
-<table >
-    <tr><td>Id : </td><td>{{contratsPret.id}} </td></tr>
-    <tr><td>numéro de l'instrument emprunté : </td><td>{{contratsPret.instrument.id}} </td></tr>
-    <tr><td>élève ayant emprunté : </td><td>{{contratsPret.eleve.nom}} </td></tr>
-    <tr><td>Responsable(s) de l'élève :
-        {% for responsable in contratsPret.eleve.responsables %}
-            <td>{{ responsable.prenom ~ " " ~ responsable.nom }}, </td>
-        {% else %}
-            pas de responsables
-        {% endfor %}
-    </tr>
-    <tr><td>liste des interventions : </td>
-        {% for interPret in contratsPret.interPrets %}
-            <td>{{ interPret.intervention.id ~ " : " ~ interPret.intervention.descriptif }}, </td>
-        {% else %}
-            <td>pas d'interventions</td>
-        {% endfor %}
-    </tr>
-    </tr>
+{% block head %}
+    {{ parent() }}
+{% endblock %}
 
-
-</table>
-
-
-</body>
-</html>
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="page-content">
+        <h5>PAGE DE CONSULTATION D'UN CONTRAT DE PRET</h5>
+        <p>
+        <table>
+            <tr><td>Id : </td><td>{{ contratPret.id }} </td></tr>
+            <tr><td>numéro de l'instrument emprunté : </td><td>{{ contratPret.instrument.id }} </td></tr>
+            <tr><td>élève ayant emprunté : </td><td>{{ contratPret.eleve.nom }} </td></tr>
+            <tr>
+                <td>Responsable(s) de l'élève :</td>
+                {% for responsable in contratPret.eleve.responsables %}
+                    <td>{{ responsable.prenom ~ " " ~ responsable.nom }}, </td>
+                {% else %}
+                    pas de responsables
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>liste des interventions : </td>
+                {% for interPret in contratPret.interPrets %}
+                    <td>{{ interPret.intervention.id ~ " : " ~ interPret.intervention.descriptif }}, </td>
+                {% else %}
+                    <td>pas d'interventions</td>
+                {% endfor %}
+            </tr>
+        </table>
+        </p>
+    </div>
+{% endblock %}

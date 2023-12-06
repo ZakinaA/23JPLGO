@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="page-content">
+        <h1>Ajouter un responsable</h1>
+
+        <form action="{{ path('responsableAjouter') }}" method="post">
+            {{ form_start(form) }}
+
+            <label for="nom">Nom :</label>
+            {{ form_widget(form.nom) }}
+            <br>
+
+            <label for="prenom">Prénom :</label>
+            {{ form_widget(form.prenom) }}
+            <br>
+
+            <label for="numRue">Numéro de Rue :</label>
+            {{ form_widget(form.numRue) }}
+            <br>
+
+            <label for="rue">Rue :</label>
+            {{ form_widget(form.rue) }}
+            <br>
+
+            <label for="copos">Code Postal :</label>
+            {{ form_widget(form.copos) }}
+            <br>
+
+            <label for="ville">Ville :</label>
+            {{ form_widget(form.ville) }}
+            <br>
+
+            <label for="tel">Téléphone :</label>
+            {{ form_widget(form.tel) }}
+            <br>
+
+            <label for="mail">Mail :</label>
+            {{ form_widget(form.mail) }}
+            <br>
+
+            {{ form_end(form) }}
+            <br>
+
+        </form>
+    </div>
+{% endblock %}

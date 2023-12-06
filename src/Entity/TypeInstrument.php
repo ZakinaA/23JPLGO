@@ -24,12 +24,11 @@ class TypeInstrument
     #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'idTypeInstrument')]
     private Collection $professeurs;
 
-    #[ORM\OneToMany(mappedBy: 'typeInstrument', targetEntity: Instrument::class)]
-    private Collection $instruments;
-
     #[ORM\ManyToOne(inversedBy: 'typeInstruments')]
-    private ?ClasseInstrument $classeInstrument = null;
+    private ?ClasseInstrument $ClasseInstrument = null;
 
+    #[ORM\OneToMany(mappedBy: 'TypeInstrument', targetEntity: Instrument::class)]
+    private Collection $instruments;
 
     public function __construct()
     {
@@ -63,24 +62,22 @@ class TypeInstrument
         return $this->cours;
     }
 
-    public function addCours(Cours $cours): static
+    public function addCour(Cours $cour): static
     {
-
-        if (!$this->cours->contains($cours)) {
-            $this->cours->add($cours);
-            $cours->setTypeInstrument($this);
+        if (!$this->cours->contains($cour)) {
+            $this->cours->add($cour);
+            $cour->setIdTypeInstrument($this);
         }
 
         return $this;
     }
 
-    public function removeCour(Cours $cours): static
+    public function removeCour(Cours $cour): static
     {
-        if ($this->cours->removeElement($cours)) {
+        if ($this->cours->removeElement($cour)) {
             // set the owning side to null (unless already changed)
-
-            if ($cours->getTypeInstrument() === $this) {
-                $cours->setTypeInstrument(null);
+            if ($cour->getIdTypeInstrument() === $this) {
+                $cour->setIdTypeInstrument(null);
             }
         }
 

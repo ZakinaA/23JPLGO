@@ -2,14 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Etudiant;
 use App\Form\CoursModifierType;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Cours;
-use App\Entity\Maison;
 use App\Form\CoursType;
 use App\Entity\Task;
 use Symfony\Component\HttpFoundation\Request;

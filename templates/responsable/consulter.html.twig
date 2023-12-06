@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+	{% block head %}
+        {{ parent() }}
+    {% endblock %}
+
+	{% block header %}
+        {{ parent() }}
+    {% endblock %}
+	{% block body %}
+        <div class="page-content">
+            <h5>PAGE DE CONSULTATION D'UN ELEVE</h5>
+            <p>
+            <table >
+
+                <tr><td>Nom : </td><td>{{responsable.nom}}</td>
+                <tr><td>Prenom : </td><td>{{responsable.prenom}}</td>
+                <tr><td>Numéro de Rue :</td><td>{{ responsable.numRue }}</a></td>
+                <tr><td>Rue :</td><td>{{ responsable.rue }}</a></td>
+                <tr><td>Code Postal :</td><td>{{ responsable.copos }}</td>
+                <tr><td>Ville :</td><td>{{ responsable.ville }}</td>
+                <tr><td>Tel :</td><td>{{ responsable.tel }}</td>
+                <tr><td>Mail :</td><td>{{ responsable.mail }}</td></tr>
+
+            </table>
+        </div>
+    {% endblock %}
