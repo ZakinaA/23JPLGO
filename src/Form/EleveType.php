@@ -18,7 +18,7 @@ class EleveType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
+            ->add('nom', TextType::class)
             ->add('prenom',)
             ->add('numRue',)
             ->add('rue',)
@@ -26,7 +26,7 @@ class EleveType extends AbstractType
             ->add('ville')
             ->add('tel')
             ->add('mail')
-            ->add('enregistrer', SubmitType::class, array('label' => 'Nouvel Eleve'))
+            ->add('enregistrer', SubmitType::class, array('label' => 'Nouvel Eleve', 'attr' => ['class' => 'btn btn-outline-danger']))
         ;
     }
 

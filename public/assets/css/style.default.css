@@ -3708,9 +3708,9 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-danger:hover {
-  color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
 }
 
 .btn-check:focus + .btn-outline-danger, .btn-outline-danger:focus {
