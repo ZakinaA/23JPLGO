@@ -1,52 +1,55 @@
-<!-- templates/instrument/edit.html.twig -->
+{% extends 'base.html.twig' %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Modification d'un Instrument</title>
-</head>
-<body>
-<h5>MODIFICATION D'UN INSTRUMENT</h5>
+{% block head %}
+    {{ parent() }}
+{% endblock %}
 
-<form method="post" action="{{ path('instrumentModifier', {'id': instrument.id}) }}">
-    {{ form_start(form) }}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="page-content">
+        <h5>MODIFICATION D'UN INSTRUMENT</h5>
 
-    <label for="numSerie">Numéro de Série:</label>
-    {{ form_row(form.numSerie) }}
+        <form method="post" action="{{ path('instrumentModifier', {'id': instrument.id}) }}">
+            {{ form_start(form) }}
 
-    <label for="dateAchat"></label>
-    {{ form_row(form.dateAchat) }}
+            <label for="numSerie">Numéro de Série:</label>
+            {{ form_row(form.numSerie) }}
 
-    <label for="prixAchat"></label>
-    {{ form_row(form.prixAchat) }}
+            <label for="dateAchat"></label>
+            {{ form_row(form.dateAchat) }}
 
-    <label for="utilisation">Utilisation :</label>
-    {{ form_row(form.utilisation) }}
+            <label for="prixAchat"></label>
+            {{ form_row(form.prixAchat) }}
 
-    <label for="marque"></label>
-    {{ form_row(form.marque) }}
+            <label for="utilisation">Utilisation :</label>
+            {{ form_row(form.utilisation) }}
 
-    <label for="TypeInstrument"></label>
-    {{ form_row(form.TypeInstrument) }}
+            <label for="marque"></label>
+            {{ form_row(form.marque) }}
 
-    <label for="couleurs"></label>
-    {{ form_row(form.couleurs) }}
+            <label for="TypeInstrument"></label>
+            {{ form_row(form.TypeInstrument) }}
 
-    <!-- Add input field for cheminImage -->
-    <label for="cheminImage"></label>
-    {{ form_row(form.cheminImage) }}
+            <label for="couleurs"></label>
+            {{ form_row(form.couleurs) }}
 
-    <!-- Display the image -->
-    <label for="currentImage">Image actuelle :</label>
-    {% set photo = 'img/instrument/' ~ instrument.cheminImage ~ '.jpg' %}
-    <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}" width="300" height="200"/></span>
+            <!-- Add input field for cheminImage -->
+            <label for="cheminImage"></label>
+            {{ form_row(form.cheminImage) }}
 
-    <button type="submit">Modifier</button>
+            <!-- Display the image -->
+            <label for="currentImage">Image actuelle :</label>
+            {% set photo = 'img/instrument/' ~ instrument.cheminImage ~ '.jpg' %}
+            <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}" width="300" height="200"/></span>
 
-    {{ form_end(form) }}
-</form>
+            <button type="submit">Modifier</button>
 
-<!-- Add a link to go back to the consultation page -->
-<a href="{{ path('instrumentConsulter', {'id': instrument.id}) }}">Retour à la consultation</a>
-</body>
-</html>
+            {{ form_end(form) }}
+        </form>
+
+        <!-- Add a link to go back to the consultation page -->
+        <a href="{{ path('instrumentConsulter', {'id': instrument.id}) }}">Retour à la consultation</a>
+    </div>
+{% endblock %}
