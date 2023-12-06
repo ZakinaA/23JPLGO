@@ -1,53 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un élève !</title>
-</head>
-<body>
+{% extends 'base.html.twig' %}
 
-<h1>Ajouter un élève</h1>
+{% block head %}
+    {{ parent() }}
+{% endblock %}
 
-<form action="{{ path('eleveAjouter') }}" method="post">
-    {{ form_start(form) }}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="page-content">
+        <h1>Ajouter un élève</h1>
 
-    <label for="nom">Nom :</label>
-    {{ form_widget(form.nom) }}
-    <br>
+        <form action="{{ path('eleveAjouter') }}" method="post">
+            {{ form_start(form) }}
 
-    <label for="prenom">Prénom :</label>
-    {{ form_widget(form.prenom) }}
-    <br>
+            <label for="nom">Nom :</label>
+            {{ form_widget(form.nom) }}
+            <br>
 
-    <label for="numRue">Numéro de Rue :</label>
-    {{ form_widget(form.numRue) }}
-    <br>
+            <label for="prenom">Prénom :</label>
+            {{ form_widget(form.prenom) }}
+            <br>
 
-    <label for="rue">Rue :</label>
-    {{ form_widget(form.rue) }}
-    <br>
+            <label for="numRue">Numéro de Rue :</label>
+            {{ form_widget(form.numRue) }}
+            <br>
 
-    <label for="copos">Code Postal :</label>
-    {{ form_widget(form.copos) }}
-    <br>
+            <label for="rue">Rue :</label>
+            {{ form_widget(form.rue) }}
+            <br>
 
-    <label for="ville">Ville :</label>
-    {{ form_widget(form.ville) }}
-    <br>
+            <label for="copos">Code Postal :</label>
+            {{ form_widget(form.copos) }}
+            <br>
 
-    <label for="tel">Téléphone :</label>
-    {{ form_widget(form.tel) }}
-    <br>
+            <label for="ville">Ville :</label>
+            {{ form_widget(form.ville) }}
+            <br>
 
-    <label for="mail">Mail :</label>
-    {{ form_widget(form.mail) }}
-    <br>
+            <label for="tel">Téléphone :</label>
+            {{ form_widget(form.tel) }}
+            <br>
 
-    {{ form_end(form) }}
-    <br>
+            <label for="mail">Mail :</label>
+            {{ form_widget(form.mail) }}
+            <br>
 
-</form>
+            {{ form_end(form) }}
+            <br>
 
-</body>
-</html>
+        </form>
+    </div>
+{% endblock %}
