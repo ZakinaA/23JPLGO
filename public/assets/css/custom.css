@@ -1,17 +1,17 @@
 /* your styles go here */
-input {
+button, select, input {
     color: #dc3545;
     border-color: #dc3545;
     background: #22252a;
     border-radius: 5px;
     text-align: center;
 }
-input:hover {
+button:hover, select:hover, input:hover {
     color: #fff;
     background: #444a52;
     border-color: #dc3545;
 }
-input:focus {
+button:focus, select:focus, input:focus {
     -webkit-box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.5);
     box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.5);
 }
