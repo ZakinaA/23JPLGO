@@ -20,7 +20,7 @@ class EleveType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
+            ->add('nom', TextType::class)
             ->add('prenom',)
             ->add('numRue',)
             ->add('rue',)
@@ -28,6 +28,7 @@ class EleveType extends AbstractType
             ->add('ville')
             ->add('tel')
             ->add('mail')
+
             ->add('responsables', EntityType::class, [
                 'class' => Responsable::class,
                 'choice_label' => function ($responsable) {
