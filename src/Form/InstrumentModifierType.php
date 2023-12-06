@@ -35,7 +35,7 @@ class InstrumentModifierType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('utilisation', TextareaType::class, [
+            ->add('utilisation', TextType::class, [
                 'label' => 'Utilisation',
             ])
             ->add('marque', EntityType::class, [
