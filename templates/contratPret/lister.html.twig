@@ -9,29 +9,101 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-    <div class="page-content">
-        LISTE DES CONTRATS DE PRET</br>
-        <table>
-
-            {% for contratPret in contratsPret %}
-                <tr>
-
-                <td><a href="{{ path('contratPretConsulter', { 'id': contratPret.id }) }}">Emprunt {{ contratPret.id }}</a></td>
-                <td>effectué par {{ contratPret.eleve.prenom ~ " " ~ contratPret.eleve.nom }} dont les responsables sont
-            {% for responsable in contratPret.eleve.responsables %}
-                <td>{{ responsable.prenom ~ " " ~ responsable.nom }} et</td>
-            {% else %}
-                pas de responsables
-            {% endfor %}
-
-                </a></td>
-                <td>pour l'instrument {{ contratPret.instrument.id }}</td>
-            {% else %}
-                </tr>
-                <tr>
-                    <td>Aucun contrat de prêt n'a été trouvé.</td>
-                </tr>
-            {% endfor %}
-        </table>
+    <div class="bg-dash-dark-2 py-4">
+        <div class="container-fluid">
+            <h2 class="h5 mb-0">Contrats</h2>
+        </div>
     </div>
+    <!-- Breadcrumb-->
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('contratPretLister') }}">Contrats</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Liste</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="tables py-0">
+        <div class="container-fluid">
+            <div class="row gy-4">
+                <div class="col-xxl-11">
+                    <div class="card mb-0">
+                        <div class="card-header">
+                            <h3 class="h4 mb-0">Bonjour ! C'est moi ! Le titre ! Je sais pas ce que je fous là !</h3>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Eleve</th>
+                                        <th>Instrument</th>
+                                        <th>Responsable(s)</th>
+                                        <th>Attestation</th>
+                                        <th>Interventions</th>
+                                        <th>État de début</th>
+                                        <th>État de retour</th>
+                                        <th>Date de début</th>
+                                        <th>Date de retour</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for contratPret in contratsPret %}
+                                        <tr>
+                                            <th scope="row">{{ contratPret.id }}</th>
+                                            <td>{{ contratPret.eleve.prenom ~ " " ~ contratPret.eleve.nom }}</td>
+                                            <td>{{ contratPret.instrument.TypeInstrument.libelle ~ " n° " ~ contratPret.instrument.id }}</td>
+                                            <td>{% for responsable in contratPret.eleve.responsables %}
+                                                    {{ responsable.prenom ~ " " ~ responsable.nom ~ " "}}
+                                                {% else %}
+                                                    {{ " pas de responsables " }}
+                                                {% endfor %}
+                                            </td>
+                                            <td>{{ contratPret.attestationAssurance }}</td>
+                                            <td>
+                                                {% for interPret in contratPret.interPrets %}
+                                                    {{ interPret.intervention.id }}
+                                                {% endfor %}
+                                            </td>
+                                            <td>{{ contratPret.etatDetailleDebut }}</td>
+                                            <td>{{ contratPret.etatDetailleRetour }}</td>
+                                            <td>{{ contratPret.dateDebut|date("d/m/Y") }}</td>
+                                            <td>{{ contratPret.dateFin|date("d/m/Y") }}</td>
+                                            <td>
+                                                <a href="{{ path('contratPretConsulter', { 'id': contratPret.id }) }}">
+                                                    <button type="button" class="btn btn-outline-success">
+                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/addIcon.png" width="30px" height="30px">
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ path('contratPretModifier', { 'id': contratPret.id }) }}">
+                                                    <button type="button" class="btn btn-outline-secondary">
+                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ path('contratPretSupprimer', { 'id': contratPret.id }) }}">
+                                                    <button type="button" class="btn btn-outline-danger">
+                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <div class="col-lg-4">
+                                            {{ "Aucun contrat de prêt n'a été trouvé." }}
+                                        </div>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
