@@ -13,14 +13,14 @@
                 <h2>LISTE DES INSTRUMENTS</h2>
 
     <!-- Search Bar -->
-    <form method="get" action="{{ path('instrumentLister') }}">
+    <form method="get" action="{{ path('instrumentLister') }}" aria-label="Text input with radio button">
         <label for="search">Rechercher :</label>
         <input type="text" id="search" name="search" value="{{ app.request.query.get('search') }}">
-        <button type="submit">Rechercher</button>
+        <button type="submit" class="btn btn-primary">Rechercher</button>
     </form>
 
     <!-- Add sorting links to table headers -->
-    <table>
+    <table class="table mb-0 table-striped table-hover">
         <tr>
             <th><a href="{{ path('instrumentLister', {'sort': 'numSerie', 'order': (sortField == 'numSerie' and sortOrder == 'asc' ? 'desc' : 'asc')}) }}">Type de Série</a></th>
             <th><a href="{{ path('instrumentLister', {'sort': 'marque', 'order': (sortField == 'marque' and sortOrder == 'asc' ? 'desc' : 'asc')}) }}">Marque</a></th>
@@ -38,8 +38,6 @@
                 <td>{{ instrument.TypeInstrument.ClasseInstrument.libelle }}</td>
                 <td>
                     <a href="{{ path('instrumentModifier', { 'id': instrument.id }) }}">Modifier</a>
-                </td>
-                <td>
                     <a href="{{ path('instrumentSupprimer', { 'id': instrument.id }) }}" onclick="return confirm('Are you sure you want to delete this instrument?')">Supprimer</a>
                 </td>
             </tr>
