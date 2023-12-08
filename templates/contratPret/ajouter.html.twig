@@ -9,39 +9,37 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-    <div class="page-content">
-        <h1>Ajouter un contrat de prêt</h1>
+    <h1>Ajouter un contrat de prêt</h1>
 
-        <form action="{{ path('contratPretAjouter') }}" method="post">
-            {{ form_start(form) }}
+    <form action="{{ path('contratPretAjouter') }}" method="post">
+        {{ form_start(form) }}
 
-            <label for="instrument">Instrument :</label>
-            {{ form_widget(form.instrument) }}
-            <br>
+        <label for="instrument">Instrument :</label>
+        {{ form_widget(form.instrument) }}
+        <br>
 
-            <label for="dateDebut">Date de debut :</label>
-            {{ form_widget(form.dateDebut) }}
-            <br>
+        <label for="dateDebut">Date de debut :</label>
+        {{ form_widget(form.dateDebut) }}
+        <br>
 
-            <label for="dateFin">date de fin :</label>
-            {{ form_widget(form.dateFin) }}
-            <br>
+        <label for="dateFin">date de fin :</label>
+        {{ form_widget(form.dateFin) }}
+        <br>
 
-            <label for="attestationAssurance">Attestation d'assurance :</label>
-            {{ form_widget(form.attestationAssurance) }}
-            <br>
+        <label for="attestationAssurance">Attestation d'assurance :</label>
+        {{ form_widget(form.attestationAssurance) }}
+        <br>
 
-            <label for="etatDetailleDebut">état de départ :</label>
-            {{ form_widget(form.etatDetailleDebut) }}
-            <br>
+        <label for="etatDetailleDebut">état de départ :</label>
+        {{ form_widget(form.etatDetailleDebut) }}
+        <br>
 
-            <label for="etatDetailleRetour">état de retour :</label>
-            {{ form_widget(form.etatDetailleRetour) }}
-            <br>
+        <label for="etatDetailleRetour">état de retour :</label>
+        {{ form_widget(form.etatDetailleRetour) }}
+        <br>
 
-            {{ form_end(form) }}
-            <br>
+        {{ form_end(form) }}
+        <br>
 
-        </form>
-    </div>
+    </form>
 {% endblock %}

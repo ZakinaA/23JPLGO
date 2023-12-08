@@ -46,8 +46,8 @@
                     </div>
                 </div>
                 <div class="container-fluid d-flex align-items-center justify-content-between py-1">
-                    <div class="navbar-header d-flex align-items-center"><a class="navbar-brand text-uppercase text-reset" href="index.html">
-                            <div class="brand-text brand-big"><strong class="text-primary">Dark</strong><strong>Admin</strong></div>
+                    <div class="navbar-header d-flex align-items-center"><a class="navbar-brand text-uppercase text-reset" href="{{ path('responsableAjouter') }}">
+                            <div class="brand-text brand-big"><strong class="text-primary">23</strong><strong>JPLGO</strong></div>
                             <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div></a>
                         <button class="sidebar-toggle">
                             <svg class="svg-icon svg-icon-sm svg-icon-heavy transform-none">
@@ -235,37 +235,57 @@
                 <!-- Sidebar Header-->
                 <div class="sidebar-header d-flex align-items-center p-4"><img class="avatar shadow-0 img-fluid rounded-circle" src="/23JPLGO/public/assets/img/avatar-6.jpg" alt="...">
                     <div class="ms-3 title">
-                        <h1 class="h5 mb-1">Mark Stephen</h1>
-                        <p class="text-sm text-gray-700 mb-0 lh-1">Web Designer</p>
+                        <h1 class="h5 mb-1">Jean Charles</h1>
+                        <p class="text-sm text-gray-700 mb-0 lh-1">Admin</p>
                     </div>
                 </div><span class="text-uppercase text-gray-600 text-xs mx-3 px-2 heading mb-2">Main</span>
                 <ul class="list-unstyled">
-                    <li class="sidebar-item"><a class="sidebar-link" href="index.html">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#real-estate-1"> </use>
-                            </svg><span>Home </span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="tables.html">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#portfolio-grid-1"> </use>
-                            </svg><span>Tables </span></a></li>
-                    <li class="sidebar-item active"><a class="sidebar-link" href="charts.html">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#sales-up-1"> </use>
-                            </svg><span>Charts </span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="forms.html">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#survey-1"> </use>
-                            </svg><span>Forms </span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#exampledropdownDropdown" data-bs-toggle="collapse">
+                    <li class="sidebar-item"><a class="sidebar-link" href="#elevesDropdown" data-bs-toggle="collapse">
                             <svg class="svg-icon svg-icon-sm svg-icon-heavy">
                                 <use xlink:href="#browser-window-1"> </use>
-                            </svg><span>Example dropdown </span></a>
-                        <ul class="collapse list-unstyled " id="exampledropdownDropdown">
-                            <li><a class="sidebar-link" href="#">Page</a></li>
-                            <li><a class="sidebar-link" href="#">Page</a></li>
-                            <li><a class="sidebar-link" href="#">Page</a></li>
+                            </svg><span>Eleves </span></a>
+                        <ul class="collapse list-unstyled " id="elevesDropdown">
+                            <li><a class="sidebar-link" href="{{ path('eleveLister') }}">Liste des élèves</a></li>
+                            <li><a class="sidebar-link" href="{{ path('eleveAjouter') }}">Ajouter un élève</a></li>
                         </ul>
                     </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#instrumentsDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Instruments </span></a>
+                        <ul class="collapse list-unstyled " id="instrumentsDropdown">
+                            <li><a class="sidebar-link" href="{{ path('instrumentLister') }}">Liste des instruments</a></li>
+                            <li><a class="sidebar-link" href="{{ path('instrumentAjouter') }}">Ajouter un instrument</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#contratsDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Contrats </span></a>
+                        <ul class="collapse list-unstyled " id="contratsDropdown">
+                            <li><a class="sidebar-link" href="{{ path('contratPretLister') }}">Liste des contrats</a></li>
+                            <li><a class="sidebar-link" href="{{ path('contratPretAjouter') }}">Ajouter un contrat</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#responsablesDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Responsables </span></a>
+                        <ul class="collapse list-unstyled " id="responsablesDropdown">
+                            <li><a class="sidebar-link" href="{{ path('responsableLister') }}">Liste des responsables</a></li>
+                            <li><a class="sidebar-link" href="{{ path('responsableAjouter') }}">Ajouter un responsable</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#coursDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Cours </span></a>
+                        <ul class="collapse list-unstyled " id="coursDropdown">
+                            <li><a class="sidebar-link" href="{{ path('coursLister') }}">Liste des cours</a></li>
+                            <li><a class="sidebar-link" href="{{ path('coursAjouter') }}">Ajouter un cours</a></li>
+                        </ul>
+                    </li>
+
                     <li class="sidebar-item"><a class="sidebar-link" href="login.html">
                             <svg class="svg-icon svg-icon-sm svg-icon-heavy">
                                 <use xlink:href="#disable-1"> </use>
@@ -290,8 +310,10 @@
                             </svg><span>Demo </span></a></li>
                 </ul>
             </nav>
-            {% block body %}
-            {% endblock %}
+            <div class="page-content">
+                {% block body %}
+                {% endblock %}
+            </div>
         </div>
 
         <script src="/23JPLGO/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

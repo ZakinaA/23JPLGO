@@ -9,29 +9,45 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-    <div class="page-content">
-        LISTE DES CONTRATS DE PRET</br>
-        <table>
-
-            {% for contratPret in contratsPret %}
-                <tr>
-
-                <td><a href="{{ path('contratPretConsulter', { 'id': contratPret.id }) }}">Emprunt {{ contratPret.id }}</a></td>
-                <td>effectué par {{ contratPret.eleve.prenom ~ " " ~ contratPret.eleve.nom }} dont les responsables sont
-            {% for responsable in contratPret.eleve.responsables %}
-                <td>{{ responsable.prenom ~ " " ~ responsable.nom }} et</td>
-            {% else %}
-                pas de responsables
-            {% endfor %}
-
-                </a></td>
-                <td>pour l'instrument {{ contratPret.instrument.id }}</td>
-            {% else %}
-                </tr>
-                <tr>
-                    <td>Aucun contrat de prêt n'a été trouvé.</td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
+    <!-- Page Header-->
+    <section class="pt-0">
+        <div class="bg-dash-dark-2 py-4">
+            <div class="container-fluid">
+                <h2 class="h5 mb-0">LISTE DES CONTRATS<br><br></h2>
+                <a href="{{ path('contratPretAjouter') }}">
+                    <button type="button" class="btn btn-outline-info">Ajouter un contrat de prêt</button>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="pt-0">
+        <div class="container-fluid">
+            <div class="row gy-4">
+                {% for contratPret in contratsPret %}
+                    <div class="col-lg-4">
+                        {{ "Emprunt " ~ contratPret.id ~ " effectué par " ~ contratPret.eleve.prenom ~ " " ~ contratPret.eleve.nom ~ " dont les responsables sont "}}
+                        {% for responsable in contratPret.eleve.responsables %}
+                            {{ responsable.prenom ~ " " ~ responsable.nom ~ " "}}
+                        {% else %}
+                            {{ " pas de responsables " }}
+                        {% endfor %}
+                        {{ " pour l'instrument " ~ contratPret.instrument.id }}<br>
+                        <a href="{{ path('contratPretConsulter', { 'id': contratPret.id }) }}">
+                            <button type="button" class="btn btn-outline-success">Consulter</button>
+                        </a>
+                        <a href="{{ path('contratPretModifier', { 'id': contratPret.id }) }}">
+                            <button type="button" class="btn btn-outline-secondary  ">Modifier</button>
+                        </a>
+                        <a href="{{ path('contratPretSupprimer', { 'id': contratPret.id }) }}">
+                            <button type="button" class="btn btn-outline-danger">Supprimer</button>
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="col-lg-4">
+                        {{ "Aucun contrat de prêt n'a été trouvé." }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 {% endblock %}
