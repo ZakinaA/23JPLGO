@@ -40,9 +40,6 @@ class ContratPret
     #[ORM\JoinColumn(nullable: false)]
     private ?Eleve $eleve = null;
 
-    #[ORM\OneToMany(mappedBy: 'contratPret', targetEntity: InterPret::class, orphanRemoval: true)]
-    private Collection $interPrets;
-
     public function __construct()
     {
         $this->interPrets = new ArrayCollection();
@@ -136,36 +133,6 @@ class ContratPret
     public function setInstrument(?Instrument $instrument): static
     {
         $this->instrument = $instrument;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, InterPret>
-     */
-    public function getInterPrets(): Collection
-    {
-        return $this->interPrets;
-    }
-
-    public function addInterPret(InterPret $interPret): static
-    {
-        if (!$this->interPrets->contains($interPret)) {
-            $this->interPrets->add($interPret);
-            $interPret->setIntervention($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInterPret(InterPret $interPret): static
-    {
-        if ($this->interPrets->removeElement($interPret)) {
-            // set the owning side to null (unless already changed)
-            if ($interPret->getIntervention() === $this) {
-                $interPret->setIntervention(null);
-            }
-        }
 
         return $this;
     }
