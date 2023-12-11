@@ -41,7 +41,7 @@ class EleveModifierType extends AbstractType
                 ],
                 'attr' => ['class' => 'form-control']
             ])
-            ->add('enregistrer', SubmitType::class, array('label' => 'Nouvel Eleve'))
+            ->add('enregistrer', SubmitType::class, array('label' => 'Modifier Eleve'))
         ;
     }
 
