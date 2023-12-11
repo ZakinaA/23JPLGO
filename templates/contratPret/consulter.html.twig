@@ -74,8 +74,10 @@
                                             Interventions
                                         </th>
                                         <td>
-                                            {% for interPret in contratPret.interPrets %}
-                                                {{ interPret.intervention.id }}
+                                            {% for intervention in contratPret.interventions %}
+                                                <a href="{{ path('interventionConsulter', { 'id': intervention.id }) }}">
+                                                    {{ intervention.id }}
+                                                </a>
                                             {% endfor %}
                                         </td>
                                     </tr>

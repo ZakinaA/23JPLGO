@@ -126,3 +126,9 @@ coursModifier:
 coursSupprimer:
     path: /cours/supprimer/{id}
     controller: App\Controller\coursController::supprimer
+
+# Routes intervention
+
+interventionConsulter:
+    path: /intervention/consulter/{id}
+    controller: App\Controller\InterventionController::consulter
