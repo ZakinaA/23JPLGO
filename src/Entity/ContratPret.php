@@ -43,10 +43,14 @@ class ContratPret
     public function __construct()
     {
         $this->interPrets = new ArrayCollection();
+        $this->interventions = new ArrayCollection();
     }
 
     #[ORM\ManyToOne(inversedBy: 'ContratsPret')]
     private ?Instrument $instrument = null;
+
+    #[ORM\ManyToMany(targetEntity: Intervention::class, mappedBy: 'contratsPret')]
+    private Collection $interventions;
 
     public function getId(): ?int
     {
@@ -133,6 +137,33 @@ class ContratPret
     public function setInstrument(?Instrument $instrument): static
     {
         $this->instrument = $instrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Intervention>
+     */
+    public function getInterventions(): Collection
+    {
+        return $this->interventions;
+    }
+
+    public function addIntervention(Intervention $intervention): static
+    {
+        if (!$this->interventions->contains($intervention)) {
+            $this->interventions->add($intervention);
+            $intervention->addContratsPret($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIntervention(Intervention $intervention): static
+    {
+        if ($this->interventions->removeElement($intervention)) {
+            $intervention->removeContratsPret($this);
+        }
 
         return $this;
     }
