@@ -9,7 +9,7 @@
     {% endblock %}
 	{% block body %}
         <div class="page-content">
-            <h5>PAGE DE CONSULTATION D'UN INSTRUMENT</h5>
+
             <p>
         <section class="tables py-0">
         <div class="container-fluid">
@@ -31,7 +31,7 @@
                     </td>
                 </tr>
                 <tr><td>Date d'achat : </td><td>{{ instrument.dateAchat | date("d/m/Y") }}</td></tr>
-                <tr><td>Prix d'achat : </td><td>{{ instrument.prixAchat }}</td></tr>
+                <tr><td>Prix d'achat : </td><td>{{ instrument.prixAchat ~ '€' }}</td></tr>
                 <tr><td>Utilisation : </td><td>{{ instrument.utilisation }}</td></tr>
                 <tr><td>Marque : </td><td>{{ instrument.marque.libelle }}</td></tr>
                 <tr><td>Type d'Instrument : </td><td>{{ instrument.TypeInstrument.libelle }}</td></tr>
@@ -45,22 +45,43 @@
                         </ul>
                     </td>
                 </tr>
+                <tr><td>
+                        <a href="{{ path('instrumentModifier', { 'id': instrument.id }) }}">
+                            <button type="button" class="btn btn-outline-secondary">
+                                <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                            </button>
+                        </a>
 
-                <!-- Display interventions -->
-                <tr>
-                    <td colspan="3">
-                        <h6>Interventions:</h6>
-                        <ul>
-                            {% for intervention in instrument.Intervention %}
-                                <li>
-                                    {{ intervention.dateDebut|date("d/m/Y") }} - {{ intervention.dateFin|date("d/m/Y") }}:
-                                    {{ intervention.descriptif }} (Prix: {{ intervention.prix }} €)
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                </tr>
+                        <a href="{{ path('instrumentSupprimer', { 'id': instrument.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer');">
+                            <button type="button" class="btn btn-outline-danger">
+                                <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                            </button>
+                        </a>
+                    </td></tr>
             </table>
+                <!-- Display interventions -->
+            <h6>Interventions:</h6>
+            <div class="card-body pt-0">
+                <div class="table-responsive">
+                    <table class="table mb-0 table-striped table-sm">
+                        <tr>
+                            <th>Date de début :</th>
+                            <th>Date de fin :</th>
+                            <th>Description :</th>
+                            <th>Prix :</th>
+                        </tr>
+                        {% for intervention in instrument.Intervention %}
+                            <tr>
+                                <td>{{ intervention.dateDebut|date("d/m/Y") }}</td>
+                                <td>{{ intervention.dateFin|date("d/m/Y") }}</td>
+                                <td>{{ intervention.descriptif }}</td>
+                                <td>{{ intervention.prix }}€</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
             <!-- Button to go back to the list of instruments -->
             <a href="{{ path('instrumentLister') }}">Retour à la liste des instruments</a>
         </div>

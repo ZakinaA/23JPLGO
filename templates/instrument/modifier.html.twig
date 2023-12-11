@@ -58,8 +58,10 @@
             <label for="currentImage">Image actuelle :</label>
             {% set photo = 'img/instrument/' ~ instrument.cheminImage ~ '.jpg' %}
             <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}" width="300" height="200"/></span>
+            <div class="mb-3">
+                <button type="submit">Modifier</button>
+            </div>
 
-            <button type="submit">Modifier</button>
 
             {{ form_end(form) }}
         </form>

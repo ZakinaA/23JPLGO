@@ -13,12 +13,13 @@
                 <h2>LISTE DES INSTRUMENTS</h2>
 
     <!-- Search Bar -->
+            <div>
     <form method="get" action="{{ path('instrumentLister') }}" aria-label="Text input with radio button">
         <label for="search">Rechercher :</label>
         <input type="text" id="search" name="search" value="{{ app.request.query.get('search') }}">
         <button type="submit" class="btn btn-primary">Rechercher</button>
     </form>
-
+            </div>
             <section class="tables py-0">
                 <div class="container-fluid">
                     <div class="row gy-4">
@@ -35,7 +36,9 @@
             <th><a href="{{ path('instrumentLister', {'sort': 'marque', 'order': (sortField == 'marque' and sortOrder == 'asc' ? 'desc' : 'asc')}) }}">Marque</a></th>
             <th><a href="{{ path('instrumentLister', {'sort': 'TypeInstrument', 'order': (sortField == 'TypeInstrument' and sortOrder == 'asc' ? 'desc' : 'asc')}) }}">Type d'Instrument</a></th>
             <th>Classe d'Instrument</th>
+            <th></th>
             <th>Actions</th>
+            <th></th>
         </tr>
 
         <!-- Modify the loop to display instrument details as before -->
