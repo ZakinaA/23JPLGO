@@ -94,11 +94,31 @@ responsableSupprimer:
     path: /responsable/supprimer/{id}
     controller: App\Controller\ResponsableController::supprimer
 
-# Route inscription élève à un cours
+# Route inscription
 
-inscription_eleve_cours:
+inscriptionEleveCours:
     path: /inscription/{idCours}/{idEleve}
     controller: App\Controller\InscriptionController::inscrireEleveCours
+
+inscriptionLister:
+    path: /inscription/{idCours}/{idEleve}
+    controller: App\Controller\InscriptionController::inscriptionLister
+
+inscriptionConsulter:
+    path: /inscription/consulter/{id}
+    controller: App\Controller\InscriptionController::consulter
+
+inscriptionAjouter:
+    path: /inscription/ajouter
+    controller: App\Controller\InscriptionController::ajouter
+
+inscriptionModifier:
+    path: /inscription/modifier/{id}
+    controller: App\Controller\InscriptionController::modifier
+
+inscriptionSupprimer:
+    path: /inscription/supprimer/{id}
+    controller: App\Controller\InscriptionController::supprimer
 
 
 confirmation_inscription:
