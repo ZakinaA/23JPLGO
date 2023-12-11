@@ -36,7 +36,6 @@ class Intervention
 
     public function __construct()
     {
-        $this->interPrets = new ArrayCollection();
         $this->contratsPret = new ArrayCollection();
     }
 

@@ -42,7 +42,6 @@ class ContratPret
 
     public function __construct()
     {
-        $this->interPrets = new ArrayCollection();
         $this->interventions = new ArrayCollection();
     }
 
