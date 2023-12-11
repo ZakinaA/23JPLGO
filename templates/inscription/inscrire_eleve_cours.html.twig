@@ -1,12 +1,14 @@
+{% extends 'base.html.twig' %}
 
+{% block head %}
+    {{ parent() }}
+{% endblock %}
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Inscription Élève{% endblock %}</title>
-</head>
-<body>
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+
 
 <h1>Inscription Élève à un Cours</h1>
 
@@ -20,5 +22,4 @@
     <button type="submit">Confirmer l'inscription</button>
 </form>
 
-</body>
-</html>
+{% endblock %}
