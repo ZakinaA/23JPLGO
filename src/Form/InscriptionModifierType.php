@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Eleve;
 use App\Entity\Inscription;
+use App\Entity\Cours;
 use App\Entity\Responsable;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -22,10 +23,20 @@ class InscriptionModifierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('date_inscription', DateType::class, array('attr' => ['class' => 'form-control']))
-            ->add('eleve', TextType::class, array('attr' => ['class' => 'form-control']))
-            ->add('cours', TextType::class, array('attr' => ['class' => 'form-control']))
-            ->add('enregistrer', SubmitType::class, array('label' => 'Modifier Eleve'))
+            ->add('dateInscription', DateType::class, array('attr' => ['class' => 'form-control']))
+            ->add('eleve', EntityType::class, [
+                'class' => 'App\Entity\Eleve',
+                'choice_label' => function ($eleve){
+                    return $eleve->getNom() . ' ' . $eleve->getPrenom();
+                },
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('cours', EntityType::class, [
+                'class' => 'App\Entity\Cours',
+                'choice_label' => 'libelle',
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('enregistrer', SubmitType::class, array('label' => 'Modifier Inscription'))
         ;
     }
 

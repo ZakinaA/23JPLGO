@@ -22,10 +22,20 @@ class InscriptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('date_inscription', DateType::class, array('attr' => ['class' => 'form-control']))
-            ->add('eleve', TextType::class, array('attr' => ['class' => 'form-control']))
-            ->add('cours', TextType::class, array('attr' => ['class' => 'form-control']))
-            ->add('enregistrer', SubmitType::class, array('label' => 'Nouvelle Inscription'))
+            ->add('dateInscription', DateType::class, array('attr' => ['class' => 'form-control']))
+            ->add('eleve', EntityType::class, [
+                'class' => 'App\Entity\Eleve',
+                'choice_label' => function ($eleve){
+                    return $eleve->getNom() . ' ' . $eleve->getPrenom();
+                },
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('cours', EntityType::class, [
+                'class' => 'App\Entity\Cours',
+                'choice_label' => 'libelle',
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('enregistrer', SubmitType::class, array('label' => 'Ajouter Inscription'))
         ;
     }
 

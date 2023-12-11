@@ -38,14 +38,16 @@
         <th>Date d'Inscription</th>
         <th>Eleve</th>
         <th>Cours</th>
+        <th></th>
+        <th>Actions</th>
+        <th></th>
     </tr>
 
     {% for inscription in pInscription %}
         <tr>
-            <td><a href="{{ path('inscriptionConsulter', { 'id': inscription.id }) }}"></a></td>
-            <td>{{ inscription.date_inscription }}</td>
-            <td>{{ inscription.eleve_id }}</td>
-            <td>{{ inscription.cours_id }}</td>
+            <td>{{ inscription.dateInscription | date('d-m-y') }}</td>
+            <td>{{ inscription.eleve.nom }} {{ inscription.eleve.prenom }}</td>
+            <td>{{ inscription.cours.libelle }}</td>
             <td>
                 <a href="{{ path('inscriptionConsulter', { 'id': inscription.id }) }}">
                     <button type="button" class="btn btn-outline-success">
@@ -54,14 +56,14 @@
                 </a>
             </td>
             <td>
-                <a href="{{ path('inscriptionModifier', { 'id': eleve.id }) }}">
+                <a href="{{ path('inscriptionModifier', { 'id': inscription.id }) }}">
                     <button type="button" class="btn btn-outline-secondary">
                         <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
                     </button>
                 </a>
             </td>
             <td>
-                <a href="{{ path('inscriptionSupprimer', { 'id': eleve.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cette inscription');">
+                <a href="{{ path('inscriptionSupprimer', { 'id': inscription.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cette inscription');">
                     <button type="button" class="btn btn-outline-danger">
                         <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
                     </button>
@@ -73,6 +75,13 @@
             <td colspan="9">Aucune inscription n'a été trouvé.</td>
         </tr>
     {% endfor %}
+            <td>
+                <a href="{{ path('inscriptionAjouter') }}" >
+                    <button type="button" class="btn btn-outline-danger">
+                        Ajouter une Inscription
+                    </button>
+                </a>
+            </td>
 </table>
     </div>
 {% endblock %}
