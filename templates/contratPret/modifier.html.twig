@@ -15,7 +15,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="h4 mb-0">Ajouter un contrat de prêt</h3>
+                            <h3 class="h4 mb-0">Modifier un contrat de prêt</h3>
                         </div>
                         <div class="card-body pt-0">
                             <form action="{{ path('contratPretModifier', { 'id': contratPret.id }) }}" method="post">
@@ -29,7 +29,7 @@
                                     {{ form_widget(form.instrument) }}
                                     <div class="form-text">Vous sélectionnez actuellement l'ID de l'instrument</div>
                                 </div>
-                                {#
+
                                 <div class="row">
                                     <div class="col-sm-9">
                                         <div class="form-check">
@@ -40,7 +40,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                #}
+
                                 <div class="mb-4"></div>
                                 <div class="row">
                                     <div class="mb-3">

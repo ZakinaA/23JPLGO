@@ -19,20 +19,20 @@ class ContratPretType extends AbstractType
         $builder
             ->add('eleve', EntityType::class, array('class' => 'App\Entity\Eleve','choice_label' => 'nom', 'attr' => ['class' => 'form-control'] ))
             ->add('instrument', EntityType::class, array('class' => 'App\Entity\Instrument','choice_label' => 'id', 'attr' => ['class' => 'form-control'] ))
-            //->add('responsables', EntityType::class, [
-            //    'class' => Responsable::class,
-            //    'property_path' => 'eleve',
-            //    'choice_label' => 'nom',
-            //    'multiple' => true,
-            //    'expanded' => true,
-            //    'label' => 'Select Responsables',
-            //    'attr' => ['class' => 'form-check-input']
-            //])
+            ->add('responsables', EntityType::class, [
+                'class' => Responsable::class,
+                'property_path' => 'eleve',
+                'choice_label' => 'nom',
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'Select Responsables',
+                'attr' => ['class' => 'form-check-input']
+            ])
             ->add('attestationAssurance', TextType::class, array('attr' => ['class' => 'form-control']))
             ->add('etatDetailleDebut', TextareaType::class, array('attr' => ['class' => 'form-control']))
             ->add('etatDetailleRetour', TextareaType::class, array('attr' => ['class' => 'form-control']))
             ->add('dateDebut', DateType::class, ['widget' => 'single_text', 'format' => 'yyyy-MM-dd', 'attr' => ['class' => 'form-control']])
             ->add('dateFin', DateType::class, ['widget' => 'single_text', 'format' => 'yyyy-MM-dd', 'attr' => ['class' => 'form-control']])
             ->add('save', SubmitType::class, array('label' => 'Créer', 'attr' => ['class' => 'btn btn-primary']));
-    }//à modifier, les noms (child)
+    }
 }
