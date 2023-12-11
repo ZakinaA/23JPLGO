@@ -9,39 +9,80 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-    <div class="page-content">
-        <h1>Modifier un contrat de prêt</h1>
-
-        <form action="{{ path('contratPretModifier', {'id': contratPret.id}) }}" method="post">
-            {{ form_start(form) }}
-
-            <label for="instrument">Instrument :</label>
-            {{ form_widget(form.instrument) }}
-            <br>
-
-            <label for="dateDebut">Date de debut :</label>
-            {{ form_widget(form.dateDebut) }}
-            <br>
-
-            <label for="dateFin">Numéro de Rue :</label>
-            {{ form_widget(form.dateFin) }}
-            <br>
-
-            <label for="attestationAssurance">Rue :</label>
-            {{ form_widget(form.attestationAssurance) }}
-            <br>
-
-            <label for="etatDetailleDebut">Code Postal :</label>
-            {{ form_widget(form.etatDetailleDebut) }}
-            <br>
-
-            <label for="etatDetailleRetour">Ville :</label>
-            {{ form_widget(form.etatDetailleRetour) }}
-            <br>
-
-            {{ form_end(form) }}
-            <br>
-
-        </form>
-    </div>
+    <section class="pt-0">
+        <div class="container-fluid">
+            <div class="row gy-4">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="h4 mb-0">Ajouter un contrat de prêt</h3>
+                        </div>
+                        <div class="card-body pt-0">
+                            <form action="{{ path('contratPretModifier', { 'id': contratPret.id }) }}" method="post">
+                                {{ form_start(form) }}
+                                <div class="mb-3">
+                                    <label class="form-label" for="exampleInputEmail1">Nom de l'élève</label>
+                                    {{ form_widget(form.eleve) }}
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="exampleInputPassword1">Instrument emprunté</label>
+                                    {{ form_widget(form.instrument) }}
+                                    <div class="form-text">Vous sélectionnez actuellement l'ID de l'instrument</div>
+                                </div>
+                                {#
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-check">
+                                            <label class="form-label" for="exampleInputPassword1">Nom des responsables</label>
+                                            <div class="mb-3">
+                                                {{ form_widget(form.responsables) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                #}
+                                <div class="mb-4"></div>
+                                <div class="row">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="exampleInputPassword1">Attestation du contrat</label>
+                                        {{ form_widget(form.attestationAssurance) }}
+                                        <div class="form-text">Sélectionnez un document.</div>
+                                    </div>
+                                </div>
+                                {#
+                                <div class="mb-3">
+                                    <label class="form-label" for="exampleInputPassword1">Sélectionnez une intervention</label>
+                                    {{ form_widget(form.interventions) }}
+                                    <div class="form-text">We'll never share your email with anyone else.</div>
+                                </div>
+                                #}
+                                <div class="mb-3">
+                                    <label class="form-label" for="exampleInputPassword1">Etat de départ</label>
+                                    {{ form_widget(form.etatDetailleDebut) }}
+                                    <div class="form-text">Entrez une description extensive.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="exampleInputPassword1">Etat de retour</label>
+                                    {{ form_widget(form.etatDetailleRetour) }}
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="exampleInputPassword1">Date de début</label>
+                                    {{ form_widget(form.dateDebut) }}
+                                    <div class="form-text">La date doit être supérieure à la date de fin.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="exampleInputPassword1">Date de retour</label>
+                                    {{ form_widget(form.dateFin) }}
+                                </div>
+                                <div class="mb-3">
+                                    {{ form_widget(form.save, { 'label': 'Modifier' }) }}
+                                </div>
+                                {{ form_end(form) }}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
