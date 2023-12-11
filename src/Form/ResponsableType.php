@@ -27,7 +27,7 @@ class ResponsableType extends AbstractType
             ->add('ville')
             ->add('tel')
             ->add('mail')
-            ->add('enregistrer', SubmitType::class, array('label' => 'Nouvel Eleve'))
+            ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau responsable'))
         ;
     }
 

@@ -33,57 +33,98 @@
                         <div class="card-body pt-0">
                             <div class="table-responsive">
                                 <table class="table mb-0 table-striped table-hover">
-                                    <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Eleve</th>
-                                        <th>Instrument</th>
-                                        <th>Responsable(s)</th>
-                                        <th>Attestation</th>
-                                        <th>Interventions</th>
-                                        <th>État de début</th>
-                                        <th>État de retour</th>
-                                        <th>Date de début</th>
-                                        <th>Date de retour</th>
+                                        <th>
+                                            Eleve
+                                        </th>
+                                        <td>
+                                            {{ contratPret.eleve.prenom ~ " " ~ contratPret.eleve.nom }}
+                                        </td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">{{ contratPret.id }}</th>
-                                            <td>{{ contratPret.eleve.prenom ~ " " ~ contratPret.eleve.nom }}</td>
-                                            <td>{{ contratPret.instrument.TypeInstrument.libelle ~ " n° " ~ contratPret.instrument.id }}</td>
-                                            <td>{% for responsable in contratPret.eleve.responsables %}
-                                                    {{ responsable.prenom ~ " " ~ responsable.nom ~ " "}}
-                                                {% else %}
-                                                    {{ " pas de responsables " }}
-                                                {% endfor %}
-                                            </td>
-                                            <td>{{ contratPret.attestationAssurance }}</td>
-                                            <td>
-                                                {% for interPret in contratPret.interPrets %}
-                                                    {{ interPret.intervention.id }}
-                                                {% endfor %}
-                                            </td>
-                                            <td>{{ contratPret.etatDetailleDebut }}</td>
-                                            <td>{{ contratPret.etatDetailleRetour }}</td>
-                                            <td>{{ contratPret.dateDebut|date("d/m/Y") }}</td>
-                                            <td>{{ contratPret.dateFin|date("d/m/Y") }}</td>
-                                            <td>
-                                                <a href="{{ path('contratPretModifier', { 'id': contratPret.id }) }}">
-                                                    <button type="button" class="btn btn-outline-secondary">
-                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
-                                                    </button>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a href="{{ path('contratPretSupprimer', { 'id': contratPret.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer');">
-                                                    <button type="button" class="btn btn-outline-danger">
-                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
-                                                    </button>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                    <tr>
+                                        <th>
+                                            Instrument
+                                        </th>
+                                        <td>
+                                            {{ contratPret.instrument.TypeInstrument.libelle ~ " n° " ~ contratPret.instrument.id }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Responsable(s)
+                                        </th>
+                                        <td>
+                                            {% for responsable in contratPret.eleve.responsables %}
+                                                {{ responsable.prenom ~ " " ~ responsable.nom ~ " "}}
+                                            {% else %}
+                                                {{ " pas de responsables " }}
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Attestation
+                                        </th>
+                                        <td>
+                                            {{ contratPret.attestationAssurance }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Interventions
+                                        </th>
+                                        <td>
+                                            {% for interPret in contratPret.interPrets %}
+                                                {{ interPret.intervention.id }}
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            État de début
+                                        </th>
+                                        <td>
+                                            {{ contratPret.etatDetailleDebut }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            État de retour
+                                        </th>
+                                        <td>
+                                            {{ contratPret.etatDetailleRetour }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Date de début
+                                        </th>
+                                        <td>
+                                            {{ contratPret.dateDebut|date("d/m/Y") }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Date de retour
+                                        </th>
+                                        <td>
+                                            {{ contratPret.dateFin|date("d/m/Y") }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="{{ path('contratPretModifier', { 'id': contratPret.id }) }}">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                                                </button>
+                                            </a>
+                                            <a href="{{ path('contratPretSupprimer', { 'id': contratPret.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer');">
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
