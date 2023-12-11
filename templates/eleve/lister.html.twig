@@ -8,10 +8,32 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-    <div class="page-content">
-       <h1>LISTE DES ELEVES</h1>
+    <div class="bg-dash-dark-2 py-4">
+        <div class="container-fluid">
+            <h2 class="h5 mb-0">Elèves</h2>
+        </div>
+    </div>
 
-<table border="1">
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('eleveLister') }}">Eleves</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Liste</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="tables py-0">
+    <div class="container-fluid">
+    <div class="row gy-4">
+    <div class="col-xxl-11">
+    <div class="card mb-0">
+    <div class="card-header">
+        <h3 class="h4 mb-0"></h3>
+    </div>
+    <div class="card-body pt-0">
+    <div class="table-responsive">
+                                    <table class="table mb-0 table-striped table-hover">
+
     <tr>
         <th>Nom</th>
         <th>Prénom</th>
@@ -21,7 +43,9 @@
         <th>Ville</th>
         <th>Téléphone</th>
         <th>Mail</th>
+        <th></th>
         <th>Actions</th>
+        <th></th>
     </tr>
 
     {% for eleve in pEleve %}
@@ -35,15 +59,25 @@
             <td>{{ eleve.tel }}</td>
             <td>{{ eleve.mail }}</td>
             <td>
-                <form action="{{ path('eleveModifier', {'id': eleve.id}) }}" method="post">
-                    <input type="hidden" name="_method" value="UPDATE">
-                    <button type="submit">Modifier</button>
-                </form>
-
-                <form action="{{ path('eleveSupprimer', {'id': eleve.id}) }}" method="post">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit">Supprimer</button>
-                </form>
+                <a href="{{ path('eleveConsulter', { 'id': eleve.id }) }}">
+                    <button type="button" class="btn btn-outline-success">
+                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/consultIcon.png" width="30px" height="30px">
+                    </button>
+                </a>
+            </td>
+            <td>
+                <a href="{{ path('eleveModifier', { 'id': eleve.id }) }}">
+                    <button type="button" class="btn btn-outline-secondary">
+                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                    </button>
+                </a>
+            </td>
+            <td>
+                <a href="{{ path('eleveSupprimer', { 'id': eleve.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cet élève');">
+                    <button type="button" class="btn btn-outline-danger">
+                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                    </button>
+                </a>
             </td>
         </tr>
     {% else %}
