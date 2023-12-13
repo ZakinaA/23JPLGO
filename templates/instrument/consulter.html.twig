@@ -22,7 +22,8 @@
         <div class="card-body pt-0">
         <div class="table-responsive">
             <table class="table mb-0 table-striped table-hover">
-                <!-- Your existing instrument details -->
+
+
                 <tr><td>Id : </td><td>{{ instrument.id }} </td></tr>
                 <tr><td>Nom : </td><td>{{ instrument.numSerie }}</td>
                     <td rowspan="9" class="imgEtu">
@@ -85,4 +86,7 @@
             <!-- Button to go back to the list of instruments -->
             <a href="{{ path('instrumentLister') }}">Retour à la liste des instruments</a>
         </div>
+    {% endblock %}
+    {% block footer %}
+        {{ parent() }}
     {% endblock %}

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\InterventionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,14 @@ class Intervention
 
     #[ORM\ManyToOne(inversedBy: 'Intervention')]
     private ?Instrument $instrument = null;
+
+    #[ORM\ManyToMany(targetEntity: ContratPret::class, inversedBy: 'interventions')]
+    private Collection $contratsPret;
+
+    public function __construct()
+    {
+        $this->contratsPret = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +100,30 @@ class Intervention
     public function setInstrument(?Instrument $instrument): static
     {
         $this->instrument = $instrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ContratPret>
+     */
+    public function getContratsPret(): Collection
+    {
+        return $this->contratsPret;
+    }
+
+    public function addContratsPret(ContratPret $contratsPret): static
+    {
+        if (!$this->contratsPret->contains($contratsPret)) {
+            $this->contratsPret->add($contratsPret);
+        }
+
+        return $this;
+    }
+
+    public function removeContratsPret(ContratPret $contratsPret): static
+    {
+        $this->contratsPret->removeElement($contratsPret);
 
         return $this;
     }

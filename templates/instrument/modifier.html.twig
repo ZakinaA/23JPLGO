@@ -11,6 +11,7 @@
     <div class="page-content">
         <h5>MODIFICATION D'UN INSTRUMENT</h5>
 
+
         <section class="pt-0">
             <div class="container-fluid">
                 <div class="row gy-4">
@@ -29,13 +30,16 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputEmail1"></label>
+
             {{ form_row(form.dateAchat) }}
             </div>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputPassword1"></label>
             {{ form_row(form.prixAchat) }}
             </div>
+
             <label for="utilisation"></label>
+
             {{ form_row(form.utilisation) }}
 
             <div class="mb-3">
@@ -75,4 +79,7 @@
         <!-- Add a link to go back to the consultation page -->
         <a href="{{ path('instrumentConsulter', {'id': instrument.id}) }}">Retour à la consultation</a>
     </div>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
 {% endblock %}

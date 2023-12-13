@@ -1,14 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
 
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Inscription Élève{% endblock %}</title>
-</head>
-<body>
-
-<h1>Inscription Élève à un Cours</h1>
+    <h1>Inscription Élève à un Cours</h1>
 
 <p>
     Vous êtes sur le point d'inscrire l'élève {{ eleve.nom }} {{ eleve.prenom }} au "{{ cours.libelle }}".
@@ -16,9 +18,12 @@
 </p>
 
 <form action="{{ path('inscription_eleve_cours', {'idCours': cours.id, 'idEleve': eleve.id}) }}" method="post">
-    {# Ajoutez des champs supplémentaires ou des informations si nécessaire #}
     <button type="submit">Confirmer l'inscription</button>
 </form>
 
-</body>
-</html>
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+

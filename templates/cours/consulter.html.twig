@@ -8,26 +8,124 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-    <div class="page-content">
-        <h5>PAGE DE CONSULTATION D'UN COURS</h5>
-        <p>
-        <table >
-
-            <tr><td>Jour : </td><td>{{cours.jour.libelle}}</td>
-            <tr><td>Libelle : </td><td>{{cours.libelle}}</td>
-            <tr><td>Age minimum : </td><td>{{cours.ageMini}}</td></tr></tr>
-            <tr><td>Age maximum : </td><td>{{cours.ageMaxi}}</td></tr></tr>
-            <tr><td>Heure de début : </td><td>{{cours.heureDebut|date('H:i:s')}}</td></tr>
-            <tr><td>Heure de fin : </td><td>{{cours.heureFin|date('H:i:s')}}</td></tr>
-            <tr><td>Nombre de places : </td><td>{{cours.nbPlaces}}</td></tr>
-            <tr><td>Professeur : </td><td>{{cours.professeur.nom}}  {{cours.professeur.prenom}}</td></tr>
-        </table>
-
-        <h5>ELEVES INSCRITS</h5>
-
-        {%  for inscription in cours.inscriptions %}
-    <li>{{ inscription.eleve.nom }} {{ inscription.eleve.prenom }}</li>
-{% endfor %}
+<div class="bg-dash-dark-2 py-4">
+    <div class="container-fluid">
+        <h2 class="h5 mb-0">Cours</h2>
     </div>
-{% endblock %}
+</div>
+<!-- Breadcrumb-->
+<div class="container-fluid py-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0 py-3 px-0">
+            <li class="breadcrumb-item"><a href="{{ path('coursLister') }}">Cours</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cours {{ cours.id }}</li>
+        </ol>
+    </nav>
+</div>
+<section class="tables py-0">
+    <div class="container-fluid">
+        <div class="row gy-4">
+            <div class="col-xxl-12">
+                <div class="card mb-0">
+                    <div class="card-header">
+                        <h3 class="h4 mb-0">Consultation du cours {{ 'n° ' ~ cours.id }}</h3>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="table-responsive">
+                            <table class="table mb-0 table-striped table-hover">
+                                <tr>
+                                    <th>
+                                        Jour :
+                                    </th>
+                                    <td>
+                                        {{cours.jour.libelle}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Libelle :
+                                    </th>
+                                    <td>
+                                        {{cours.libelle}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Age minimum :
+                                    </th>
+                                    <td>
+                                        {{cours.ageMini}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Age maximum :
+                                    </th>
+                                    <td>
+                                        {{cours.ageMaxi}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Heure de début :
+                                    </th>
+                                    <td>
+                                        {{cours.heureDebut|date('H:i:s')}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Heure de fin :
+                                    </th>
+                                    <td>
+                                        {{cours.heureFin|date('H:i:s')}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Nombre de places :
+                                    </th>
+                                    <td>
+                                        {{cours.nbPlaces}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Professeur :
+                                    </th>
+                                    <td>
+                                        {{cours.professeur.nom}}  {{cours.professeur.prenom}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Eleves Inscrits :
+                                    </th>
+                                    <td>
+                                        {%  for inscription in cours.inscriptions %}
+                                            <li>{{ inscription.eleve.nom }} {{ inscription.eleve.prenom }}</li>
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{ path('coursModifier', { 'id': cours.id }) }}">
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                                            </button>
+                                        </a>
+                                        <a href="{{ path('coursSupprimer', { 'id': cours.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce cours ?');">
+                                            <button type="button" class="btn btn-outline-danger">
+                                                <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+        </table>
+    </div>
 
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+
+{% endblock %}
