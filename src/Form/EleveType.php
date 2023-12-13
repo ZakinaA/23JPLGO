@@ -21,6 +21,7 @@ class EleveType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
             ->add('nom', TextType::class, array('attr' => ['class' => 'form-control']))
             ->add('prenom', TextType::class, array('attr' => ['class' => 'form-control']))
             ->add('numRue', NumberType::class, array('attr' => ['class' => 'form-control']))

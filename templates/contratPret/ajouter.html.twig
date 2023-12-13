@@ -27,20 +27,9 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword1">Instrument emprunté</label>
                                     {{ form_widget(form.instrument) }}
-                                    <div class="form-text">Vous sélectionnez actuellement l'ID de l'instrument</div>
+
                                 </div>
-                                {#
-                                <div class="row">
-                                    <div class="col-sm-9">
-                                        <div class="form-check">
-                                            <label class="form-label" for="exampleInputPassword1">Nom des responsables</label>
-                                            <div class="mb-3">
-                                                {{ form_widget(form.responsables) }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                #}
+
                                 <div class="mb-4"></div>
                                 <div class="row">
                                     <div class="mb-3">
@@ -49,13 +38,12 @@
                                         <div class="form-text">Sélectionnez un document.</div>
                                     </div>
                                 </div>
-                                {#
+
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword1">Sélectionnez une intervention</label>
                                     {{ form_widget(form.interventions) }}
-                                    <div class="form-text">We'll never share your email with anyone else.</div>
                                 </div>
-                                #}
+
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword1">Etat de départ</label>
                                     {{ form_widget(form.etatDetailleDebut) }}
@@ -85,4 +73,9 @@
             </div>
         </div>
     </section>
+
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+
 {% endblock %}
