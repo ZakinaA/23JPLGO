@@ -6,8 +6,6 @@ namespace App\Form;
 use App\Entity\Couleur;
 use App\Entity\Eleve;
 use App\Entity\ContratPret;
-use App\Entity\Couleur;
-use App\Entity\Eleve;
 use App\Entity\Intervention;
 use App\Entity\Responsable;
 use Symfony\Component\Form\AbstractType;
