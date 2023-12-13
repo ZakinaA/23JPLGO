@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+        <h2>LISTE DES TYPES D'INSTRUMENTS</h2>
+
+        <section class="tables py-0">
+            <div class="container-fluid">
+                <div class="row gy-4">
+                    <div class="col-xxl-11">
+                        <div class="card mb-0">
+                            <div class="card-header">
+                                <h3 class="h4 mb-0">Liste des types d'instruments</h3>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="table-responsive">
+                                    <table class="table mb-0 table-striped table-hover">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Libellé</th>
+                                            <th>Classe Instrument</th>
+                                            <th></th>
+                                            <th>Actions</th>
+                                            <th></th>
+                                        </tr>
+
+                                        <!-- Modify the loop to display type details as before -->
+                                        {% for typeInstrument in typesInstruments %}
+                                            <tr>
+                                                <td>{{ typeInstrument.id }}</td>
+                                                <td>{{ typeInstrument.libelle }}</td>
+                                                <td>{{ typeInstrument.classeInstrument.libelle }}</td>
+                                                <td>
+                                                    <a href="{{ path('typeInstrumentConsulter', { 'id': typeInstrument.id }) }}">
+                                                        <button type="button" class="btn btn-outline-success">
+                                                            <img alt="consultIcon" src="/path/to/consultIcon.png" width="30px" height="30px">
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ path('typeInstrumentModifier', { 'id': typeInstrument.id }) }}">
+                                                        <button type="button" class="btn btn-outline-secondary">
+                                                            <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ path('typeInstrumentSupprimer', { 'id': typeInstrument.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer');">
+                                                        <button type="button" class="btn btn-outline-danger">
+                                                            <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% else %}
+                                            <!-- Display no types found message -->
+                                            <tr>
+                                                <td colspan="4">Aucun type d'instrument n'a été trouvé.</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
