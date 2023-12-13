@@ -124,4 +124,36 @@
             </tr>
         </table>
     </div>
+
+    <tr><td>Cours : </td>
+        <td>
+            <table class="table">
+                <th> scope="col" style="...">Cours libelle</th>
+                <th> scope="col" style="...">Type d'Instrument</th>
+                <th> scope="col" style="...">Jour</th>
+                <th> scope="col" style="...">Heure début</th>
+                <th> scope="col" style="...">Heure fin</th>
+                    {% for inscription in eleve.inscriptions %}
+                        <tr>
+                        <td>
+                        {{ inscription.cours.libelle }}
+                        </td>
+                            <td>
+                            {{ inscription.cours.typeInstrument.libelle }}
+                            </td>
+                            <td>
+                            {{ inscription.cours.jour.libelle }}
+                            </td>
+                            <td>
+                            {{ inscription.cours.heureDebut | date('H:i') }}
+                            </td>
+                            <td>
+                            {{ inscription.cours.heureFin | date('H:i') }}
+                            </td>
+                        </tr>
+                    {% else %}
+                        Pas de cours inscrits
+                    {% endfor %}
+            </table>
+
 {% endblock %}
