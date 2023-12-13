@@ -38,41 +38,12 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
 
-          # Routes instrument
+        - { path: ^/eleve/, roles: ROLE_ELEVE }
+        - { path: ^/eleve/, roles: ROLE_ELEVE }
+        - { path: ^/eleve/, roles: ROLE_ELEVE }
 
-        - { path: ^/instrument/modifier/, roles: ROLE_ADMIN }
-        - { path: ^/instrument/supprimer/, roles: ROLE_ADMIN }
-        - { path: ^/instrument/ajouter/, roles: ROLE_ADMIN }
-
-          # Routes eleve
-
-        - { path: ^/eleve/modifier/, roles: ROLE_ADMIN }
-        - { path: ^/eleve/supprimer/, roles: ROLE_ADMIN }
-        - { path: ^/eleve/ajouter/, roles: ROLE_ADMIN }
-
-          # Routes contratPret
-
-        - { path: ^/contratPret/modifier/, roles: ROLE_ADMIN }
-        - { path: ^/contratPret/supprimer/, roles: ROLE_ADMIN }
-        - { path: ^/contratPret/ajouter/, roles: ROLE_ADMIN }
-
-          # Routes responsable
-
-        - { path: ^/responsable/modifier/, roles: ROLE_ADMIN }
-        - { path: ^/responsable/supprimer/, roles: ROLE_ADMIN }
-        - { path: ^/responsable/ajouter/, roles: ROLE_ADMIN }
-
-          # Routes inscription
-
-        - { path: ^/inscription/modifier/, roles: ROLE_ADMIN }
-        - { path: ^/inscription/supprimer/, roles: ROLE_ADMIN }
-        - { path: ^/inscription/ajouter/, roles: ROLE_ADMIN }
-
-          # Routes cours
-
-        - { path: ^/cours/modifier/, roles: ROLE_ADMIN }
-        - { path: ^/cours/supprimer/, roles: ROLE_ADMIN }
-        - { path: ^/cours/ajouter/, roles: ROLE_ADMIN }
+    role_hierarchy:
+        -
 
 when@test:
     security:
