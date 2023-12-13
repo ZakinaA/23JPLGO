@@ -25,11 +25,14 @@
     </div>
 
     <!-- Search Bar -->
+    <td>
     <form method="get" action="{{ path('instrumentLister') }}">
         <label for="search">Rechercher :</label>
         <input type="text" id="search" name="search" value="{{ app.request.query.get('search') }}">
         <button type="submit">Rechercher</button>
     </form>
+    </td>
+<br>
 
             <section class="tables py-0">
                 <div class="container-fluid">
@@ -99,7 +102,13 @@
             <a href="{{ path('instrumentLister') }}">Revenir à la liste complète</a>
         </p>
     {% endif %}
-        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
     {% endblock %}
 
     {% block footer %}
