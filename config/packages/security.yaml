@@ -39,11 +39,13 @@ security:
     access_control:
 
         - { path: ^/eleve/, roles: ROLE_ELEVE }
-        - { path: ^/eleve/, roles: ROLE_ELEVE }
-        - { path: ^/eleve/, roles: ROLE_ELEVE }
+        - { path: ^/gestionnaire/, roles: ROLE_GESTIONNAIRE }
+        - { path: ^/admin/, roles: ROLE_ADMIN }
 
     role_hierarchy:
-        -
+
+        ROLE_GESTIONNAIRE: [ROLE_USER]
+        ROLE_ADMIN: [ROLE_GESTIONNAIRE]
 
 when@test:
     security:
