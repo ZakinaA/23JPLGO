@@ -40,16 +40,16 @@ class ContratPret
     #[ORM\JoinColumn(nullable: false)]
     private ?Eleve $eleve = null;
 
-    #[ORM\OneToMany(mappedBy: 'contratPret', targetEntity: InterPret::class, orphanRemoval: true)]
-    private Collection $interPrets;
-
     public function __construct()
     {
-        $this->interPrets = new ArrayCollection();
+        $this->interventions = new ArrayCollection();
     }
 
     #[ORM\ManyToOne(inversedBy: 'ContratsPret')]
     private ?Instrument $instrument = null;
+
+    #[ORM\ManyToMany(targetEntity: Intervention::class, mappedBy: 'contratsPret')]
+    private Collection $interventions;
 
     public function getId(): ?int
     {
@@ -141,30 +141,27 @@ class ContratPret
     }
 
     /**
-     * @return Collection<int, InterPret>
+     * @return Collection<int, Intervention>
      */
-    public function getInterPrets(): Collection
+    public function getInterventions(): Collection
     {
-        return $this->interPrets;
+        return $this->interventions;
     }
 
-    public function addInterPret(InterPret $interPret): static
+    public function addIntervention(Intervention $intervention): static
     {
-        if (!$this->interPrets->contains($interPret)) {
-            $this->interPrets->add($interPret);
-            $interPret->setIntervention($this);
+        if (!$this->interventions->contains($intervention)) {
+            $this->interventions->add($intervention);
+            $intervention->addContratsPret($this);
         }
 
         return $this;
     }
 
-    public function removeInterPret(InterPret $interPret): static
+    public function removeIntervention(Intervention $intervention): static
     {
-        if ($this->interPrets->removeElement($interPret)) {
-            // set the owning side to null (unless already changed)
-            if ($interPret->getIntervention() === $this) {
-                $interPret->setIntervention(null);
-            }
+        if ($this->interventions->removeElement($intervention)) {
+            $intervention->removeContratsPret($this);
         }
 
         return $this;

@@ -8,51 +8,63 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-    <div class="page-content">
-        <h1>Ajouter un cours</h1>
+    <br>
+    <section class="pt-0">
+        <div class="container-fluid">
+            <div class="row gy-4">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="h4 mb-0">Ajouter un cours</h3>
+                        </div>
+                        <div class="card-body pt-0">
+                            <form action="{{ path('coursAjouter') }}" method="post">
+                            {{ form_start(form) }}
+                            <div class="mb-3">
+                                <label for="jour">Jour :</label>
+                                {{ form_widget(form.jour) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="libelle">Libellé :</label>
+                                {{ form_widget(form.libelle) }}
+                            </div>
+                            <div class="mb-4"></div>
+                            <div class="row">
+                                <div class="mb-3">
+                                <label for="ageMini">Âge minimum :</label>
+                                {{ form_widget(form.ageMini) }}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ageMaxi">Âge maximum :</label>
+                                {{ form_widget(form.ageMaxi) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="heureDebut">Heure de début :</label>
+                                {{ form_widget(form.heureDebut) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="heureFin">Heure de fin :</label>
+                                {{ form_widget(form.heureFin) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="nbPlaces">Nombre de places :</label>
+                                {{ form_widget(form.nbPlaces) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="typeInstrument">Type d'instrument :</label>
+                                {{ form_widget(form.typeInstrument) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="nomProfesseur">Nom du Professeur :</label>
+                                {{ form_widget(form.professeur) }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_end(form) }}
 
-        <form action="{{ path('coursAjouter') }}" method="post">
-            {{ form_start(form) }}
-
-            <label for="jour">Jour :</label>
-            {{ form_widget(form.jour) }}
-            <br>
-
-            <label for="libelle">Libellé :</label>
-            {{ form_widget(form.libelle) }}
-            <br>
-
-            <label for="ageMini">Âge minimum :</label>
-            {{ form_widget(form.ageMini) }}
-            <br>
-
-            <label for="ageMaxi">Âge maximum :</label>
-            {{ form_widget(form.ageMaxi) }}
-            <br>
-
-            <label for="heureDebut">Heure de début :</label>
-            {{ form_widget(form.heureDebut) }}
-            <br>
-
-            <label for="heureFin">Heure de fin :</label>
-            {{ form_widget(form.heureFin) }}
-            <br>
-
-            <label for="nbPlaces">Nombre de places :</label>
-            {{ form_widget(form.nbPlaces) }}
-            <br>
-
-            <label for="typeInstrument">Type d'instrument :</label>
-            {{ form_widget(form.typeInstrument) }}
-            <br>
-
-            <label for="nomProfesseur">Nom du Professeur :</label>
-            {{ form_widget(form.professeur) }}
-            <br>
-
-            {{ form_end(form) }}
-            <br>
-
-        </form>
+                            </form>
     </div>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
 {% endblock %}

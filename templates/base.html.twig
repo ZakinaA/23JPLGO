@@ -46,9 +46,11 @@
                     </div>
                 </div>
                 <div class="container-fluid d-flex align-items-center justify-content-between py-1">
-                    <div class="navbar-header d-flex align-items-center"><a class="navbar-brand text-uppercase text-reset" href="index.html">
-                            <div class="brand-text brand-big"><strong class="text-primary">Dark</strong><strong>Admin</strong></div>
-                            <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div></a>
+                    <div class="navbar-header d-flex align-items-center"><a class="navbar-brand text-uppercase text-reset" href="{{ path('responsableAjouter') }}">
+                            <div class="brand-text brand-big"><strong class="text-primary">23</strong><strong>JPLGO</strong></div>
+
+                            <div class="brand-text brand-sm"><strong class="text-primary">2</strong><strong>3</strong></div></a>
+
                         <button class="sidebar-toggle">
                             <svg class="svg-icon svg-icon-sm svg-icon-heavy transform-none">
                                 <use xlink:href="#arrow-left-1"> </use>
@@ -215,10 +217,10 @@
                             </ul>
                         </li>
                         <!-- Languages dropdown    -->
-                        <li class="list-inline-item dropdown"><a class="nav-link dropdown-toggle text-sm text-reset px-1 px-lg-0" id="languages" rel="nofollow" data-bs-target="#" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/23JPLGO/public/assets/img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block ms-2">English</span></a>
+                        <li class="list-inline-item dropdown"><a class="nav-link dropdown-toggle text-sm text-reset px-1 px-lg-0" id="languages" rel="nofollow" data-bs-target="#" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/23JPLGO/public/assets/img/flags/16/FR.png" alt="Français"><span class="d-none d-sm-inline-block ms-2">Français</span></a>
                             <ul class="dropdown-menu dropdown-menu-end mt-sm-3 dropdown-menu-dark" aria-labelledby="languages">
-                                <li><a class="dropdown-item" rel="nofollow" href="#"> <img class="me-2" src="/23JPLGO/public/assets/img/flags/16/DE.png" alt="English"><span>German</span></a></li>
-                                <li><a class="dropdown-item" rel="nofollow" href="#"> <img class="me-2" src="/23JPLGO/public/assets/img/flags/16/FR.png" alt="English"><span>French                   </span></a></li>
+                                <li><a class="dropdown-item" rel="nofollow" href="#"> <img class="me-2" src="/23JPLGO/public/assets/img/flags/16/DE.png" alt="Allemand"><span>Allemand</span></a></li>
+                                <li><a class="dropdown-item" rel="nofollow" href="#"> <img class="me-2" src="/23JPLGO/public/assets/img/flags/16/GB.png" alt="Anglais"><span>Anglais</span></a></li>
                             </ul>
                         </li>
                         <li class="list-inline-item logout px-lg-2">                 <a class="nav-link text-sm text-reset px-1 px-lg-0" id="logout" href="login.html"> <span class="d-none d-sm-inline-block">Logout </span>
@@ -235,37 +237,61 @@
                 <!-- Sidebar Header-->
                 <div class="sidebar-header d-flex align-items-center p-4"><img class="avatar shadow-0 img-fluid rounded-circle" src="/23JPLGO/public/assets/img/avatar-6.jpg" alt="...">
                     <div class="ms-3 title">
-                        <h1 class="h5 mb-1">Mark Stephen</h1>
-                        <p class="text-sm text-gray-700 mb-0 lh-1">Web Designer</p>
+
+                        <h1 class="h5 mb-1">Florian Richard</h1>
+                        
+                        <p class="text-sm text-gray-700 mb-0 lh-1">Admin</p>
                     </div>
                 </div><span class="text-uppercase text-gray-600 text-xs mx-3 px-2 heading mb-2">Main</span>
                 <ul class="list-unstyled">
-                    <li class="sidebar-item"><a class="sidebar-link" href="index.html">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#real-estate-1"> </use>
-                            </svg><span>Home </span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="tables.html">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#portfolio-grid-1"> </use>
-                            </svg><span>Tables </span></a></li>
-                    <li class="sidebar-item active"><a class="sidebar-link" href="charts.html">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#sales-up-1"> </use>
-                            </svg><span>Charts </span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="forms.html">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#survey-1"> </use>
-                            </svg><span>Forms </span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#exampledropdownDropdown" data-bs-toggle="collapse">
+                    <li class="sidebar-item"><a class="sidebar-link" href="#elevesDropdown" data-bs-toggle="collapse">
                             <svg class="svg-icon svg-icon-sm svg-icon-heavy">
                                 <use xlink:href="#browser-window-1"> </use>
-                            </svg><span>Example dropdown </span></a>
-                        <ul class="collapse list-unstyled " id="exampledropdownDropdown">
-                            <li><a class="sidebar-link" href="#">Page</a></li>
-                            <li><a class="sidebar-link" href="#">Page</a></li>
-                            <li><a class="sidebar-link" href="#">Page</a></li>
+                            </svg><span>Eleves </span></a>
+                        <ul class="collapse list-unstyled " id="elevesDropdown">
+                            <li><a class="sidebar-link" href="{{ path('eleveLister') }}">Liste des élèves</a></li>
+                            <li><a class="sidebar-link" href="{{ path('eleveAjouter') }}">Ajouter un élève</a></li>
                         </ul>
                     </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#instrumentsDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Instruments </span></a>
+                        <ul class="collapse list-unstyled " id="instrumentsDropdown">
+                            <li><a class="sidebar-link" href="{{ path('instrumentLister') }}">Liste des instruments</a></li>
+                            <li><a class="sidebar-link" href="{{ path('instrumentAjouter') }}">Ajouter un instrument</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#contratsDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Contrats </span></a>
+                        <ul class="collapse list-unstyled " id="contratsDropdown">
+                            <li><a class="sidebar-link" href="{{ path('contratPretLister') }}">Liste des contrats</a></li>
+                            <li><a class="sidebar-link" href="{{ path('contratPretAjouter') }}">Ajouter un contrat</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#responsablesDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Responsables </span></a>
+                        <ul class="collapse list-unstyled " id="responsablesDropdown">
+                            <li><a class="sidebar-link" href="{{ path('responsableLister') }}">Liste des responsables</a></li>
+                            <li><a class="sidebar-link" href="{{ path('responsableAjouter') }}">Ajouter un responsable</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#coursDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Cours </span></a>
+                        <ul class="collapse list-unstyled " id="coursDropdown">
+                            <li><a class="sidebar-link" href="{{ path('coursLister') }}">Liste des cours</a></li>
+                            <li><a class="sidebar-link" href="{{ path('coursAjouter') }}">Ajouter un cours</a></li>
+
+                            <li><a class="sidebar-link" href="{{ path('inscriptionLister') }}">Inscriptions</a></li>
+                        </ul>
+                    </li>
+
                     <li class="sidebar-item"><a class="sidebar-link" href="login.html">
                             <svg class="svg-icon svg-icon-sm svg-icon-heavy">
                                 <use xlink:href="#disable-1"> </use>
@@ -290,8 +316,18 @@
                             </svg><span>Demo </span></a></li>
                 </ul>
             </nav>
-            {% block body %}
-            {% endblock %}
+            <div class="page-content">
+                {% block body %}
+                {% endblock %}
+                {% block footer %}
+                    <footer class="position-absolute bottom-0 bg-dash-dark-2 text-white text-center py-3 w-100 text-xs" id="footer">
+                        <div class="container-fluid text-center">
+                            <!-- Please do not remove the backlink to us unless you support us at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                            <p class="mb-0 text-dash-gray">2021 &copy; Your company. Design by <a href="https://bootstrapious.com">Bootstrapious</a>.</p>
+                        </div>
+                    </footer>
+                {% endblock %}
+            </div>
         </div>
 
         <script src="/23JPLGO/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

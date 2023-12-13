@@ -1,57 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier un élève !</title>
-</head>
-<body>
+{% extends 'base.html.twig' %}
 
-<h1>Modifier un élève</h1>
+{% block head %}
+    {{ parent() }}
+{% endblock %}
 
-<form action="{{ path('eleveModifier', { 'id': eleve.id }) }}" method="post">
-    {{ form_start(form) }}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
 
-    <label for="nom">Nom :</label>
-    {{ form_widget(form.nom) }}
-    <br>
+<br>
+<section class="pt-0">
+    <div class="container-fluid">
+        <div class="row gy-4">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="h4 mb-0">Modifier un cours</h3>
+                    </div>
+                    <div class="card-body pt-0">
+                        <form action="{{ path('eleveModifier', { 'id': eleve.id }) }}" method="post">
+                        {{ form_start(form) }}
+                            <div class="mb-3">
+                                <label for="nom">Nom :</label>
+                                {{ form_widget(form.nom) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="prenom">Prénom :</label>
+                                {{ form_widget(form.prenom) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="numRue">Numéro de Rue :</label>
+                                {{ form_widget(form.numRue) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="rue">Rue :</label>
+                                {{ form_widget(form.rue) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="copos">Code Postal :</label>
+                                {{ form_widget(form.copos) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="ville">Ville :</label>
+                                {{ form_widget(form.ville) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="tel">Téléphone :</label>
+                                {{ form_widget(form.tel) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="mail">Mail :</label>
+                                {{ form_widget(form.mail) }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="responsables">Responsable :</label>
+                                {{ form_widget(form.responsables) }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_end(form) }}
+                        </form>
 
-    <label for="prenom">Prénom :</label>
-    {{ form_widget(form.prenom) }}
-    <br>
 
-    <label for="numRue">Numéro de Rue :</label>
-    {{ form_widget(form.numRue) }}
-    <br>
-
-    <label for="rue">Rue :</label>
-    {{ form_widget(form.rue) }}
-    <br>
-
-    <label for="copos">Code Postal :</label>
-    {{ form_widget(form.copos) }}
-    <br>
-
-    <label for="ville">Ville :</label>
-    {{ form_widget(form.ville) }}
-    <br>
-
-    <label for="tel">Téléphone :</label>
-    {{ form_widget(form.tel) }}
-    <br>
-
-    <label for="mail">Mail :</label>
-    {{ form_widget(form.mail) }}
-    <br>
-
-    <label for="responsables">Responsable :</label>
-    {{ form_widget(form.responsables) }}
-    <br>
-
-    {{ form_end(form) }}
-    <br>
-
-</form>
-
-</body>
-</html>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

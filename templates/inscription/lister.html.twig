@@ -10,14 +10,14 @@
 {% block body %}
     <div class="bg-dash-dark-2 py-4">
         <div class="container-fluid">
-            <h2 class="h5 mb-0">Elèves</h2>
+            <h2 class="h5 mb-0">Inscriptions</h2>
         </div>
     </div>
 
     <div class="container-fluid py-2">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 py-3 px-0">
-                <li class="breadcrumb-item"><a href="{{ path('eleveLister') }}">Eleves</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('inscriptionLister') }}">Inscriptions</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Liste</li>
             </ol>
         </nav>
@@ -35,45 +35,35 @@
                                     <table class="table mb-0 table-striped table-hover">
 
     <tr>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Numéro de Rue</th>
-        <th>Rue</th>
-        <th>Code Postal</th>
-        <th>Ville</th>
-        <th>Téléphone</th>
-        <th>Mail</th>
+        <th>Date d'Inscription</th>
+        <th>Eleve</th>
+        <th>Cours</th>
         <th></th>
         <th>Actions</th>
         <th></th>
     </tr>
 
-    {% for eleve in pEleve %}
+    {% for inscription in pInscription %}
         <tr>
-            <td><a href="{{ path('eleveConsulter', { 'id': eleve.id }) }}">{{ eleve.nom }}</a></td>
-            <td>{{ eleve.prenom }}</td>
-            <td>{{ eleve.numRue }}</td>
-            <td>{{ eleve.rue }}</td>
-            <td>{{ eleve.copos }}</td>
-            <td>{{ eleve.ville }}</td>
-            <td>{{ eleve.tel }}</td>
-            <td>{{ eleve.mail }}</td>
+            <td>{{ inscription.dateInscription | date('d-m-y') }}</td>
+            <td>{{ inscription.eleve.nom }} {{ inscription.eleve.prenom }}</td>
+            <td>{{ inscription.cours.libelle }}</td>
             <td>
-                <a href="{{ path('eleveConsulter', { 'id': eleve.id }) }}">
+                <a href="{{ path('inscriptionConsulter', { 'id': inscription.id }) }}">
                     <button type="button" class="btn btn-outline-success">
                         <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/consultIcon.png" width="30px" height="30px">
                     </button>
                 </a>
             </td>
             <td>
-                <a href="{{ path('eleveModifier', { 'id': eleve.id }) }}">
+                <a href="{{ path('inscriptionModifier', { 'id': inscription.id }) }}">
                     <button type="button" class="btn btn-outline-secondary">
                         <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
                     </button>
                 </a>
             </td>
             <td>
-                <a href="{{ path('eleveSupprimer', { 'id': eleve.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cet élève');">
+                <a href="{{ path('inscriptionSupprimer', { 'id': inscription.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cette inscription');">
                     <button type="button" class="btn btn-outline-danger">
                         <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
                     </button>
@@ -82,12 +72,16 @@
         </tr>
     {% else %}
         <tr>
-            <td colspan="9">Aucun élève n'a été trouvé.</td>
+            <td colspan="9">Aucune inscription n'a été trouvé.</td>
         </tr>
     {% endfor %}
+            <td>
+                <a href="{{ path('inscriptionAjouter') }}" >
+                    <button type="button" class="btn btn-outline-danger">
+                        Ajouter une Inscription
+                    </button>
+                </a>
+            </td>
 </table>
     </div>
-{% endblock %}
-{% block footer %}
-    {{ parent() }}
 {% endblock %}

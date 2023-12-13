@@ -1,53 +1,98 @@
 {% extends 'base.html.twig' %}
 
-	{% block head %}
-        {{ parent() }}
-    {% endblock %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
 
-	{% block header %}
-        {{ parent() }}
-    {% endblock %}
-	{% block body %}
-        <div class="page-content">
-            LISTE DES ELEVES
-
-            <table>
-
-                {% for responsable in responsables %}
-
-                    <tr><td><a href="{{ path('responsableConsulter', { 'id': responsable.id }) }}">{{ responsable.nom }}{{ responsable.prenom }}</a></td>
-                    <tr><td>Nom : </td><td>{{responsable.nom}}</td>
-                    <tr><td>Prenom : </td><td>{{responsable.prenom}}</td>
-                    <tr><td>Numéro de Rue :</td><td>{{ responsable.numRue }}</a></td>
-                    <tr><td>Rue :</td><td>{{ responsable.rue }}</a></td>
-                    <tr><td>Code Postal :</td><td>{{ responsable.copos }}</td>
-                    <tr><td>Ville :</td><td>{{ responsable.ville }}</td>
-                    <tr><td>Téléphone :</td><td>{{ responsable.tel }}</td>
-                    <tr><td>Mail :</td><td>{{ responsable.mail }}</td>
-
-                    <tr><td></td><td></td>
-                    <tr><td></td><td></td>
-                    </tr>
-                    <td>
-                        <form action="{{  path('responsableModifier', {'id': responsable.id}) }}" method="post">
-                            <input type="hidden" name="_method" value="UPDATE">
-                            <button type="submit">Modifier</button>
-                        </form>
-
-                        <form action="{{  path('responsableSupprimer', {'id': responsable.id}) }}" method="post">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit">Supprimer</button>
-                        </form>
-
-                    </td>
-                    <br>
-                {% else %}
-                    <tr>
-                        <td>Aucun élève n'a été trouvé.</td>
-                    </tr>
-                {% endfor %}
-
-
-            </table>
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="bg-dash-dark-2 py-4">
+        <div class="container-fluid">
+            <h2 class="h5 mb-0">Responsables</h2>
         </div>
-    {% endblock %}
+    </div>
+    <!-- Breadcrumb-->
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('responsableLister') }}">Responsables</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Liste</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="tables py-0">
+        <div class="container-fluid">
+            <div class="row gy-4">
+                <div class="col-xxl-12">
+                    <div class="card mb-0">
+                        <div class="card-header">
+                            <h3 class="h4 mb-0">Liste des responsables</h3>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Responsable</th>
+                                        <th>Eleves</th>
+                                        <th></th>
+                                        <th>Actions</th>
+                                        <th></th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for responsable in responsables %}
+                                        <tr>
+                                            <th scope="row">{{ responsable.id }}</th>
+                                            <td>{{ responsable.prenom ~ " " ~ responsable.nom }}</td>
+                                            <td>
+                                                {% for eleve in responsable.eleves %}
+                                                    {{ eleve.nom ~ ' ' ~ eleve.prenom }}
+                                                {% endfor %}
+                                            </td>
+                                            <td>
+                                                <a href="{{ path('responsableConsulter', { 'id': responsable.id }) }}">
+                                                    <button type="button" class="btn btn-outline-success">
+                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/consultIcon.png" width="30px" height="30px">
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ path('responsableModifier', { 'id': responsable.id }) }}">
+                                                    <button type="button" class="btn btn-outline-secondary">
+                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ path('responsableSupprimer', { 'id': responsable.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer');">
+                                                    <button type="button" class="btn btn-outline-danger">
+                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <div class="col-lg-4">
+                                            {{ "Aucun contrat de prêt n'a été trouvé." }}
+                                        </div>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+
+{% endblock %}
