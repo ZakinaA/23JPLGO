@@ -125,15 +125,17 @@
         </table>
     </div>
 
+        <tr><td></td></tr>
 
-    <tr><td>Cours : </td>
+
+        <tr><td><strong>Cours : </strong></td>
         <td>
             <table class="table">
-                <th> scope="col" style="...">Cours libelle</th>
-                <th> scope="col" style="...">Type d'Instrument</th>
-                <th> scope="col" style="...">Jour</th>
-                <th> scope="col" style="...">Heure début</th>
-                <th> scope="col" style="...">Heure fin</th>
+                <th scope="col" style="">Nom du Cours</th>
+                <th scope="col" style="">Type d'Instrument</th>
+                <th scope="col" style="">Jour</th>
+                <th scope="col" style="">Heure début</th>
+                <th scope="col" style="">Heure fin</th>
                     {% for inscription in eleve.inscriptions %}
                         <tr>
                         <td>
@@ -156,10 +158,14 @@
                         Pas de cours inscrits
                     {% endfor %}
             </table>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
 
 {% endblock %}
 {% block footer %}
     {{ parent() }}
-
 {% endblock %}
