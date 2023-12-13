@@ -6,6 +6,7 @@ use App\Entity\Eleve;
 use App\Entity\Instrument;
 use App\Entity\Responsable;
 use App\Entity\Professeur;
+use App\Entity\TypeInstrument;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -32,10 +33,10 @@ class ProfesseurType extends AbstractType
             ->add('ville', TextType::class, array('attr' => ['class' => 'form-control']))
             ->add('tel', NumberType::class, array('attr' => ['class' => 'form-control']))
             ->add('mail', TextType::class, array('attr' => ['class' => 'form-control']))
-            ->add('instruments', EntityType::class, [
-                'class' => Instrument::class,
-                'choice_label' => function ($instrument) {
-                return $instrument->getNumSerie();
+            ->add('typeInstrument', EntityType::class, [
+                'class' => TypeInstrument::class,
+                'choice_label' => function ($typeInstrument) {
+                return $typeInstrument->getLibelle();
                 },
                 'multiple' => true,
                 'expanded' => false,

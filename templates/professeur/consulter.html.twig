@@ -53,16 +53,16 @@
                                             <th scope="row">{{ professeur.id }}</th>
                                             <td>{{ professeur.prenom ~ " " ~ professeur.nom }}</td>
                                             <td>
-                                                {% for instrument in professeur.instruments %}
-                                                    {{ instrument.numSerie }}
+                                                {% for typeInstrument in professeur.typeInstrument %}
+                                                    {{ typeInstrument.libelle }}
                                                 {% endfor %}
                                             </td>
-                                            <td>{{ responsable.numRue }}</td>
-                                            <td>{{ responsable.rue }}</td>
-                                            <td>{{ responsable.copos }}</td>
-                                            <td>{{ responsable.ville }}</td>
-                                            <td>{{ responsable.tel }}</td>
-                                            <td>{{ responsable.mail }}</td>
+                                            <td>{{ professeur.numRue }}</td>
+                                            <td>{{ professeur.rue }}</td>
+                                            <td>{{ professeur.copos }}</td>
+                                            <td>{{ professeur.ville }}</td>
+                                            <td>{{ professeur.tel }}</td>
+                                            <td>{{ professeur.mail }}</td>
                                             <td>
                                                 <a href="{{ path('professeurModifier', { 'id': professeur.id }) }}">
                                                     <button type="button" class="btn btn-outline-secondary">
@@ -71,7 +71,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="{{ path('professeurSupprimer', { 'id': responsable.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce professeur');">
+                                                <a href="{{ path('professeurSupprimer', { 'id': professeur.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce professeur');">
                                                     <button type="button" class="btn btn-outline-danger">
                                                         <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
                                                     </button>

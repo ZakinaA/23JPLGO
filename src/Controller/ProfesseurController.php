@@ -47,7 +47,7 @@ class ProfesseurController extends AbstractController
 
         $professeur = $repository->findAll();
         return $this->render('professeur/lister.html.twig', [
-            'pProfesseur' => $professeur,]);
+            'professeurs' => $professeur,]);
     }
 
 

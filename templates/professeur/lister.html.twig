@@ -50,12 +50,12 @@
                                             <th scope="row">{{ professeur.id }}</th>
                                             <td>{{ professeur.prenom ~ " " ~ professeur.nom }}</td>
                                             <td>
-                                                {% for instrument in professeur.eleves %}
-                                                    {{ instrument.numSerie }}
+                                                {% for typeInstrument in professeur.typeInstrument %}
+                                                    {{ typeInstrument.libelle }}
                                                 {% endfor %}
                                             </td>
                                             <td>
-                                                <a href="{{ path('professeurConsulter', { 'id': responsable.id }) }}">
+                                                <a href="{{ path('professeurConsulter', { 'id': professeur.id }) }}">
                                                     <button type="button" class="btn btn-outline-success">
                                                         <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/consultIcon.png" width="30px" height="30px">
                                                     </button>
@@ -69,7 +69,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="{{ path('professeurSupprimer', { 'id': responsable.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce professeur');">
+                                                <a href="{{ path('professeurSupprimer', { 'id': professeur.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce professeur');">
                                                     <button type="button" class="btn btn-outline-danger">
                                                         <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
                                                     </button>
