@@ -27,7 +27,7 @@ class eleveController extends AbstractController
 
         if (!$eleve) {
             throw $this->createNotFoundException(
-                'Aucun cours trouvé avec le numéro ' . $id
+                'Aucun élève trouvé avec le numéro ' . $id
             );
         }
 
