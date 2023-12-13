@@ -9,17 +9,16 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-    <div class="page-content">
-<h5>AJOUTER UN INSTRUMENT</h5>
-        <section class="pt-0">
-            <div class="container-fluid">
-                <div class="row gy-4">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="h4 mb-0">Ajouter un contrat de prêt</h3>
-                            </div>
-                            <div class="card-body pt-0">
+<br>
+<section class="pt-0">
+    <div class="container-fluid">
+        <div class="row gy-4">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="h4 mb-0">Ajouter un instrument</h3>
+                    </div>
+                    <div class="card-body pt-0">
 
 <form method="post" action="{{ path('instrumentAjouter') }}">
     {{ form_start(form) }}
@@ -27,11 +26,16 @@
     {{ form_end(form) }}
 </form>
 
-<!-- Add a link to go to the lister page -->
+
 <a href="{{ path('instrumentLister') }}">Voir la liste des instruments</a>
 
-<!-- Add any additional content or scripts as needed -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 {% endblock %}
 
 {% block footer %}

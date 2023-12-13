@@ -8,19 +8,30 @@
         {{ parent() }}
     {% endblock %}
 	{% block body %}
-        <div class="page-content">
-            <h5>PAGE DE CONSULTATION D'UN INSTRUMENT</h5>
-            <p>
-        <section class="tables py-0">
+    <div class="bg-dash-dark-2 py-4">
         <div class="container-fluid">
-        <div class="row gy-4">
-        <div class="col-xxl-12">
-        <div class="card mb-0">
-        <div class="card-header">
-            <h3 class="h4 mb-0">Consultation de l'instrument {{ 'n° ' ~ instrument.id }}</h3>
+            <h2 class="h5 mb-0">Instruments</h2>
         </div>
-        <div class="card-body pt-0">
-        <div class="table-responsive">
+    </div>
+<!-- Breadcrumb-->
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('instrumentLister') }}">Instruments</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Instrument {{ instrument.id }}</li>
+            </ol>
+        </nav>
+    </div>
+<section class="tables py-0">
+    <div class="container-fluid">
+        <div class="row gy-4">
+            <div class="col-xxl-12">
+                <div class="card mb-0">
+                    <div class="card-header">
+                        <h3 class="h4 mb-0">Consultation de l'instrument {{ 'n° ' ~ instrument.id }}</h3>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="table-responsive">
             <table class="table mb-0 table-striped table-hover">
                 <tr><td>Id : </td><td>{{ instrument.id }} </td></tr>
                 <tr><td>Nom : </td><td>{{ instrument.numSerie }}</td>
@@ -47,7 +58,13 @@
             </table>
             <!-- Button to go back to the list of instruments -->
             <a href="{{ path('instrumentLister') }}">Retour à la liste des instruments</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+
     {% endblock %}
     {% block footer %}
         {{ parent() }}
