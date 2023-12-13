@@ -2,6 +2,9 @@
 
 namespace App\Form;
 
+
+use App\Entity\Couleur;
+use App\Entity\Eleve;
 use App\Entity\ContratPret;
 use App\Entity\Couleur;
 use App\Entity\Eleve;
@@ -36,5 +39,6 @@ class ContratPretType extends AbstractType
             ->add('dateDebut', DateType::class, ['widget' => 'single_text', 'format' => 'yyyy-MM-dd', 'attr' => ['class' => 'form-control']])
             ->add('dateFin', DateType::class, ['widget' => 'single_text', 'format' => 'yyyy-MM-dd', 'attr' => ['class' => 'form-control']])
             ->add('save', SubmitType::class, array('label' => 'Créer', 'attr' => ['class' => 'btn btn-primary']));
+
     }
 }

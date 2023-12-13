@@ -10,7 +10,7 @@
 {% block body %}
 
 
-<h1>Inscription Élève à un Cours</h1>
+    <h1>Inscription Élève à un Cours</h1>
 
 <p>
     Vous êtes sur le point d'inscrire l'élève {{ eleve.nom }} {{ eleve.prenom }} au "{{ cours.libelle }}".
@@ -18,11 +18,12 @@
 </p>
 
 <form action="{{ path('inscription_eleve_cours', {'idCours': cours.id, 'idEleve': eleve.id}) }}" method="post">
-    {# Ajoutez des champs supplémentaires ou des informations si nécessaire #}
     <button type="submit">Confirmer l'inscription</button>
 </form>
 
 {% endblock %}
+
 {% block footer %}
     {{ parent() }}
 {% endblock %}
+

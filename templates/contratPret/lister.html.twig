@@ -13,6 +13,7 @@
         <div class="container-fluid">
             <h2 class="h5 mb-0">Contrats</h2>
         </div>
+
     </div>
     <!-- Breadcrumb-->
     <div class="container-fluid py-2">
@@ -23,6 +24,7 @@
             </ol>
         </nav>
     </div>
+
     <section class="tables py-0">
         <div class="container-fluid">
             <div class="row gy-4">
@@ -50,7 +52,9 @@
                                         <tr>
                                             <th scope="row">{{ contratPret.id }}</th>
                                             <td>{{ contratPret.eleve.prenom ~ " " ~ contratPret.eleve.nom }}</td>
+
                                             <td>{{ contratPret.instrument.TypeInstrument.libelle ~ " n° " ~ contratPret.instrument.numSerie }}</td>
+
                                             <td>{{ contratPret.etatDetailleDebut }}</td>
                                             <td>{{ contratPret.etatDetailleRetour }}</td>
                                             <td>{{ contratPret.dateDebut|date("d/m/Y") }}</td>
@@ -91,7 +95,9 @@
             </div>
         </div>
     </section>
+
 {% endblock %}
 {% block footer %}
     {{ parent() }}
+
 {% endblock %}

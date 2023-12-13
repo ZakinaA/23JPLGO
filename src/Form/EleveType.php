@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Eleve;
 use App\Entity\Responsable;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -20,15 +21,15 @@ class EleveType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom', TextType::class)
-            ->add('prenom',)
-            ->add('numRue',)
-            ->add('rue',)
-            ->add('copos')
-            ->add('ville')
-            ->add('tel')
-            ->add('mail')
 
+            ->add('nom', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('prenom', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('numRue', NumberType::class, array('attr' => ['class' => 'form-control']))
+            ->add('rue', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('copos', NumberType::class, array('attr' => ['class' => 'form-control']))
+            ->add('ville', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('tel', NumberType::class, array('attr' => ['class' => 'form-control']))
+            ->add('mail', TextType::class, array('attr' => ['class' => 'form-control']))
             ->add('responsables', EntityType::class, [
                 'class' => Responsable::class,
                 'choice_label' => function ($responsable) {
@@ -39,6 +40,7 @@ class EleveType extends AbstractType
                 'constraints' => [
                     new Count(['max' => 2, 'maxMessage' => 'Vous ne pouvez sélectionner que deux responsables maximum']),
                 ],
+                'attr' => ['class' => 'form-control']
             ])
             ->add('enregistrer', SubmitType::class, array('label' => 'Nouvel Eleve'))
         ;

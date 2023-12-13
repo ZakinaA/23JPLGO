@@ -11,18 +11,32 @@
     <div class="page-content">
         <h5>MODIFICATION D'UN INSTRUMENT</h5>
 
+    <section class="pt-0">
+    <div class="container-fluid">
+    <div class="row gy-4">
+    <div class="col-lg-12">
+    <div class="card">
+    <div class="card-header">
+        <h3 class="h4 mb-0">Ajouter un contrat de prêt</h3>
+    </div>
+    <div class="card-body pt-0">
         <form method="post" action="{{ path('instrumentModifier', {'id': instrument.id}) }}">
             {{ form_start(form) }}
 
-            <label for="numSerie"></label>
-            {{ form_row(form.numSerie) }}
+
+            <div class="mb-3">
+                <label class="form-label" for="exampleInputEmail1">Nom de l'élève</label>
+                {{ form_widget(form.numSerie) }}
+            </div>
+            <div class="mb-3">
 
             <label for="dateAchat"></label>
             {{ form_row(form.dateAchat) }}
-
-            <label for="prixAchat"></label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="exampleInputPassword1"></label>
             {{ form_row(form.prixAchat) }}
-
+            </div>
             <label for="utilisation">Utilisation :</label>
             {{ form_row(form.utilisation) }}
 
@@ -48,6 +62,12 @@
 
             {{ form_end(form) }}
         </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
 
         <!-- Add a link to go back to the consultation page -->
         <a href="{{ path('instrumentConsulter', {'id': instrument.id}) }}">Retour à la consultation</a>

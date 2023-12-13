@@ -1,4 +1,3 @@
-{# templates/contratPret/ajouter.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block head %}
@@ -28,7 +27,9 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword1">Instrument emprunté</label>
                                     {{ form_widget(form.instrument) }}
+
                                 </div>
+
                                 <div class="mb-4"></div>
                                 <div class="row">
                                     <div class="mb-3">
@@ -37,10 +38,12 @@
                                         <div class="form-text">Sélectionnez un document.</div>
                                     </div>
                                 </div>
+
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword1">Sélectionnez une intervention</label>
                                     {{ form_widget(form.interventions) }}
                                 </div>
+
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword1">Etat de départ</label>
                                     {{ form_widget(form.etatDetailleDebut) }}
@@ -70,7 +73,9 @@
             </div>
         </div>
     </section>
+
 {% endblock %}
 {% block footer %}
     {{ parent() }}
+
 {% endblock %}

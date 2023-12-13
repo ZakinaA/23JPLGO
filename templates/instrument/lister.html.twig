@@ -35,7 +35,11 @@
             <th><a href="{{ path('instrumentLister', {'sort': 'marque', 'order': (sortField == 'marque' and sortOrder == 'asc' ? 'desc' : 'asc')}) }}">Marque</a></th>
             <th><a href="{{ path('instrumentLister', {'sort': 'TypeInstrument', 'order': (sortField == 'TypeInstrument' and sortOrder == 'asc' ? 'desc' : 'asc')}) }}">Type d'Instrument</a></th>
             <th>Classe d'Instrument</th>
+
+            <th></th>
             <th>Actions</th>
+            <th></th>
+
         </tr>
 
         <!-- Modify the loop to display instrument details as before -->
@@ -85,6 +89,7 @@
     {% endif %}
         </div>
     {% endblock %}
+
     {% block footer %}
         {{ parent() }}
     {% endblock %}
