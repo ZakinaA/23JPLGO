@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="bg-dash-dark-2 py-4">
+        <div class="container-fluid">
+            <h2 class="h5 mb-0">Professeurs</h2>
+        </div>
+    </div>
+    <!-- Breadcrumb-->
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('professeurLister') }}">Professeurs</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ 'Professeur n° ' ~ professeur.id }}</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="tables py-0">
+        <div class="container-fluid">
+            <div class="row gy-4">
+                <div class="col-xxl-12">
+                    <div class="card mb-0">
+                        <div class="card-header">
+
+                            <h3 class="h4 mb-0">{{ 'Consultation du professeur n°' ~ professeur.id }}</h3>
+
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Professeur</th>
+                                        <th>Eleves</th>
+                                        <th>Numéro de rue</th>
+                                        <th>Rue</th>
+                                        <th>Code postal</th>
+                                        <th>Ville</th>
+                                        <th>Téléphone</th>
+                                        <th>Mail</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">{{ professeur.id }}</th>
+                                            <td>{{ professeur.prenom ~ " " ~ professeur.nom }}</td>
+                                            <td>
+                                                {% for instrument in professeur.instruments %}
+                                                    {{ instrument.numSerie }}
+                                                {% endfor %}
+                                            </td>
+                                            <td>{{ responsable.numRue }}</td>
+                                            <td>{{ responsable.rue }}</td>
+                                            <td>{{ responsable.copos }}</td>
+                                            <td>{{ responsable.ville }}</td>
+                                            <td>{{ responsable.tel }}</td>
+                                            <td>{{ responsable.mail }}</td>
+                                            <td>
+                                                <a href="{{ path('professeurModifier', { 'id': professeur.id }) }}">
+                                                    <button type="button" class="btn btn-outline-secondary">
+                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ path('professeurSupprimer', { 'id': responsable.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce professeur');">
+                                                    <button type="button" class="btn btn-outline-danger">
+                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+
+{% endblock %}
