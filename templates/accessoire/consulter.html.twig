@@ -26,24 +26,7 @@
                                     </table>
                                 </div>
 
-                                <!-- Display instruments using the accessory -->
-                                <h6>Instruments liés à cet accessoire :</h6>
-                                <div class="card-body pt-0">
-                                    <div class="table-responsive">
-                                        <table class="table mb-0 table-striped table-sm">
-                                            <tr>
-                                                <th>ID de l'Instrument :</th>
-                                                <th>Nom de l'Instrument :</th>
-                                            </tr>
-                                            {% for instrument in accessoire.instruments %}
-                                                <tr>
-                                                    <td>{{ instrument.id }}</td>
-                                                    <td>{{ instrument.numSerie }}</td>
-                                                </tr>
-                                            {% endfor %}
-                                        </table>
-                                    </div>
-                                </div>
+
 
                                 <!-- Button to go back to the list of accessories -->
                                 <a href="{{ path('accessoireLister') }}">Retour à la liste des accessoires</a>
