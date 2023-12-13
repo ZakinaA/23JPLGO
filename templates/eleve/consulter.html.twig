@@ -125,6 +125,7 @@
         </table>
     </div>
 
+
     <tr><td>Cours : </td>
         <td>
             <table class="table">
@@ -155,5 +156,10 @@
                         Pas de cours inscrits
                     {% endfor %}
             </table>
+
+
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
 
 {% endblock %}

@@ -26,17 +26,42 @@ class InstrumentController extends AbstractController
         ]);
     }
 
-    public function lister(ManagerRegistry $doctrine)
+    /**
+     * @Route("/instrument/lister", name="instrumentLister")
+     */
+    public function lister(Request $request, ManagerRegistry $doctrine): Response
     {
+        $searchTerm = $request->query->get('search');
+        $sortField = $request->query->get('sort', 'numSerie');
+        $sortOrder = $request->query->get('order', 'asc');
 
         $repository = $doctrine->getRepository(Instrument::class);
+        $queryBuilder = $repository->createQueryBuilder('i');
 
-        $instruments = $repository->findAll();
+        // Join the related entities for sorting
+        $queryBuilder
+            ->leftJoin('i.marque', 'm')
+            ->leftJoin('i.TypeInstrument', 'ti')
+            ->leftJoin('ti.ClasseInstrument', 'ci');
+
+        // Add search condition if a search term is provided
+        if ($searchTerm) {
+            $queryBuilder
+                ->andWhere('i.numSerie LIKE :searchTerm OR m.libelle LIKE :searchTerm OR ti.libelle LIKE :searchTerm OR ci.libelle LIKE :searchTerm')
+                ->setParameter('searchTerm', '%' . $searchTerm . '%');
+        }
+
+        // Add sorting
+        $queryBuilder->orderBy("i.{$sortField}", $sortOrder);
+
+        $instruments = $queryBuilder->getQuery()->getResult();
+
         return $this->render('instrument/lister.html.twig', [
-            'pInstruments' => $instruments,]);
-
+            'pInstruments' => $instruments,
+            'sortField' => $sortField,
+            'sortOrder' => $sortOrder,
+        ]);
     }
-
 
     public function consulter(ManagerRegistry $doctrine, int $id)
     {
@@ -123,5 +148,21 @@ class InstrumentController extends AbstractController
 
         // Redirect to the list page or any other route
         return $this->redirectToRoute('instrumentLister');
+    }
+
+    public function findBySearchTerm(string $searchTerm)
+    {
+        // Customize this method based on your entity associations
+        $queryBuilder = $this->createQueryBuilder('i')
+            ->leftJoin('i.marque', 'm')
+            ->leftJoin('i.TypeInstrument', 't')
+            ->leftJoin('t.ClasseInstrument', 'c')
+            ->where('i.numSerie LIKE :searchTerm')
+            ->orWhere('m.libelle LIKE :searchTerm')
+            ->orWhere('t.libelle LIKE :searchTerm')
+            ->orWhere('c.libelle LIKE :searchTerm')
+            ->setParameter('searchTerm', '%'.$searchTerm.'%');
+
+        return $queryBuilder->getQuery()->getResult();
     }
 }

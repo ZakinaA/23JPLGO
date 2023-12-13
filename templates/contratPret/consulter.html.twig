@@ -46,7 +46,9 @@
                                             Instrument
                                         </th>
                                         <td>
-                                            {{ contratPret.instrument.TypeInstrument.libelle ~ " n° " ~ contratPret.instrument.id }}
+
+                                            {{ contratPret.instrument.TypeInstrument.libelle ~ " " ~ contratPret.instrument.numSerie }}
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -74,8 +76,12 @@
                                             Interventions
                                         </th>
                                         <td>
-                                            {% for interPret in contratPret.interPrets %}
-                                                {{ interPret.intervention.id }}
+
+                                            {% for intervention in contratPret.interventions %}
+                                                <a href="{{ path('interventionConsulter', { 'id': intervention.id }) }}">
+                                                    {{ intervention.id }}
+                                                </a>
+
                                             {% endfor %}
                                         </td>
                                     </tr>
@@ -133,4 +139,9 @@
             </div>
         </div>
     </section>
+
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+
 {% endblock %}

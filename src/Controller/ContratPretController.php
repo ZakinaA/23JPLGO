@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\ContratPret;
 use App\Entity\Eleve;
+use App\Form\ContratPretModifierType;
 use App\Form\ContratPretType;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
@@ -38,7 +39,6 @@ class ContratPretController extends AbstractController
         ]);
     }
 
-    //#[Route('/contratPret/ajouter', name: 'ajouter')]
     public function ajouter(Request $request, PersistenceManagerRegistry $doctrine):Response
     {
         $contratPret = new contratPret();
@@ -68,7 +68,7 @@ class ContratPretController extends AbstractController
             throw $this->createNotFoundException('Le contrat de Prêt n\'existe pas');
         }
 
-        $form = $this->createForm(ContratPretType::class, $contratPret);
+        $form = $this->createForm(ContratPretModifierType::class, $contratPret);
 
         $form->handleRequest($request);
 

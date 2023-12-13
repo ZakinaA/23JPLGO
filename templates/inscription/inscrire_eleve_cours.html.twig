@@ -18,8 +18,12 @@
 </p>
 
 <form action="{{ path('inscription_eleve_cours', {'idCours': cours.id, 'idEleve': eleve.id}) }}" method="post">
-    {# Ajoutez des champs supplémentaires ou des informations si nécessaire #}
     <button type="submit">Confirmer l'inscription</button>
 </form>
 
 {% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
+
