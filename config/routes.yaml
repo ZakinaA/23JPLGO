@@ -28,6 +28,116 @@ instrumentSupprimer:
     path: /instrument/supprimer/{id}
     controller: App\Controller\InstrumentController::supprimer
 
+# Routes type instrument
+
+typeInstrumentLister:
+    path: /typeinstrument/lister
+    controller: App\Controller\TypeInstrumentController::lister
+
+typeInstrumentConsulter:
+    path: /typeinstrument/consulter/{id}
+    controller: App\Controller\TypeInstrumentController::consulter
+
+typeInstrumentAjouter:
+    path: /typeinstrument/ajouter
+    controller: App\Controller\TypeInstrumentController::ajouter
+
+typeInstrumentModifier:
+    path: /typeinstrument/modifier/{id}
+    controller: App\Controller\TypeInstrumentController::modifier
+
+typeInstrumentSupprimer:
+    path: /typeinstrument/supprimer/{id}
+    controller: App\Controller\TypeInstrumentController::supprimer
+
+# Routes classe instrument
+
+classeInstrumentLister:
+    path: /classeinstrument/lister
+    controller: App\Controller\ClasseInstrumentController::lister
+
+classeInstrumentConsulter:
+    path: /classeinstrument/consulter/{id}
+    controller: App\Controller\ClasseInstrumentController::consulter
+
+classeInstrumentAjouter:
+    path: /classeinstrument/ajouter
+    controller: App\Controller\ClasseInstrumentController::ajouter
+
+classeInstrumentModifier:
+    path: /classeinstrument/modifier/{id}
+    controller: App\Controller\ClasseInstrumentController::modifier
+
+classeInstrumentSupprimer:
+    path: /classeinstrument/supprimer/{id}
+    controller: App\Controller\ClasseInstrumentController::supprimer
+
+# Routes couleur
+
+couleurLister:
+    path: /couleur/lister
+    controller: App\Controller\CouleurController::lister
+
+couleurConsulter:
+    path: /couleur/consulter/{id}
+    controller: App\Controller\CouleurController::consulter
+
+couleurAjouter:
+    path: /couleur/ajouter
+    controller: App\Controller\CouleurController::ajouter
+
+couleurModifier:
+    path: /couleur/modifier/{id}
+    controller: App\Controller\CouleurController::modifier
+
+couleurSupprimer:
+    path: /couleur/supprimer/{id}
+    controller: App\Controller\CouleurController::supprimer
+
+# Routes marque
+
+marqueLister:
+    path: /marque/lister
+    controller: App\Controller\MarqueController::lister
+
+marqueConsulter:
+    path: /marque/consulter/{id}
+    controller: App\Controller\MarqueController::consulter
+
+marqueAjouter:
+    path: /marque/ajouter
+    controller: App\Controller\MarqueController::ajouter
+
+marqueModifier:
+    path: /marque/modifier/{id}
+    controller: App\Controller\MarqueController::modifier
+
+marqueSupprimer:
+    path: /marque/supprimer/{id}
+    controller: App\Controller\MarqueController::supprimer
+
+# Routes accessoire
+
+accessoireLister:
+    path: /accessoire/lister
+    controller: App\Controller\AccessoireController::lister
+
+accessoireConsulter:
+    path: /accessoire/consulter/{id}
+    controller: App\Controller\AccessoireController::consulter
+
+accessoireAjouter:
+    path: /accessoire/ajouter
+    controller: App\Controller\AccessoireController::ajouter
+
+accessoireModifier:
+    path: /accessoire/modifier/{id}
+    controller: App\Controller\AccessoireController::modifier
+
+accessoireSupprimer:
+    path: /accessoire/supprimer/{id}
+    controller: App\Controller\AccessoireController::supprimer
+
 # Routes élèves
 
 eleveConsulter:
