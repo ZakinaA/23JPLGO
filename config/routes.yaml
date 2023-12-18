@@ -5,277 +5,277 @@ controllers:
 # Routes instrument
 
 app_instrument:
-    path: /instrument
+    path: /gestionnaire/instrument
     controller: App\Controller\InstrumentController::index
 
 instrumentLister:
-    path: /instrument/lister
+    path: /gestionnaire/instrument/lister
     controller: App\Controller\InstrumentController::lister
 
 instrumentConsulter:
-    path: /instrument/consulter/{id}
+    path: /gestionnaire/instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulter
 
 instrumentAjouter:
-    path: /instrument/ajouter
+    path: /gestionnaire/instrument/ajouter
     controller: App\Controller\InstrumentController::ajouter
 
 instrumentModifier:
-    path: /instrument/modifier/{id}
+    path: /gestionnaire/instrument/modifier/{id}
     controller: App\Controller\InstrumentController::modifier
 
 instrumentSupprimer:
-    path: /instrument/supprimer/{id}
+    path: /gestionnaire/instrument/supprimer/{id}
     controller: App\Controller\InstrumentController::supprimer
 
 # Routes type instrument
 
 typeInstrumentLister:
-    path: /typeinstrument/lister
+    path: /gestionnaire/typeinstrument/lister
     controller: App\Controller\TypeInstrumentController::lister
 
 typeInstrumentConsulter:
-    path: /typeinstrument/consulter/{id}
+    path: /gestionnaire/typeinstrument/consulter/{id}
     controller: App\Controller\TypeInstrumentController::consulter
 
 typeInstrumentAjouter:
-    path: /typeinstrument/ajouter
+    path: /gestionnaire/typeinstrument/ajouter
     controller: App\Controller\TypeInstrumentController::ajouter
 
 typeInstrumentModifier:
-    path: /typeinstrument/modifier/{id}
+    path: /gestionnaire/typeinstrument/modifier/{id}
     controller: App\Controller\TypeInstrumentController::modifier
 
 typeInstrumentSupprimer:
-    path: /typeinstrument/supprimer/{id}
+    path: /gestionnaire/typeinstrument/supprimer/{id}
     controller: App\Controller\TypeInstrumentController::supprimer
 
 # Routes classe instrument
 
 classeInstrumentLister:
-    path: /classeinstrument/lister
+    path: /gestionnaire/classeinstrument/lister
     controller: App\Controller\ClasseInstrumentController::lister
 
 classeInstrumentConsulter:
-    path: /classeinstrument/consulter/{id}
+    path: /gestionnaire/classeinstrument/consulter/{id}
     controller: App\Controller\ClasseInstrumentController::consulter
 
 classeInstrumentAjouter:
-    path: /classeinstrument/ajouter
+    path: /gestionnaire/classeinstrument/ajouter
     controller: App\Controller\ClasseInstrumentController::ajouter
 
 classeInstrumentModifier:
-    path: /classeinstrument/modifier/{id}
+    path: /gestionnaire/classeinstrument/modifier/{id}
     controller: App\Controller\ClasseInstrumentController::modifier
 
 classeInstrumentSupprimer:
-    path: /classeinstrument/supprimer/{id}
+    path: /gestionnaire/classeinstrument/supprimer/{id}
     controller: App\Controller\ClasseInstrumentController::supprimer
 
 # Routes couleur
 
 couleurLister:
-    path: /couleur/lister
+    path: /gestionnaire/couleur/lister
     controller: App\Controller\CouleurController::lister
 
 couleurConsulter:
-    path: /couleur/consulter/{id}
+    path: /gestionnaire/couleur/consulter/{id}
     controller: App\Controller\CouleurController::consulter
 
 couleurAjouter:
-    path: /couleur/ajouter
+    path: /gestionnaire/couleur/ajouter
     controller: App\Controller\CouleurController::ajouter
 
 couleurModifier:
-    path: /couleur/modifier/{id}
+    path: /gestionnaire/couleur/modifier/{id}
     controller: App\Controller\CouleurController::modifier
 
 couleurSupprimer:
-    path: /couleur/supprimer/{id}
+    path: /gestionnaire/couleur/supprimer/{id}
     controller: App\Controller\CouleurController::supprimer
 
 # Routes marque
 
 marqueLister:
-    path: /marque/lister
+    path: /gestionnaire/marque/lister
     controller: App\Controller\MarqueController::lister
 
 marqueConsulter:
-    path: /marque/consulter/{id}
+    path: /gestionnaire/marque/consulter/{id}
     controller: App\Controller\MarqueController::consulter
 
 marqueAjouter:
-    path: /marque/ajouter
+    path: /gestionnaire/marque/ajouter
     controller: App\Controller\MarqueController::ajouter
 
 marqueModifier:
-    path: /marque/modifier/{id}
+    path: /gestionnaire/marque/modifier/{id}
     controller: App\Controller\MarqueController::modifier
 
 marqueSupprimer:
-    path: /marque/supprimer/{id}
+    path: /gestionnaire/marque/supprimer/{id}
     controller: App\Controller\MarqueController::supprimer
 
 # Routes accessoire
 
 accessoireLister:
-    path: /accessoire/lister
+    path: /gestionnaire/accessoire/lister
     controller: App\Controller\AccessoireController::lister
 
 accessoireConsulter:
-    path: /accessoire/consulter/{id}
+    path: /gestionnaire/accessoire/consulter/{id}
     controller: App\Controller\AccessoireController::consulter
 
 accessoireAjouter:
-    path: /accessoire/ajouter
+    path: /gestionnaire/accessoire/ajouter
     controller: App\Controller\AccessoireController::ajouter
 
 accessoireModifier:
-    path: /accessoire/modifier/{id}
+    path: /gestionnaire/accessoire/modifier/{id}
     controller: App\Controller\AccessoireController::modifier
 
 accessoireSupprimer:
-    path: /accessoire/supprimer/{id}
+    path: /gestionnaire/accessoire/supprimer/{id}
     controller: App\Controller\AccessoireController::supprimer
 
 # Routes élèves
 
 eleveConsulter:
-    path: /eleve/consulter/{id}
+    path: /gestionnaire/eleve/consulter/{id}
     controller: App\Controller\eleveController::consulter
 
 eleveLister:
-    path: /eleve/lister
+    path: /gestionnaire/eleve/lister
     controller: App\Controller\eleveController::lister
 
 eleveAjouter:
-    path: /eleve/ajouter
+    path: /gestionnaire/eleve/ajouter
     controller: App\Controller\eleveController::ajouter
 
 eleveModifier:
-    path: /eleve/modifier/{id}
+    path: /gestionnaire/eleve/modifier/{id}
     controller: App\Controller\eleveController::modifier
 
 eleveSupprimer:
-    path: /eleve/supprimer/{id}
+    path: /gestionnaire/eleve/supprimer/{id}
     controller: App\Controller\eleveController::supprimer
 
 
 # Routes Contrats de prêt
 contratPretLister:
-    path: /contratPret/lister
+    path: /gestionnaire/contratPret/lister
     controller: App\Controller\ContratPretController::lister
 
 contratPretConsulter:
-    path: /contratPret/consulter/{id}
+    path: /gestionnaire/contratPret/consulter/{id}
     controller: App\Controller\ContratPretController::consulter
 
 contratPretAjouter:
-    path: /contratPret/ajouter
+    path: /gestionnaire/contratPret/ajouter
     controller: App\Controller\ContratPretController::ajouter
 
 contratPretSupprimer:
-    path: /contratPret/supprimer/{id}
+    path: /gestionnaire/contratPret/supprimer/{id}
     controller: App\Controller\ContratPretController::supprimer
 
 contratPretModifier:
-    path: /contratPret/modifier/{id}
+    path: /gestionnaire/contratPret/modifier/{id}
     controller: App\Controller\ContratPretController::modifier
 
 # Routes responsables
 
 responsableConsulter:
-    path: /responsable/consulter/{id}
+    path: /gestionnaire/responsable/consulter/{id}
     controller: App\Controller\ResponsableController::consulter
 
 responsableLister:
-    path: /responsable/lister
+    path: /gestionnaire/responsable/lister
     controller: App\Controller\ResponsableController::lister
 
 responsableAjouter:
-    path: /responsable/ajouter
+    path: /gestionnaire/responsable/ajouter
     controller: App\Controller\ResponsableController::ajouter
 
 responsableModifier:
-    path: /responsable/modifier/{id}
+    path: /gestionnaire/responsable/modifier/{id}
     controller: App\Controller\ResponsableController::modifier
 
 responsableSupprimer:
-    path: /responsable/supprimer/{id}
+    path: /gestionnaire/responsable/supprimer/{id}
     controller: App\Controller\ResponsableController::supprimer
 
 # Route inscription
 
 inscriptionLister:
-    path: /inscription/lister
+    path: /gestionnaire/inscription/lister
     controller: App\Controller\InscriptionController::lister
 
 inscriptionConsulter:
-    path: /inscription/consulter/{id}
+    path: /gestionnaire/inscription/consulter/{id}
     controller: App\Controller\InscriptionController::consulter
 
 inscriptionAjouter:
-    path: /inscription/ajouter
+    path: /gestionnaire/inscription/ajouter
     controller: App\Controller\InscriptionController::ajouter
 
 inscriptionModifier:
-    path: /inscription/modifier/{id}
+    path: /gestionnaire/inscription/modifier/{id}
     controller: App\Controller\InscriptionController::modifier
 
 inscriptionSupprimer:
-    path: /inscription/supprimer/{id}
+    path: /gestionnaire/inscription/supprimer/{id}
     controller: App\Controller\InscriptionController::supprimer
 
 confirmation_inscription:
-    path: /confirmation_inscription
+    path: /gestionnaire/confirmation_inscription
     controller: App\Controller\ConfirmationController::confirmationInscription
 
 # Routes cours
 
 coursConsulter:
-    path: /cours/consulter/{id}
+    path: /gestionnaire/cours/consulter/{id}
     controller: App\Controller\coursController::consulter
 
 coursLister:
-    path: /cours/lister
+    path: /gestionnaire/cours/lister
     controller: App\Controller\coursController::lister
 
 coursAjouter:
-    path: /cours/ajouter
+    path: /gestionnaire/cours/ajouter
     controller: App\Controller\coursController::ajouter
 
 coursModifier:
-    path: /cours/modifier/{id}
+    path: /gestionnaire/cours/modifier/{id}
     controller: App\Controller\coursController::modifier
 
 coursSupprimer:
-    path: /cours/supprimer/{id}
+    path: /gestionnaire/cours/supprimer/{id}
     controller: App\Controller\coursController::supprimer
 
 # Routes professeur
 
 professeurConsulter:
-    path: /professeur/consulter/{id}
+    path: /gestionnaire/professeur/consulter/{id}
     controller: App\Controller\ProfesseurController::consulter
 
 professeurLister:
-    path: /professeur/lister
+    path: /gestionnaire/professeur/lister
     controller: App\Controller\ProfesseurController::lister
 
 professeurAjouter:
-    path: /professeur/ajouter
+    path: /gestionnaire/professeur/ajouter
     controller: App\Controller\ProfesseurController::ajouter
 
 professeurModifier:
-    path: /professeur/modifier/{id}
+    path: /gestionnaire/professeur/modifier/{id}
     controller: App\Controller\ProfesseurController::modifier
 
 professeurSupprimer:
-    path: /professeur/supprimer/{id}
+    path: /gestionnaire/professeur/supprimer/{id}
     controller: App\Controller\ProfesseurController::supprimer
 
 # Routes intervention
 
 interventionConsulter:
-    path: /intervention/consulter/{id}
+    path: /gestionnaire/intervention/consulter/{id}
     controller: App\Controller\InterventionController::consulter
