@@ -9,142 +9,152 @@ app_instrument:
     controller: App\Controller\InstrumentController::index
 
 instrumentLister:
-    path: /instrument/lister
+    path: /gestionnaire/instrument/lister
     controller: App\Controller\InstrumentController::lister
 
 instrumentConsulter:
-    path: /instrument/consulter/{id}
+    path: /gestionnaire/instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulter
 
 instrumentAjouter:
-    path: /instrument/ajouter
+    path: /gestionnaire/instrument/ajouter
     controller: App\Controller\InstrumentController::ajouter
 
 instrumentModifier:
-    path: /instrument/modifier/{id}
+    path: /gestionnaire/instrument/modifier/{id}
     controller: App\Controller\InstrumentController::modifier
 
 instrumentSupprimer:
-    path: /instrument/supprimer/{id}
+    path: /gestionnaire/instrument/supprimer/{id}
     controller: App\Controller\InstrumentController::supprimer
 
 # Routes élèves
 
 eleveConsulter:
-    path: /eleve/consulter/{id}
+    path: /gestionnaire/eleve/consulter/{id}
     controller: App\Controller\eleveController::consulter
 
 eleveLister:
-    path: /eleve/lister
+    path: /gestionnaire/eleve/lister
     controller: App\Controller\eleveController::lister
 
 eleveAjouter:
-    path: /eleve/ajouter
+    path: /gestionnaire/eleve/ajouter
     controller: App\Controller\eleveController::ajouter
 
 eleveModifier:
-    path: /eleve/modifier/{id}
+    path: /gestionnaire/eleve/modifier/{id}
     controller: App\Controller\eleveController::modifier
 
 eleveSupprimer:
-    path: /eleve/supprimer/{id}
+    path: /gestionnaire/eleve/supprimer/{id}
     controller: App\Controller\eleveController::supprimer
 
 
 # Routes Contrats de prêt
 contratPretLister:
-    path: /contratPret/lister
+    path: /gestionnaire/contratPret/lister
     controller: App\Controller\ContratPretController::lister
 
 contratPretConsulter:
-    path: /contratPret/consulter/{id}
+    path: /gestionnaire/contratPret/consulter/{id}
     controller: App\Controller\ContratPretController::consulter
 
 contratPretAjouter:
-    path: /contratPret/ajouter
+    path: /gestionnaire/contratPret/ajouter
     controller: App\Controller\ContratPretController::ajouter
 
 contratPretSupprimer:
-    path: /contratPret/supprimer/{id}
+    path: /gestionnaire/contratPret/supprimer/{id}
     controller: App\Controller\ContratPretController::supprimer
 
 contratPretModifier:
-    path: /contratPret/modifier/{id}
+    path: /gestionnaire/contratPret/modifier/{id}
     controller: App\Controller\ContratPretController::modifier
 
 # Routes responsables
 
 responsableConsulter:
-    path: /responsable/consulter/{id}
+    path: /gestionnaire/responsable/consulter/{id}
     controller: App\Controller\ResponsableController::consulter
 
 responsableLister:
-    path: /responsable/lister
+    path: /gestionnaire/responsable/lister
     controller: App\Controller\ResponsableController::lister
 
 responsableAjouter:
-    path: /responsable/ajouter
+    path: /gestionnaire/responsable/ajouter
     controller: App\Controller\ResponsableController::ajouter
 
 responsableModifier:
-    path: /responsable/modifier/{id}
+    path: /gestionnaire/responsable/modifier/{id}
     controller: App\Controller\ResponsableController::modifier
 
 responsableSupprimer:
-    path: /responsable/supprimer/{id}
+    path: /gestionnaire/responsable/supprimer/{id}
     controller: App\Controller\ResponsableController::supprimer
 
 # Route inscription
 
 inscriptionLister:
-    path: /inscription/lister
+    path: /gestionnaire/inscription/lister
     controller: App\Controller\InscriptionController::lister
 
 inscriptionConsulter:
-    path: /inscription/consulter/{id}
+    path: /gestionnaire/inscription/consulter/{id}
     controller: App\Controller\InscriptionController::consulter
 
 inscriptionAjouter:
-    path: /inscription/ajouter
+    path: /gestionnaire/inscription/ajouter
     controller: App\Controller\InscriptionController::ajouter
 
 inscriptionModifier:
-    path: /inscription/modifier/{id}
+    path: /gestionnaire/inscription/modifier/{id}
     controller: App\Controller\InscriptionController::modifier
 
 inscriptionSupprimer:
-    path: /inscription/supprimer/{id}
+    path: /gestionnaire/inscription/supprimer/{id}
     controller: App\Controller\InscriptionController::supprimer
 
 
 confirmation_inscription:
-    path: /confirmation_inscription
+    path: /gestionnaire/confirmation_inscription
     controller: App\Controller\ConfirmationController::confirmationInscription
 
 # Routes cours
 
 coursConsulter:
-    path: /cours/consulter/{id}
+    path: /gestionnaire/cours/consulter/{id}
     controller: App\Controller\coursController::consulter
 
 coursLister:
-    path: /cours/lister
+    path: /gestionnaire/cours/lister
     controller: App\Controller\coursController::lister
 
 coursAjouter:
-    path: /cours/ajouter
+    path: /gestionnaire/cours/ajouter
     controller: App\Controller\coursController::ajouter
 
 coursModifier:
-    path: /cours/modifier/{id}
+    path: /gestionnaire/cours/modifier/{id}
     controller: App\Controller\coursController::modifier
 
 coursSupprimer:
-    path: /cours/supprimer/{id}
+    path: /gestionnaire/cours/supprimer/{id}
     controller: App\Controller\coursController::supprimer
 
 # Routes intervention
 
 interventionConsulter:
-    path: /intervention/consulter/{id}
+    path: /gestionnaire/intervention/consulter/{id}
     controller: App\Controller\InterventionController::consulter
+
+# Routes générales
+
+login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+accueil:
+    path: /accueil
+    controller: App\Controller\AccueilController::accueil
