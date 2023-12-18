@@ -22,9 +22,12 @@ class InstrumentModifierType extends AbstractType
         $builder
             ->add('numSerie', TextType::class, [
                 'label' => 'Nom',
+                'attr' => ['class' => 'form-control']
             ])
             ->add('dateAchat', DateType::class, [
-                'label' => 'Date d\'achat',
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'attr' => ['class' => 'form-control']
             ])
             ->add('prixAchat', MoneyType::class, [
                 'label' => 'Prix d\'achat',
@@ -34,19 +37,23 @@ class InstrumentModifierType extends AbstractType
                         'minMessage' => 'Le prix d\'achat ne peut pas être négatif.',
                     ]),
                 ],
+                'attr' => ['class' => 'form-control']
             ])
-            ->add('utilisation', TextareaType::class, [
+            ->add('utilisation', TextType::class, [
                 'label' => 'Utilisation',
+                'attr' => ['class' => 'form-control']
             ])
             ->add('marque', EntityType::class, [
                 'class' => Marque::class,
                 'choice_label' => 'libelle',
                 'label' => 'Marque',
+                'attr' => ['class' => 'form-control']
             ])
-            ->add('TypeInstrument', EntityType::class, [
+            ->add('TypeInstrument', EntityType::class,  [
                 'class' => TypeInstrument::class,
                 'choice_label' => 'libelle',
                 'label' => 'Type d\'Instrument',
+                'attr' => ['class' => 'form-control']
             ])
             ->add('couleurs', EntityType::class, [
                 'class' => Couleur::class,
@@ -58,6 +65,7 @@ class InstrumentModifierType extends AbstractType
             ->add('cheminImage', TextType::class, [ // Add this block
                 'label' => 'Chemin de l\'Image',
                 'required' => false, // Depending on your requirements
+                'attr' => ['class' => 'form-control']
             ]);
 
     }
