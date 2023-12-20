@@ -1,4 +1,4 @@
-
+{# templates/base.html.twig #}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -23,196 +23,239 @@
     {% endblock %}
 </head>
 <body>
-    {% block header %}
-        <header class="header">
-            <nav class="navbar navbar-expand-lg py-3 bg-dash-dark-2 border-bottom border-dash-dark-1 z-index-10">
-                <div class="search-panel">
-                    <div class="search-inner d-flex align-items-center justify-content-center">
-                        <div class="close-btn d-flex align-items-center position-absolute top-0 end-0 me-4 mt-2 cursor-pointer"><span>Close </span>
-                            <svg class="svg-icon svg-icon-md svg-icon-heavy text-gray-700 mt-1">
-                                <use xlink:href="#close-1"> </use>
-                            </svg>
-                        </div>
-                        <div class="row w-100">
-                            <div class="col-lg-8 mx-auto">
-                                <form class="px-4" id="searchForm" action="#">
-                                    <div class="input-group position-relative flex-column flex-lg-row flex-nowrap">
-                                        <input class="form-control shadow-0 bg-none px-0 w-100" type="search" name="search" placeholder="What are you searching for...">
-                                        <button class="btn btn-link text-gray-600 px-0 text-decoration-none fw-bold cursor-pointer text-center" type="submit">Search</button>
-                                    </div>
-                                </form>
-                            </div>
+{% block header %}
+    <header class="header">
+        <nav class="navbar navbar-expand-lg py-3 bg-dash-dark-2 border-bottom border-dash-dark-1 z-index-10">
+            <div class="search-panel">
+                <div class="search-inner d-flex align-items-center justify-content-center">
+                    <div class="close-btn d-flex align-items-center position-absolute top-0 end-0 me-4 mt-2 cursor-pointer"><span>Close </span>
+                        <svg class="svg-icon svg-icon-md svg-icon-heavy text-gray-700 mt-1">
+                            <use xlink:href="#close-1"> </use>
+                        </svg>
+                    </div>
+                    <div class="row w-100">
+                        <div class="col-lg-8 mx-auto">
+                            <form class="px-4" id="searchForm" action="#">
+                                <div class="input-group position-relative flex-column flex-lg-row flex-nowrap">
+                                    <input class="form-control shadow-0 bg-none px-0 w-100" type="search" name="search" placeholder="What are you searching for...">
+                                    <button class="btn btn-link text-gray-600 px-0 text-decoration-none fw-bold cursor-pointer text-center" type="submit">Search</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid d-flex align-items-center justify-content-between py-1">
-                    <div class="navbar-header d-flex align-items-center"><a class="navbar-brand text-uppercase text-reset" href="{{ path('accueil') }}">
-                            <div class="brand-text brand-big"><strong class="text-primary">23</strong><strong>JPLGO</strong></div>
-
-                            <div class="brand-text brand-sm"><strong class="text-primary">2</strong><strong>3</strong></div></a>
-
-                        <button class="sidebar-toggle">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy transform-none">
-                                <use xlink:href="#arrow-left-1"> </use>
-                            </svg>
-                        </button>
-                    </div>
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item"><a class="search-open nav-link px-0" href="#">
-                                <svg class="svg-icon svg-icon-xs svg-icon-heavy text-gray-700">
-                                    <use xlink:href="#find-1"> </use>
-                                </svg></a></li>
-                        <li class="list-inline-item dropdown"><a class="nav-link dropdown-toggle text-sm text-reset px-1 px-lg-0" id="languages" rel="nofollow" data-bs-target="#" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/23JPLGO/public/assets/img/flags/16/FR.png" alt="Français"><span class="d-none d-sm-inline-block ms-2">Français</span></a>
-                            <ul class="dropdown-menu dropdown-menu-end mt-sm-3 dropdown-menu-dark" aria-labelledby="languages">
-                                <li><a class="dropdown-item" rel="nofollow" href="#"> <img class="me-2" src="/23JPLGO/public/assets/img/flags/16/DE.png" alt="Allemand"><span>Allemand</span></a></li>
-                                <li><a class="dropdown-item" rel="nofollow" href="#"> <img class="me-2" src="/23JPLGO/public/assets/img/flags/16/GB.png" alt="Anglais"><span>Anglais</span></a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <div class="d-flex align-items-stretch">
-            <!-- Sidebar Navigation-->
-            <nav id="sidebar">
-                <!-- Sidebar Header-->
-                <div class="sidebar-header d-flex align-items-center p-4"><img class="avatar shadow-0 img-fluid rounded-circle" src="/23JPLGO/public/assets/img/Logo_23JPLGO.jpg" alt="...">
-                    <div class="ms-3 title">
-                        <h1 class="h5 mb-1">
-                            {% if app.user %}
-                                {{ app.user.username }}
-                            {% else %}
-                                Non connecté
-                            {% endif %}
-                        </h1>
-                        <p class="text-sm text-gray-700 mb-0 lh-1">
-                        </p>
-                    </div>
-                </div>
-                
-                </div>
-                {% if app.user.username in ['gestionnaire', 'admin'] %}
-                    <span class="text-uppercase text-gray-600 text-xs mx-3 px-2 heading mb-2">Main</span>
-                <ul class="list-unstyled">
-                    <li class="sidebar-item"><a class="sidebar-link" href="#elevesDropdown" data-bs-toggle="collapse">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#browser-window-1"> </use>
-                            </svg><span>Eleves </span></a>
-                        <ul class="collapse list-unstyled " id="elevesDropdown">
-                            <li><a class="sidebar-link" href="{{ path('eleveLister') }}">Liste des élèves</a></li>
-                            <li><a class="sidebar-link" href="{{ path('eleveAjouter') }}">Ajouter un élève</a></li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#instrumentsDropdown" data-bs-toggle="collapse">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#browser-window-1"> </use>
-                            </svg><span>Instruments </span></a>
-                        <ul class="collapse list-unstyled " id="instrumentsDropdown">
-                            <li><a class="sidebar-link" href="{{ path('instrumentLister') }}">Liste des instruments</a></li>
-                            <li><a class="sidebar-link" href="{{ path('instrumentAjouter') }}">Ajouter un instrument</a></li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#contratsDropdown" data-bs-toggle="collapse">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#browser-window-1"> </use>
-                            </svg><span>Contrats </span></a>
-                        <ul class="collapse list-unstyled " id="contratsDropdown">
-                            <li><a class="sidebar-link" href="{{ path('contratPretLister') }}">Liste des contrats</a></li>
-                            <li><a class="sidebar-link" href="{{ path('contratPretAjouter') }}">Ajouter un contrat</a></li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#responsablesDropdown" data-bs-toggle="collapse">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#browser-window-1"> </use>
-                            </svg><span>Responsables </span></a>
-                        <ul class="collapse list-unstyled " id="responsablesDropdown">
-                            <li><a class="sidebar-link" href="{{ path('responsableLister') }}">Liste des responsables</a></li>
-                            <li><a class="sidebar-link" href="{{ path('responsableAjouter') }}">Ajouter un responsable</a></li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#professeursDropdown" data-bs-toggle="collapse">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#browser-window-1"> </use>
-                            </svg><span>Professeurs </span></a>
-                        <ul class="collapse list-unstyled " id="professeursDropdown">
-                            <li><a class="sidebar-link" href="{{ path('professeurLister') }}">Liste des professeurs</a></li>
-                            <li><a class="sidebar-link" href="{{ path('professeurAjouter') }}">Ajouter un professeur</a></li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#coursDropdown" data-bs-toggle="collapse">
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                <use xlink:href="#browser-window-1"> </use>
-                            </svg><span>Cours </span></a>
-                        <ul class="collapse list-unstyled " id="coursDropdown">
-                            <li><a class="sidebar-link" href="{{ path('coursLister') }}">Liste des cours</a></li>
-                            <li><a class="sidebar-link" href="{{ path('coursAjouter') }}">Ajouter un cours</a></li>
-                            <li><a class="sidebar-link" href="{{ path('inscriptionLister') }}">Inscriptions</a></li>
-                        </ul>
-                    </li>
-                        {% endif %}
-                        {% if app.user %}
-                            <li class="sidebar-item"><a class="sidebar-link" href="{{ path('app_logout') }}">
-                                    <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                        <use xlink:href="#disable-1"> </use>
-                                    </svg><span>Se déconnecter </span></a></li>
-                        {% else %}
-                            <li class="sidebar-item"><a class="sidebar-link" href="{{ path('app_login') }}">
-                                    <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                        <use xlink:href="#disable-1"> </use>
-                                    </svg><span>Se connecter</span></a></li>
-                        {% endif %}
-                    </ul>
-
-            </nav>
-            <div class="page-content">
-                {% block body %}
-                {% endblock %}
-                {% block footer %}
-                    <footer class="position-absolute bottom-0 bg-dash-dark-2 text-white text-center py-3 w-100 text-xs" id="footer">
-                        <div class="container-fluid text-center">
-                            <!-- Please do not remove the backlink to us unless you support us at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-                            <p class="mb-0 text-dash-gray">2023 &copy; 23JPLGO. Design by <a href="https://bootstrapious.com">Bootstrapious</a>.</p>
-                        </div>
-                    </footer>
-                {% endblock %}
             </div>
+            <div class="container-fluid d-flex align-items-center justify-content-between py-1">
+                <div class="navbar-header d-flex align-items-center"><a class="navbar-brand text-uppercase text-reset" href="{{ path('accueil') }}">
+                        <div class="brand-text brand-big"><strong class="text-primary">23</strong><strong>JPLGO</strong></div>
+
+                        <div class="brand-text brand-sm"><strong class="text-primary">2</strong><strong>3</strong></div></a>
+
+                    <button class="sidebar-toggle">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy transform-none">
+                            <use xlink:href="#arrow-left-1"> </use>
+                        </svg>
+                    </button>
+                </div>
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item"><a class="search-open nav-link px-0" href="#">
+                            <svg class="svg-icon svg-icon-xs svg-icon-heavy text-gray-700">
+                                <use xlink:href="#find-1"> </use>
+                            </svg></a></li>
+                    <li class="list-inline-item dropdown"><a class="nav-link dropdown-toggle text-sm text-reset px-1 px-lg-0" id="languages" rel="nofollow" data-bs-target="#" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/23JPLGO/public/assets/img/flags/16/FR.png" alt="Français"><span class="d-none d-sm-inline-block ms-2">Français</span></a>
+                        <ul class="dropdown-menu dropdown-menu-end mt-sm-3 dropdown-menu-dark" aria-labelledby="languages">
+                            <li><a class="dropdown-item" rel="nofollow" href="#"> <img class="me-2" src="/23JPLGO/public/assets/img/flags/16/DE.png" alt="Allemand"><span>Allemand</span></a></li>
+                            <li><a class="dropdown-item" rel="nofollow" href="#"> <img class="me-2" src="/23JPLGO/public/assets/img/flags/16/GB.png" alt="Anglais"><span>Anglais</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="d-flex align-items-stretch">
+        <!-- Sidebar Navigation-->
+        <nav id="sidebar">
+            <!-- Sidebar Header-->
+            <div class="sidebar-header d-flex align-items-center p-4"><img class="avatar shadow-0 img-fluid rounded-circle" src="/23JPLGO/public/assets/img/Logo_23JPLGO.jpg" alt="...">
+                <div class="ms-3 title">
+                    <h1 class="h5 mb-1">
+                        {% if app.user %}
+                            {{ app.user.username|capitalize }}
+                        {% else %}
+                            Non connecté
+                        {% endif %}
+                    </h1>
+                    <p class="text-sm text-gray-700 mb-0 lh-1">
+                    </p>
+                </div>
+            </div>
+            {% if app.user.username|default('non connecté') in ['gestionnaire', 'admin'] %}
+            <span class="text-uppercase text-gray-600 text-xs mx-3 px-2 heading mb-2">Main</span>
+            <ul class="list-unstyled">
+                <li class="sidebar-item"><a class="sidebar-link" href="#elevesDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Eleves </span></a>
+                    <ul class="collapse list-unstyled " id="elevesDropdown">
+                        <li><a class="sidebar-link" href="{{ path('eleveLister') }}">Liste des élèves</a></li>
+                        <li><a class="sidebar-link" href="{{ path('eleveAjouter') }}">Ajouter un élève</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#instrumentsDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Instruments </span></a>
+                    <ul class="collapse list-unstyled " id="instrumentsDropdown">
+                        <li><a class="sidebar-link" href="{{ path('instrumentLister') }}">Liste des instruments</a></li>
+                        <li><a class="sidebar-link" href="{{ path('instrumentAjouter') }}">Ajouter un instrument</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#contratsDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Contrats </span></a>
+                    <ul class="collapse list-unstyled " id="contratsDropdown">
+                        <li><a class="sidebar-link" href="{{ path('contratPretLister') }}">Liste des contrats</a></li>
+                        <li><a class="sidebar-link" href="{{ path('contratPretAjouter') }}">Ajouter un contrat</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#responsablesDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Responsables </span></a>
+                    <ul class="collapse list-unstyled " id="responsablesDropdown">
+                        <li><a class="sidebar-link" href="{{ path('responsableLister') }}">Liste des responsables</a></li>
+                        <li><a class="sidebar-link" href="{{ path('responsableAjouter') }}">Ajouter un responsable</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#professeursDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Professeurs </span></a>
+                    <ul class="collapse list-unstyled " id="professeursDropdown">
+                        <li><a class="sidebar-link" href="{{ path('professeurLister') }}">Liste des professeurs</a></li>
+                        <li><a class="sidebar-link" href="{{ path('professeurAjouter') }}">Ajouter un professeur</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#coursDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Cours </span></a>
+                    <ul class="collapse list-unstyled " id="coursDropdown">
+                        <li><a class="sidebar-link" href="{{ path('coursLister') }}">Liste des cours</a></li>
+                        <li><a class="sidebar-link" href="{{ path('coursAjouter') }}">Ajouter un cours</a></li>
+                        <li><a class="sidebar-link" href="{{ path('inscriptionLister') }}">Inscriptions</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#couleursDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Couleurs </span></a>
+                    <ul class="collapse list-unstyled " id="couleursDropdown">
+                        <li><a class="sidebar-link" href="{{ path('couleurLister') }}">Liste des couleurs</a></li>
+                        <li><a class="sidebar-link" href="{{ path('couleurAjouter') }}">Ajouter une couleur</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#marquesDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Marques </span></a>
+                    <ul class="collapse list-unstyled " id="marquesDropdown">
+                        <li><a class="sidebar-link" href="{{ path('marqueLister') }}">Liste des marques</a></li>
+                        <li><a class="sidebar-link" href="{{ path('marqueAjouter') }}">Ajouter une marque</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#accessoiresDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Accessoires </span></a>
+                    <ul class="collapse list-unstyled " id="accessoiresDropdown">
+                        <li><a class="sidebar-link" href="{{ path('accessoireLister') }}">Liste des accessoires</a></li>
+                        <li><a class="sidebar-link" href="{{ path('accessoireAjouter') }}">Ajouter un accessoire</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#typeinstrumentsDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Types d'Instruments </span></a>
+                    <ul class="collapse list-unstyled " id="typeinstrumentsDropdown">
+                        <li><a class="sidebar-link" href="{{ path('typeInstrumentLister') }}">Liste des types</a></li>
+                        <li><a class="sidebar-link" href="{{ path('typeInstrumentAjouter') }}">Ajouter un type</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#classeinstrumentsDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Classes Instruments </span></a>
+                    <ul class="collapse list-unstyled " id="classeinstrumentsDropdown">
+                        <li><a class="sidebar-link" href="{{ path('classeInstrumentLister') }}">Liste des classes</a></li>
+                        <li><a class="sidebar-link" href="{{ path('classeInstrumentAjouter') }}">Ajouter une classe</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+                {% if app.user %}
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{ path('app_logout') }}">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#disable-1"> </use>
+                            </svg><span>Se déconnecter </span></a></li>
+                {% else %}
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{ path('app_login') }}">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#disable-1"> </use>
+                            </svg><span>Se connecter</span></a></li>
+                {% endif %}
+            </ul>
+
+        </nav>
+        <div class="page-content">
+            {% block body %}
+            {% endblock %}
+            {% block footer %}
+                <footer class="position-absolute bottom-0 bg-dash-dark-2 text-white text-center py-3 w-100 text-xs" id="footer">
+                    <div class="container-fluid text-center">
+                        <!-- Please do not remove the backlink to us unless you support us at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                        <p class="mb-0 text-dash-gray">2023 &copy; 23JPLGO. Design by <a href="https://bootstrapious.com">Bootstrapious</a>.</p>
+                    </div>
+                </footer>
+            {% endblock %}
         </div>
+    </div>
 
-        <script src="/23JPLGO/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/23JPLGO/public/assets/vendor/just-validate/js/just-validate.min.js"></script>
-        <script src="/23JPLGO/public/assets/vendor/chart.js/Chart.min.js"></script>
-        <script src="/23JPLGO/public/assets/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
-        <script src="/23JPLGO/public/assets/js/charts-home.js"></script>
-        <!-- Main File-->
-        <script src="/23JPLGO/public/assets/js/front.js"></script>
-        <script>
-            // ------------------------------------------------------- //
-            //   Inject SVG Sprite -
-            //   see more here
-            //   https://css-tricks.com/ajaxing-svg-sprite/
-            // ------------------------------------------------------ //
-            function injectSvgSprite(path) {
+    <script src="/23JPLGO/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/23JPLGO/public/assets/vendor/just-validate/js/just-validate.min.js"></script>
+    <script src="/23JPLGO/public/assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="/23JPLGO/public/assets/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="/23JPLGO/public/assets/js/charts-home.js"></script>
+    <!-- Main File-->
+    <script src="/23JPLGO/public/assets/js/front.js"></script>
+    <script>
+        // ------------------------------------------------------- //
+        //   Inject SVG Sprite -
+        //   see more here
+        //   https://css-tricks.com/ajaxing-svg-sprite/
+        // ------------------------------------------------------ //
+        function injectSvgSprite(path) {
 
-                var ajax = new XMLHttpRequest();
-                ajax.open("GET", path, true);
-                ajax.send();
-                ajax.onload = function(e) {
-                    var div = document.createElement("div");
-                    div.className = 'd-none';
-                    div.innerHTML = ajax.responseText;
-                    document.body.insertBefore(div, document.body.childNodes[0]);
-                }
+            var ajax = new XMLHttpRequest();
+            ajax.open("GET", path, true);
+            ajax.send();
+            ajax.onload = function(e) {
+                var div = document.createElement("div");
+                div.className = 'd-none';
+                div.innerHTML = ajax.responseText;
+                document.body.insertBefore(div, document.body.childNodes[0]);
             }
-            // this is set to BootstrapTemple website as you cannot
-            // inject local SVG sprite (using only 'icons/orion-svg-sprite.svg' path)
-            // while using file:// protocol
-            // pls don't forget to change to your domain :)
-            injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
+        }
+        // this is set to BootstrapTemple website as you cannot
+        // inject local SVG sprite (using only 'icons/orion-svg-sprite.svg' path)
+        // while using file:// protocol
+        // pls don't forget to change to your domain :)
+        injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
 
 
-        </script>
-        <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    {% endblock %}
+    </script>
+    <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+{% endblock %}
 </body>
 </html>
