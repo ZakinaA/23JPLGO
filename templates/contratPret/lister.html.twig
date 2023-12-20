@@ -67,7 +67,7 @@
                                                 </a>
                                             </td>
                                             {% if app.user %}
-                                                {% if app.user.username in ['gestionnaire', 'admin'] %}
+                                                {% if app.user.username|default('non connecté') in ['gestionnaire', 'admin'] %}
                                                     <td>
                                                         <a href="{{ path('contratPretModifier', { 'id': contratPret.id }) }}">
                                                             <button type="button" class="btn btn-outline-secondary">
