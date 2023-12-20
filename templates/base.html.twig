@@ -80,7 +80,7 @@
                     <div class="ms-3 title">
                         <h1 class="h5 mb-1">
                             {% if app.user %}
-                                {{ app.user.username }}
+                                {{ app.user.username|capitalize }}
                             {% else %}
                                 Non connecté
                             {% endif %}
