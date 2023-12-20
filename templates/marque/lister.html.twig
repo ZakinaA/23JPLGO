@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="bg-dash-dark-2 py-4">
+        <div class="container-fluid">
+            <h2 class="h5 mb-0">Marques</h2>
+        </div>
+    </div>
+    <!-- Breadcrumb-->
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('marqueLister') }}">Marques</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Liste</li>
+            </ol>
+        </nav>
+    </div>
+        <section class="tables py-0">
+            <div class="container-fluid">
+                <div class="row gy-4">
+                    <div class="col-xxl-11">
+                        <div class="card mb-0">
+                            <div class="card-header">
+                                <h3 class="h4 mb-0">Liste des marques</h3>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="table-responsive">
+                                    <table class="table mb-0 table-striped table-hover">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nom</th>
+                                            <th></th>
+                                            <th>Actions</th>
+                                            <th></th>
+                                        </tr>
+
+                                        <!-- Modify the loop to display brand details -->
+                                        {% for marque in marques %}
+                                            <tr>
+                                                <td>{{ marque.id }}</td>
+                                                <td>{{ marque.libelle }}</td>
+                                                <td>
+                                                    <a href="{{ path('marqueConsulter', { 'id': marque.id }) }}">
+                                                        <button type="button" class="btn btn-outline-success">
+                                                            <img alt="consultIcon" src="/23JPLGO/public/assets/img/consultIcon.png" width="30px" height="30px">
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ path('marqueModifier', { 'id': marque.id }) }}">
+                                                        <button type="button" class="btn btn-outline-secondary">
+                                                            <img alt="editIcon" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ path('marqueSupprimer', { 'id': marque.id }) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer');">
+                                                        <button type="button" class="btn btn-outline-danger">
+                                                            <img alt="deleteIcon" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% else %}
+                                            <!-- Display no brands found message -->
+                                            <tr>
+                                                <td colspan="3">Aucune marque n'a été trouvée.</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="bg-dash-dark-2 py-4">
+        <div class="container-fluid">
+            <h2 class="h5 mb-0">Professeurs</h2>
+        </div>
+    </div>
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('professeurLister') }}">Professeurs</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Professeur {{ professeur.id }}</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="tables py-0">
+        <div class="container-fluid">
+            <div class="row gy-4">
+                <div class="col-xxl-12">
+                    <div class="card mb-0">
+                        <div class="card-header">
+                            <h3 class="h4 mb-0">Consultation du professeur {{ 'n° ' ~ professeur.id }}</h3>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-striped table-hover">
+                                    <tr>
+                                        <th>
+                                            Nom :
+                                        </th>
+                                        <td>
+                                            {{ professeur.nom }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Prénom :
+                                        </th>
+                                        <td>
+                                            {{ professeur.prenom }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Numéro de Rue :
+                                        </th>
+                                        <td>
+                                            {{ professeur.numRue }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Rue :
+                                        </th>
+                                        <td>
+                                            {{ professeur.rue }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Code Postal :
+                                        </th>
+                                        <td>
+                                            {{ professeur.copos }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Ville :
+                                        </th>
+                                        <td>
+                                            {{ professeur.ville }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Tel :
+                                        </th>
+                                        <td>
+                                            {{ professeur.tel }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Mail :
+                                        </th>
+                                        <td>
+                                            {{ professeur.mail }}
+                                        </td>
+                                    </tr>
+
+                                    <tbody>
+
+                                        <tr>
+                                            <td>
+                                                <a href="{{ path('professeurModifier', { 'id': professeur.id }) }}">
+                                                    <button type="button" class="btn btn-outline-secondary">
+                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                                                    </button>
+                                                </a>
+
+                                                <a href="{{ path('professeurSupprimer', { 'id': professeur.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer ce professeur');">
+                                                    <button type="button" class="btn btn-outline-danger">
+                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+
+{% endblock %}

@@ -25,7 +25,7 @@ class InstrumentType extends AbstractType
             ->add('numSerie', TextType::class, array('attr' => ['class' => 'form-control']))
             ->add('dateAchat', DateType::class, ['widget' => 'single_text', 'format' => 'yyyy-MM-dd', 'attr' => ['class' => 'form-control']])
             ->add('prixAchat', MoneyType::class, [
-                'currency' => 'EUR', // Adjust the currency based on your requirements
+                'currency' => 'EUR',
                 'constraints' => [
                     new GreaterThan([
                         'value' => 0,
@@ -40,9 +40,9 @@ class InstrumentType extends AbstractType
             ->add('TypeInstrument', EntityType::class, array('class' => 'App\Entity\TypeInstrument','choice_label' => 'libelle', 'attr' => ['class' => 'form-control'] ))
             ->add('couleurs', EntityType::class, [
                 'class' => Couleur::class,
-                'choice_label' => 'nom', // Replace 'name' with the actual property you want to display
+                'choice_label' => 'nom',
                 'multiple' => true,
-                'expanded' => true, // If you want checkboxes instead of a dropdown
+                'expanded' => true,
             ])
             ->add('save', SubmitType::class, array('label' => 'Créer'));
     }
