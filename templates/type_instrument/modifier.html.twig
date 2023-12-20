@@ -26,10 +26,14 @@
                                         <label class="form-label" for="exampleInputEmail1">Libellé du type d'instrument</label>
                                         {{ form_widget(form.libelle) }}
                                     </div>
-
                                     <div class="mb-3">
-                                        <button type="submit">Modifier</button>
+                                        <label class="form-label" for="exampleInputEmail1">Classe d'instrument</label>
+                                        {{ form_widget(form.classeInstrument) }}
                                     </div>
+                                    <div class="mb-3">
+                                        {{ form_widget(form.save) }}
+                                    </div>
+
 
                                     {{ form_end(form) }}
                                 </form>
