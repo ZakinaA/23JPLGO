@@ -86,11 +86,6 @@
                             {% endif %}
                         </h1>
                         <p class="text-sm text-gray-700 mb-0 lh-1">
-                            {% if app.user %}
-                                {% for role in app.user.roles %}{{ role }}{% endfor %}
-                            {% else %}
-                                Pas de rôle
-                            {% endif %}
                         </p>
                     </div>
                 </div>
@@ -142,6 +137,7 @@
                                 <li><a class="sidebar-link" href="{{ path('coursAjouter') }}">Ajouter un cours</a></li>
                             </ul>
                         </li>
+                        {% endif %}
                         {% if app.user %}
                             <li class="sidebar-item"><a class="sidebar-link" href="{{ path('app_logout') }}">
                                     <svg class="svg-icon svg-icon-sm svg-icon-heavy">
@@ -154,7 +150,7 @@
                                     </svg><span>Se connecter</span></a></li>
                         {% endif %}
                     </ul>
-                {% endif %}
+
             </nav>
             <div class="page-content">
                 {% block body %}
