@@ -9,9 +9,20 @@
 {% endblock %}
 
 {% block body %}
-    <div class="page-content">
-        <h2>LISTE DES MARQUES</h2>
-
+    <div class="bg-dash-dark-2 py-4">
+        <div class="container-fluid">
+            <h2 class="h5 mb-0">Marques</h2>
+        </div>
+    </div>
+    <!-- Breadcrumb-->
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('marqueLister') }}">Marques</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Liste</li>
+            </ol>
+        </nav>
+    </div>
         <section class="tables py-0">
             <div class="container-fluid">
                 <div class="row gy-4">

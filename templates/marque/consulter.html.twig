@@ -9,7 +9,19 @@
 {% endblock %}
 
 {% block body %}
-    <div class="page-content">
+    <div class="bg-dash-dark-2 py-4">
+        <div class="container-fluid">
+            <h2 class="h5 mb-0">Marques</h2>
+        </div>
+    </div>
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('marqueLister') }}">Marques</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Marque {{ marque.id }}</li>
+            </ol>
+        </nav>
+    </div>
         <section class="tables py-0">
             <div class="container-fluid">
                 <div class="row gy-4">
@@ -39,6 +51,21 @@
                                                     <td>{{ instrument.numSerie }}</td>
                                                 </tr>
                                             {% endfor %}
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ path('marqueModifier', { 'id': marque.id }) }}">
+                                                        <button type="button" class="btn btn-outline-secondary">
+                                                            <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                                                        </button>
+                                                    </a>
+
+                                                    <a href="{{ path('marqueSupprimer', { 'id': marque.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cette marque');">
+                                                        <button type="button" class="btn btn-outline-danger">
+                                                            <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         </table>
                                     </div>
                                 </div>
