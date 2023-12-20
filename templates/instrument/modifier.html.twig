@@ -11,54 +11,61 @@
     <div class="page-content">
         <h5>MODIFICATION D'UN INSTRUMENT</h5>
 
-    <section class="pt-0">
-    <div class="container-fluid">
-    <div class="row gy-4">
-    <div class="col-lg-12">
-    <div class="card">
-    <div class="card-header">
-        <h3 class="h4 mb-0">Ajouter un contrat de prêt</h3>
-    </div>
-    <div class="card-body pt-0">
+
+        <section class="pt-0">
+            <div class="container-fluid">
+                <div class="row gy-4">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="h4 mb-0">Ajouter un contrat de prêt</h3>
+                            </div>
+                            <div class="card-body pt-0">
         <form method="post" action="{{ path('instrumentModifier', {'id': instrument.id}) }}">
             {{ form_start(form) }}
 
-
             <div class="mb-3">
-                <label class="form-label" for="exampleInputEmail1">Nom de l'élève</label>
+                <label class="form-label" for="exampleInputEmail1">Nom de l'instrument</label>
                 {{ form_widget(form.numSerie) }}
             </div>
             <div class="mb-3">
+                <label class="form-label" for="exampleInputEmail1"></label>
 
-            <label for="dateAchat"></label>
             {{ form_row(form.dateAchat) }}
             </div>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputPassword1"></label>
             {{ form_row(form.prixAchat) }}
             </div>
-            <label for="utilisation">Utilisation :</label>
+
+            <label for="utilisation"></label>
+
             {{ form_row(form.utilisation) }}
 
-            <label for="marque"></label>
+            <div class="mb-3">
+                <label class="form-label" for="exampleInputEmail1"></label>
             {{ form_row(form.marque) }}
-
-            <label for="TypeInstrument"></label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="exampleInputEmail1"></label>
             {{ form_row(form.TypeInstrument) }}
-
+            </div>
             <label for="couleurs"></label>
             {{ form_row(form.couleurs) }}
 
             <!-- Add input field for cheminImage -->
-            <label for="cheminImage"></label>
+            <div class="mb-3">
+                <label class="form-label" for="exampleInputEmail1"></label>
             {{ form_row(form.cheminImage) }}
-
+            </div>
             <!-- Display the image -->
             <label for="currentImage">Image actuelle :</label>
             {% set photo = 'img/instrument/' ~ instrument.cheminImage ~ '.jpg' %}
             <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}" width="300" height="200"/></span>
+            <div class="mb-3">
+                <button type="submit">Modifier</button>
+            </div>
 
-            <button type="submit">Modifier</button>
 
             {{ form_end(form) }}
         </form>

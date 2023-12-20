@@ -66,20 +66,26 @@
                                                     </button>
                                                 </a>
                                             </td>
-                                            <td>
-                                                <a href="{{ path('contratPretModifier', { 'id': contratPret.id }) }}">
-                                                    <button type="button" class="btn btn-outline-secondary">
-                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
-                                                    </button>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a href="{{ path('contratPretSupprimer', { 'id': contratPret.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer');">
-                                                    <button type="button" class="btn btn-outline-danger">
-                                                        <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
-                                                    </button>
-                                                </a>
-                                            </td>
+                                            {% if app.user %}
+                                                {% if app.user.username in ['gestionnaire', 'admin'] %}
+                                                    <td>
+                                                        <a href="{{ path('contratPretModifier', { 'id': contratPret.id }) }}">
+                                                            <button type="button" class="btn btn-outline-secondary">
+                                                                <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                                                            </button>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ path('contratPretSupprimer', { 'id': contratPret.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer');">
+                                                            <button type="button" class="btn btn-outline-danger">
+                                                                <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                                                            </button>
+                                                        </a>
+                                                    </td>
+                                                {% endif %}
+                                            {% else %}
+                                                Non connecté
+                                            {% endif %}
                                         </tr>
                                     {% else %}
                                         <div class="col-lg-4">
