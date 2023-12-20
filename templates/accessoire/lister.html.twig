@@ -18,7 +18,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 py-3 px-0">
                 <li class="breadcrumb-item"><a href="{{ path('accessoireLister') }}">Accessoires</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Accessoire {{ accessoire.id }}</li>
+                <li class="breadcrumb-item active" aria-current="page">Accessoire</li>
             </ol>
         </nav>
     </div>
@@ -41,7 +41,6 @@
                                             <th></th>
                                         </tr>
 
-                                        <!-- Modify the loop to display accessory details -->
                                         {% for accessoire in accessoires %}
                                             <tr>
                                                 <td>{{ accessoire.id }}</td>
