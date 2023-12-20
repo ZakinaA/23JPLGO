@@ -9,16 +9,31 @@
         {{ parent() }}
     {% endblock %}
 	{% block body %}
-        <div class="page-content">
-                <h2>LISTE DES INSTRUMENTS</h2>
+    <div class="bg-dash-dark-2 py-4">
+        <div class="container-fluid">
+            <h2 class="h5 mb-0">Instruments</h2>
+        </div>
+    </div>
+
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('instrumentLister') }}">Instruments</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Liste</li>
+            </ol>
+        </nav>
+    </div>
 
     <!-- Search Bar -->
-            <div>
+    <div>
     <form method="get" action="{{ path('instrumentLister') }}" aria-label="Text input with radio button">
+
         <label for="search">Rechercher :</label>
         <input type="text" id="search" name="search" value="{{ app.request.query.get('search') }}">
         <button type="submit" class="btn btn-primary">Rechercher</button>
     </form>
+    </td>
+<br>
 
             </div>
 
@@ -94,7 +109,13 @@
             <a href="{{ path('instrumentLister') }}">Revenir à la liste complète</a>
         </p>
     {% endif %}
-        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
     {% endblock %}
 
     {% block footer %}

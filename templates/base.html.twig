@@ -5,7 +5,7 @@
     {% block head %}
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Dark Admin by Bootstrapious.com</title>
+        <title>23JPLGO</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="all,follow">
@@ -18,7 +18,7 @@
         <!-- Custom stylesheet - for your changes-->
         <link rel="stylesheet" href="/23JPLGO/public/assets/css/custom.css">
         <!-- Favicon-->
-        <link rel="shortcut icon" href="/23JPLGO/public/assets/img/favicon.ico">
+        <link rel="shortcut icon" href="/23JPLGO/public/assets/img/Logo_23.jpg">
 
     {% endblock %}
 </head>
@@ -76,7 +76,7 @@
             <!-- Sidebar Navigation-->
             <nav id="sidebar">
                 <!-- Sidebar Header-->
-                <div class="sidebar-header d-flex align-items-center p-4"><img class="avatar shadow-0 img-fluid rounded-circle" src="/23JPLGO/public/assets/img/avatar-6.jpg" alt="...">
+                <div class="sidebar-header d-flex align-items-center p-4"><img class="avatar shadow-0 img-fluid rounded-circle" src="/23JPLGO/public/assets/img/Logo_23JPLGO.jpg" alt="...">
                     <div class="ms-3 title">
                         <h1 class="h5 mb-1">
                             {% if app.user %}
@@ -89,54 +89,66 @@
                         </p>
                     </div>
                 </div>
+                
+                </div>
                 {% if app.user.username in ['gestionnaire', 'admin'] %}
-                    <span class="text-uppercase text-gray-600 text-xs mx-3 px-2 heading mb-2">Gestionnaire</span>
-                    <ul class="list-unstyled">
-                        <li class="sidebar-item"><a class="sidebar-link" href="#elevesDropdown" data-bs-toggle="collapse">
-                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                    <use xlink:href="#browser-window-1"> </use>
-                                </svg><span>Eleves </span></a>
-                            <ul class="collapse list-unstyled " id="elevesDropdown">
-                                <li><a class="sidebar-link" href="{{ path('eleveLister') }}">Liste des élèves</a></li>
-                                <li><a class="sidebar-link" href="{{ path('eleveAjouter') }}">Ajouter un élève</a></li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="#instrumentsDropdown" data-bs-toggle="collapse">
-                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                    <use xlink:href="#browser-window-1"> </use>
-                                </svg><span>Instruments </span></a>
-                            <ul class="collapse list-unstyled " id="instrumentsDropdown">
-                                <li><a class="sidebar-link" href="{{ path('instrumentLister') }}">Liste des instruments</a></li>
-                                <li><a class="sidebar-link" href="{{ path('instrumentAjouter') }}">Ajouter un instrument</a></li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="#contratsDropdown" data-bs-toggle="collapse">
-                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                    <use xlink:href="#browser-window-1"> </use>
-                                </svg><span>Contrats </span></a>
-                            <ul class="collapse list-unstyled " id="contratsDropdown">
-                                <li><a class="sidebar-link" href="{{ path('contratPretLister') }}">Liste des contrats</a></li>
-                                <li><a class="sidebar-link" href="{{ path('contratPretAjouter') }}">Ajouter un contrat</a></li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="#responsablesDropdown" data-bs-toggle="collapse">
-                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                    <use xlink:href="#browser-window-1"> </use>
-                                </svg><span>Responsables </span></a>
-                            <ul class="collapse list-unstyled " id="responsablesDropdown">
-                                <li><a class="sidebar-link" href="{{ path('responsableLister') }}">Liste des responsables</a></li>
-                                <li><a class="sidebar-link" href="{{ path('responsableAjouter') }}">Ajouter un responsable</a></li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="#coursDropdown" data-bs-toggle="collapse">
-                                <svg class="svg-icon svg-icon-sm svg-icon-heavy">
-                                    <use xlink:href="#browser-window-1"> </use>
-                                </svg><span>Cours </span></a>
-                            <ul class="collapse list-unstyled " id="coursDropdown">
-                                <li><a class="sidebar-link" href="{{ path('coursLister') }}">Liste des cours</a></li>
-                                <li><a class="sidebar-link" href="{{ path('coursAjouter') }}">Ajouter un cours</a></li>
-                            </ul>
-                        </li>
+                    <span class="text-uppercase text-gray-600 text-xs mx-3 px-2 heading mb-2">Main</span>
+                <ul class="list-unstyled">
+                    <li class="sidebar-item"><a class="sidebar-link" href="#elevesDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Eleves </span></a>
+                        <ul class="collapse list-unstyled " id="elevesDropdown">
+                            <li><a class="sidebar-link" href="{{ path('eleveLister') }}">Liste des élèves</a></li>
+                            <li><a class="sidebar-link" href="{{ path('eleveAjouter') }}">Ajouter un élève</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#instrumentsDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Instruments </span></a>
+                        <ul class="collapse list-unstyled " id="instrumentsDropdown">
+                            <li><a class="sidebar-link" href="{{ path('instrumentLister') }}">Liste des instruments</a></li>
+                            <li><a class="sidebar-link" href="{{ path('instrumentAjouter') }}">Ajouter un instrument</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#contratsDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Contrats </span></a>
+                        <ul class="collapse list-unstyled " id="contratsDropdown">
+                            <li><a class="sidebar-link" href="{{ path('contratPretLister') }}">Liste des contrats</a></li>
+                            <li><a class="sidebar-link" href="{{ path('contratPretAjouter') }}">Ajouter un contrat</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#responsablesDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Responsables </span></a>
+                        <ul class="collapse list-unstyled " id="responsablesDropdown">
+                            <li><a class="sidebar-link" href="{{ path('responsableLister') }}">Liste des responsables</a></li>
+                            <li><a class="sidebar-link" href="{{ path('responsableAjouter') }}">Ajouter un responsable</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#professeursDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Professeurs </span></a>
+                        <ul class="collapse list-unstyled " id="professeursDropdown">
+                            <li><a class="sidebar-link" href="{{ path('professeurLister') }}">Liste des professeurs</a></li>
+                            <li><a class="sidebar-link" href="{{ path('professeurAjouter') }}">Ajouter un professeur</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="#coursDropdown" data-bs-toggle="collapse">
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                                <use xlink:href="#browser-window-1"> </use>
+                            </svg><span>Cours </span></a>
+                        <ul class="collapse list-unstyled " id="coursDropdown">
+                            <li><a class="sidebar-link" href="{{ path('coursLister') }}">Liste des cours</a></li>
+                            <li><a class="sidebar-link" href="{{ path('coursAjouter') }}">Ajouter un cours</a></li>
+                            <li><a class="sidebar-link" href="{{ path('inscriptionLister') }}">Inscriptions</a></li>
+                        </ul>
+                    </li>
                         {% endif %}
                         {% if app.user %}
                             <li class="sidebar-item"><a class="sidebar-link" href="{{ path('app_logout') }}">

@@ -5,7 +5,7 @@ controllers:
 # Routes instrument
 
 app_instrument:
-    path: /instrument
+    path: /gestionnaire/instrument
     controller: App\Controller\InstrumentController::index
 
 instrumentLister:
@@ -31,111 +31,111 @@ instrumentSupprimer:
 # Routes type instrument
 
 typeInstrumentLister:
-    path: /typeinstrument/lister
+    path: /gestionnaire/typeinstrument/lister
     controller: App\Controller\TypeInstrumentController::lister
 
 typeInstrumentConsulter:
-    path: /typeinstrument/consulter/{id}
+    path: /gestionnaire/typeinstrument/consulter/{id}
     controller: App\Controller\TypeInstrumentController::consulter
 
 typeInstrumentAjouter:
-    path: /typeinstrument/ajouter
+    path: /gestionnaire/typeinstrument/ajouter
     controller: App\Controller\TypeInstrumentController::ajouter
 
 typeInstrumentModifier:
-    path: /typeinstrument/modifier/{id}
+    path: /gestionnaire/typeinstrument/modifier/{id}
     controller: App\Controller\TypeInstrumentController::modifier
 
 typeInstrumentSupprimer:
-    path: /typeinstrument/supprimer/{id}
+    path: /gestionnaire/typeinstrument/supprimer/{id}
     controller: App\Controller\TypeInstrumentController::supprimer
 
 # Routes classe instrument
 
 classeInstrumentLister:
-    path: /classeinstrument/lister
+    path: /gestionnaire/classeinstrument/lister
     controller: App\Controller\ClasseInstrumentController::lister
 
 classeInstrumentConsulter:
-    path: /classeinstrument/consulter/{id}
+    path: /gestionnaire/classeinstrument/consulter/{id}
     controller: App\Controller\ClasseInstrumentController::consulter
 
 classeInstrumentAjouter:
-    path: /classeinstrument/ajouter
+    path: /gestionnaire/classeinstrument/ajouter
     controller: App\Controller\ClasseInstrumentController::ajouter
 
 classeInstrumentModifier:
-    path: /classeinstrument/modifier/{id}
+    path: /gestionnaire/classeinstrument/modifier/{id}
     controller: App\Controller\ClasseInstrumentController::modifier
 
 classeInstrumentSupprimer:
-    path: /classeinstrument/supprimer/{id}
+    path: /gestionnaire/classeinstrument/supprimer/{id}
     controller: App\Controller\ClasseInstrumentController::supprimer
 
 # Routes couleur
 
 couleurLister:
-    path: /couleur/lister
+    path: /gestionnaire/couleur/lister
     controller: App\Controller\CouleurController::lister
 
 couleurConsulter:
-    path: /couleur/consulter/{id}
+    path: /gestionnaire/couleur/consulter/{id}
     controller: App\Controller\CouleurController::consulter
 
 couleurAjouter:
-    path: /couleur/ajouter
+    path: /gestionnaire/couleur/ajouter
     controller: App\Controller\CouleurController::ajouter
 
 couleurModifier:
-    path: /couleur/modifier/{id}
+    path: /gestionnaire/couleur/modifier/{id}
     controller: App\Controller\CouleurController::modifier
 
 couleurSupprimer:
-    path: /couleur/supprimer/{id}
+    path: /gestionnaire/couleur/supprimer/{id}
     controller: App\Controller\CouleurController::supprimer
 
 # Routes marque
 
 marqueLister:
-    path: /marque/lister
+    path: /gestionnaire/marque/lister
     controller: App\Controller\MarqueController::lister
 
 marqueConsulter:
-    path: /marque/consulter/{id}
+    path: /gestionnaire/marque/consulter/{id}
     controller: App\Controller\MarqueController::consulter
 
 marqueAjouter:
-    path: /marque/ajouter
+    path: /gestionnaire/marque/ajouter
     controller: App\Controller\MarqueController::ajouter
 
 marqueModifier:
-    path: /marque/modifier/{id}
+    path: /gestionnaire/marque/modifier/{id}
     controller: App\Controller\MarqueController::modifier
 
 marqueSupprimer:
-    path: /marque/supprimer/{id}
+    path: /gestionnaire/marque/supprimer/{id}
     controller: App\Controller\MarqueController::supprimer
 
 # Routes accessoire
 
 accessoireLister:
-    path: /accessoire/lister
+    path: /gestionnaire/accessoire/lister
     controller: App\Controller\AccessoireController::lister
 
 accessoireConsulter:
-    path: /accessoire/consulter/{id}
+    path: /gestionnaire/accessoire/consulter/{id}
     controller: App\Controller\AccessoireController::consulter
 
 accessoireAjouter:
-    path: /accessoire/ajouter
+    path: /gestionnaire/accessoire/ajouter
     controller: App\Controller\AccessoireController::ajouter
 
 accessoireModifier:
-    path: /accessoire/modifier/{id}
+    path: /gestionnaire/accessoire/modifier/{id}
     controller: App\Controller\AccessoireController::modifier
 
 accessoireSupprimer:
-    path: /accessoire/supprimer/{id}
+    path: /gestionnaire/accessoire/supprimer/{id}
     controller: App\Controller\AccessoireController::supprimer
 
 # Routes élèves
@@ -226,7 +226,6 @@ inscriptionSupprimer:
     path: /gestionnaire/inscription/supprimer/{id}
     controller: App\Controller\InscriptionController::supprimer
 
-
 confirmation_inscription:
     path: /gestionnaire/confirmation_inscription
     controller: App\Controller\ConfirmationController::confirmationInscription
@@ -253,11 +252,34 @@ coursSupprimer:
     path: /gestionnaire/cours/supprimer/{id}
     controller: App\Controller\coursController::supprimer
 
+# Routes professeur
+
+professeurConsulter:
+    path: /gestionnaire/professeur/consulter/{id}
+    controller: App\Controller\ProfesseurController::consulter
+
+professeurLister:
+    path: /gestionnaire/professeur/lister
+    controller: App\Controller\ProfesseurController::lister
+
+professeurAjouter:
+    path: /gestionnaire/professeur/ajouter
+    controller: App\Controller\ProfesseurController::ajouter
+
+professeurModifier:
+    path: /gestionnaire/professeur/modifier/{id}
+    controller: App\Controller\ProfesseurController::modifier
+
+professeurSupprimer:
+    path: /gestionnaire/professeur/supprimer/{id}
+    controller: App\Controller\ProfesseurController::supprimer
+
 # Routes intervention
 
 interventionConsulter:
     path: /gestionnaire/intervention/consulter/{id}
     controller: App\Controller\InterventionController::consulter
+
 
 # Routes générales
 
