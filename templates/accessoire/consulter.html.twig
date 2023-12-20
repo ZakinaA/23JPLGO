@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+        <section class="tables py-0">
+            <div class="container-fluid">
+                <div class="row gy-4">
+                    <div class="col-xxl-12">
+                        <div class="card mb-0">
+                            <div class="card-header">
+                                <h3 class="h4 mb-0">Consultation de l'accessoire {{ accessoire.libelle }}</h3>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="table-responsive">
+                                    <table class="table mb-0 table-striped table-hover">
+                                        <tr><td>ID : </td><td>{{ accessoire.id }}</td></tr>
+                                        <tr><td>Libellé : </td><td>{{ accessoire.libelle }}</td></tr>
+                                    </table>
+                                </div>
+
+
+
+                                <!-- Button to go back to the list of accessories -->
+                                <a href="{{ path('accessoireLister') }}">Retour à la liste des accessoires</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
