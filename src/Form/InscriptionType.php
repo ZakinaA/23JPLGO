@@ -22,7 +22,10 @@ class InscriptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('dateInscription', DateType::class, array('attr' => ['class' => 'form-control']))
+            ->add('dateInscription', DateType::class, [
+                'attr' => ['class' => 'form-control'],
+                'data' => new \DateTime(),
+            ])
             ->add('eleve', EntityType::class, [
                 'class' => 'App\Entity\Eleve',
                 'choice_label' => function ($eleve){
