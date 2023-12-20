@@ -7,11 +7,8 @@
 {% block header %}
     {{ parent() }}
 {% endblock %}
-
 {% block body %}
-    <div class="page-content">
-        <h5>MODIFICATION D'UNE CLASSE D'INSTRUMENT</h5>
-
+    <br>
         <section class="pt-0">
             <div class="container-fluid">
                 <div class="row gy-4">
@@ -29,14 +26,9 @@
                                         {{ form_widget(form.libelle) }}
                                     </div>
 
-                                    <!-- Ajoutez d'autres champs de formulaire au besoin -->
-
-
-
                                     {{ form_end(form) }}
                                 </form>
 
-                                <!-- Ajoutez un lien pour revenir à la consultation de la classe d'instrument -->
                                 <a href="{{ path('classeInstrumentConsulter', {'id': classeInstrument.id}) }}">Retour à la consultation de la classe d'instrument</a>
                             </div>
                         </div>
