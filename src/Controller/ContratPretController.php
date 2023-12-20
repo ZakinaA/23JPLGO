@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\ContratPret;
 use App\Entity\Eleve;
-use App\Form\ContratPretModifierType;
 use App\Form\ContratPretType;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
@@ -32,13 +31,14 @@ class ContratPretController extends AbstractController
 
         if (!$contratPret) {
             throw $this->createNotFoundException(
-                'Aucun contrat trouvé avec l\'ID '.$id);
+                'Aucun instrument trouvé avec l\'ID '.$id);
         }
         return $this->render('contratPret/consulter.html.twig', [
             'contratPret' => $contratPret,
         ]);
     }
 
+    //#[Route('/contratPret/ajouter', name: 'ajouter')]
     public function ajouter(Request $request, PersistenceManagerRegistry $doctrine):Response
     {
         $contratPret = new contratPret();
@@ -68,7 +68,7 @@ class ContratPretController extends AbstractController
             throw $this->createNotFoundException('Le contrat de Prêt n\'existe pas');
         }
 
-        $form = $this->createForm(ContratPretModifierType::class, $contratPret);
+        $form = $this->createForm(ContratPretType::class, $contratPret);
 
         $form->handleRequest($request);
 

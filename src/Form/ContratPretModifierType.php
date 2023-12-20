@@ -26,6 +26,6 @@ class ContratPretModifierType extends AbstractType
             ->add('etatDetailleRetour', TextareaType::class, array('attr' => ['class' => 'form-control']))
             ->add('dateDebut', DateType::class, ['widget' => 'single_text', 'format' => 'yyyy-MM-dd', 'attr' => ['class' => 'form-control']])
             ->add('dateFin', DateType::class, ['widget' => 'single_text', 'format' => 'yyyy-MM-dd', 'attr' => ['class' => 'form-control']])
-            ->add('save', SubmitType::class, array('label' => 'Créer', 'attr' => ['class' => 'btn btn-primary']));
+            ->add('save', SubmitType::class, array('label' => 'Modifier', 'attr' => ['class' => 'btn btn-primary']));
     }
 }

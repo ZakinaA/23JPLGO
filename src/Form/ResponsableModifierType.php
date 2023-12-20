@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Eleve;
 use App\Entity\Responsable;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,15 +20,15 @@ class ResponsableModifierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('prenom',)
-            ->add('numRue',)
-            ->add('rue',)
-            ->add('copos')
-            ->add('ville')
-            ->add('tel')
-            ->add('mail')
-            ->add('enregistrer', SubmitType::class, array('label' => 'Modifier le responsable'))
+            ->add('nom', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('prenom', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('numRue', NumberType::class, array('attr' => ['class' => 'form-control']))
+            ->add('rue', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('copos', NumberType::class, array('attr' => ['class' => 'form-control']))
+            ->add('ville', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('tel', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('mail', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('enregistrer', SubmitType::class, array('label' => 'Modifier le responsable', 'attr' => ['class' => 'btn btn-primary']))
         ;
     }
 
