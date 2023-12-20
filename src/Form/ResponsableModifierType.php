@@ -28,7 +28,7 @@ class ResponsableModifierType extends AbstractType
             ->add('ville', TextType::class, array('attr' => ['class' => 'form-control']))
             ->add('tel', TextType::class, array('attr' => ['class' => 'form-control']))
             ->add('mail', TextType::class, array('attr' => ['class' => 'form-control']))
-            ->add('enregistrer', SubmitType::class, array('label' => 'Modifier le responsable'))
+            ->add('enregistrer', SubmitType::class, array('label' => 'Modifier le responsable', 'attr' => ['class' => 'btn btn-primary']))
         ;
     }
 

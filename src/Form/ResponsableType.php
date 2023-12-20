@@ -29,7 +29,7 @@ class ResponsableType extends AbstractType
             ->add('ville', TextType::class, array('attr' => ['class' => 'form-control']))
             ->add('tel', TextType::class, array('attr' => ['class' => 'form-control']))
             ->add('mail', TextType::class, array('attr' => ['class' => 'form-control']))
-            ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau responsable'))
+            ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau responsable', 'attr' => ['class' => 'btn btn-primary']))
         ;
     }
 

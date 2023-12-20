@@ -50,6 +50,7 @@ class Eleve
 
     public function __construct()
     {
+
         $this->contratsPret = new ArrayCollection();
         $this->responsables = new ArrayCollection();
         $this->inscriptions = new ArrayCollection();

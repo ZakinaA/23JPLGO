@@ -13,7 +13,7 @@
             <h2 class="h5 mb-0">Dashboard</h2>
         </div>
     </div>
-    {% if app.user.username in ['gestionnaire', 'admin'] %}
+    {% if app.user.username|default('non connecté') in ['gestionnaire', 'admin'] %}
         <section>
             <div class="container-fluid">
                 <div class="row gy-4">
