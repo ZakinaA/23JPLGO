@@ -25,7 +25,7 @@ class Instrument
     #[ORM\Column(nullable: true)]
     private ?int $prixAchat = null;
 
-    #[ORM\Column(length: 100, nullable: true)]
+    #[ORM\Column(length: 20, nullable: true)]
     private ?string $utilisation = null;
 
     #[ORM\Column(length: 50, nullable: true)]
