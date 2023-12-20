@@ -8,17 +8,14 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-    <div class="page-content">
-        <h5>MODIFICATION D'UN INSTRUMENT</h5>
-
-
+    <br>
         <section class="pt-0">
             <div class="container-fluid">
                 <div class="row gy-4">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="h4 mb-0">Ajouter un contrat de prêt</h3>
+                                <h3 class="h4 mb-0">Modifier un Instrument</h3>
                             </div>
                             <div class="card-body pt-0">
         <form method="post" action="{{ path('instrumentModifier', {'id': instrument.id}) }}">
@@ -30,42 +27,38 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputEmail1"></label>
-
-            {{ form_row(form.dateAchat) }}
+                {{ form_row(form.dateAchat) }}
             </div>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputPassword1"></label>
-            {{ form_row(form.prixAchat) }}
+                {{ form_row(form.prixAchat) }}
             </div>
-
-            <label for="utilisation"></label>
-
-            {{ form_row(form.utilisation) }}
-
             <div class="mb-3">
-                <label class="form-label" for="exampleInputEmail1"></label>
-            {{ form_row(form.marque) }}
+                <label for="utilisation"></label>
+                {{ form_row(form.utilisation) }}
             </div>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputEmail1"></label>
-            {{ form_row(form.TypeInstrument) }}
+                {{ form_row(form.marque) }}
             </div>
-            <label for="couleurs"></label>
-            {{ form_row(form.couleurs) }}
-
-            <!-- Add input field for cheminImage -->
+            <div class="mb-3">
+                <label class="form-label" for="exampleInputEmail1"></label>
+                {{ form_row(form.TypeInstrument) }}
+            </div>
+            <div class="mb-3">
+                <label for="couleurs"></label>
+                {{ form_row(form.couleurs) }}
+            </div>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputEmail1"></label>
             {{ form_row(form.cheminImage) }}
             </div>
-            <!-- Display the image -->
             <label for="currentImage">Image actuelle :</label>
             {% set photo = 'img/instrument/' ~ instrument.cheminImage ~ '.jpg' %}
             <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}" width="300" height="200"/></span>
             <div class="mb-3">
                 <button type="submit">Modifier</button>
             </div>
-
 
             {{ form_end(form) }}
         </form>
@@ -78,7 +71,7 @@
 
         <!-- Add a link to go back to the consultation page -->
         <a href="{{ path('instrumentConsulter', {'id': instrument.id}) }}">Retour à la consultation</a>
-    </div>
+
 {% endblock %}
 {% block footer %}
     {{ parent() }}

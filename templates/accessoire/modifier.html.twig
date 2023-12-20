@@ -10,7 +10,7 @@
 
 {% block body %}
     <div class="page-content">
-        <h5>MODIFICATION D'UNE COULEUR</h5>
+        <h5>MODIFICATION D'UN ACCESSOIRE</h5>
 
         <section class="pt-0">
             <div class="container-fluid">
@@ -18,38 +18,32 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="h4 mb-0">Modifier une couleur</h3>
+                                <h3 class="h4 mb-0">Modifier un accessoire</h3>
                             </div>
                             <div class="card-body pt-0">
-                                <form method="post" action="{{ path('couleurModifier', {'id': couleur.id}) }}">
+                                <form method="post" action="{{ path('accessoireModifier', {'id': accessoire.id}) }}">
                                     {{ form_start(form) }}
 
                                     <div class="mb-3">
-                                        <label class="form-label" for="exampleInputEmail1">Nom de la couleur</label>
-                                        {{ form_widget(form.nom) }}
+                                        <label class="form-label" for="exampleInputEmail1">Libellé de l'accessoire</label>
+                                        {{ form_widget(form.libelle) }}
                                     </div>
 
                                     <!-- Add other form fields as needed -->
 
-                                    <div class="mb-3">
-                                        <button  type="submit">Modifier</button>
-                                    </div>
+
 
                                     {{ form_end(form) }}
                                 </form>
 
-
-
-                                </form>
+                                <!-- Add a link to go back to the consultation page -->
+                                <a href="{{ path('accessoireConsulter', {'id': accessoire.id}) }}">Retour à la consultation de l'accessoire</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Add a link to go back to the consultation page -->
-        <a href="{{ path('couleurLister') }}">Retour à la liste des couleurs</a>
     </div>
 {% endblock %}
 
