@@ -32,7 +32,7 @@ class ContratPretController extends AbstractController
 
         if (!$contratPret) {
             throw $this->createNotFoundException(
-                'Aucun instrument trouvé avec l\'ID '.$id);
+                'Aucun contrat trouvé avec l\'ID '.$id);
         }
         return $this->render('contratPret/consulter.html.twig', [
             'contratPret' => $contratPret,
