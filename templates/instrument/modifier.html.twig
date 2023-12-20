@@ -30,42 +30,38 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputEmail1"></label>
-
-            {{ form_row(form.dateAchat) }}
+                {{ form_row(form.dateAchat) }}
             </div>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputPassword1"></label>
-            {{ form_row(form.prixAchat) }}
+                {{ form_row(form.prixAchat) }}
             </div>
-
-            <label for="utilisation"></label>
-
-            {{ form_row(form.utilisation) }}
-
             <div class="mb-3">
-                <label class="form-label" for="exampleInputEmail1"></label>
-            {{ form_row(form.marque) }}
+                <label for="utilisation"></label>
+                {{ form_row(form.utilisation) }}
             </div>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputEmail1"></label>
-            {{ form_row(form.TypeInstrument) }}
+                {{ form_row(form.marque) }}
             </div>
-            <label for="couleurs"></label>
-            {{ form_row(form.couleurs) }}
-
-            <!-- Add input field for cheminImage -->
+            <div class="mb-3">
+                <label class="form-label" for="exampleInputEmail1"></label>
+                {{ form_row(form.TypeInstrument) }}
+            </div>
+            <div class="mb-3">
+                <label for="couleurs"></label>
+                {{ form_row(form.couleurs) }}
+            </div>
             <div class="mb-3">
                 <label class="form-label" for="exampleInputEmail1"></label>
             {{ form_row(form.cheminImage) }}
             </div>
-            <!-- Display the image -->
             <label for="currentImage">Image actuelle :</label>
             {% set photo = 'img/instrument/' ~ instrument.cheminImage ~ '.jpg' %}
             <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}" width="300" height="200"/></span>
             <div class="mb-3">
                 <button type="submit">Modifier</button>
             </div>
-
 
             {{ form_end(form) }}
         </form>
