@@ -203,6 +203,51 @@
                         <li><a class="sidebar-link" href="{{ path('inscriptionLister') }}">Inscriptions</a></li>
                     </ul>
                 </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#couleursDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Couleurs </span></a>
+                    <ul class="collapse list-unstyled " id="couleursDropdown">
+                        <li><a class="sidebar-link" href="{{ path('couleurLister') }}">Liste des couleurs</a></li>
+                        <li><a class="sidebar-link" href="{{ path('couleurAjouter') }}">Ajouter une couleur</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#marquesDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Marques </span></a>
+                    <ul class="collapse list-unstyled " id="marquesDropdown">
+                        <li><a class="sidebar-link" href="{{ path('marqueLister') }}">Liste des marques</a></li>
+                        <li><a class="sidebar-link" href="{{ path('marqueAjouter') }}">Ajouter une marque</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#accessoiresDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Accessoires </span></a>
+                    <ul class="collapse list-unstyled " id="accessoiresDropdown">
+                        <li><a class="sidebar-link" href="{{ path('accessoireLister') }}">Liste des accessoires</a></li>
+                        <li><a class="sidebar-link" href="{{ path('accessoireAjouter') }}">Ajouter un accessoire</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#typeinstrumentsDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Types d'Instruments </span></a>
+                    <ul class="collapse list-unstyled " id="typeinstrumentsDropdown">
+                        <li><a class="sidebar-link" href="{{ path('typeInstrumentLister') }}">Liste des types</a></li>
+                        <li><a class="sidebar-link" href="{{ path('typeInstrumentAjouter') }}">Ajouter un type</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="#classeinstrumentsDropdown" data-bs-toggle="collapse">
+                        <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                            <use xlink:href="#browser-window-1"> </use>
+                        </svg><span>Classes Instruments </span></a>
+                    <ul class="collapse list-unstyled " id="classeinstrumentsDropdown">
+                        <li><a class="sidebar-link" href="{{ path('classeInstrumentLister') }}">Liste des classes</a></li>
+                        <li><a class="sidebar-link" href="{{ path('classeInstrumentAjouter') }}">Ajouter une classe</a></li>
+                    </ul>
+                </li>
                 {% endif %}
                 {% if app.user %}
                     <li class="sidebar-item"><a class="sidebar-link" href="{{ path('app_logout') }}">
