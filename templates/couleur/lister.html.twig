@@ -9,9 +9,20 @@
 {% endblock %}
 
 {% block body %}
-    <div class="page-content">
-        <h2>LISTE DES COULEURS</h2>
-
+    <div class="bg-dash-dark-2 py-4">
+        <div class="container-fluid">
+            <h2 class="h5 mb-0">Couleurs</h2>
+        </div>
+    </div>
+    <!-- Breadcrumb-->
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('couleurLister') }}">Couleurs</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Liste</li>
+            </ol>
+        </nav>
+    </div>
         <section class="tables py-0">
             <div class="container-fluid">
                 <div class="row gy-4">
@@ -26,7 +37,9 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Nom</th>
+                                            <th></th>
                                             <th>Actions</th>
+                                            <th></th>
                                         </tr>
 
                                         <!-- Modify the loop to display color details as before -->
@@ -37,10 +50,25 @@
                                                 <td>
                                                     <a href="{{ path('couleurConsulter', { 'id': couleur.id }) }}">
                                                         <button type="button" class="btn btn-outline-success">
-                                                            <img alt="consultIcon" src="/path/to/consultIcon.png" width="30px" height="30px">
+                                                            <img alt="consultIcon" src="/23JPLGO/public/assets/img/consultIcon.png" width="30px" height="30px">
                                                         </button>
                                                     </a>
                                                 </td>
+                                                <td>
+                                                    <a href="{{ path('couleurModifier', { 'id': couleur.id }) }}">
+                                                        <button type="button" class="btn btn-outline-secondary">
+                                                            <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ path('couleurSupprimer', { 'id': couleur.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer');">
+                                                        <button type="button" class="btn btn-outline-danger">
+                                                            <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                                                        </button>
+                                                    </a>
+                                                </td>
+
                                             </tr>
                                         {% else %}
                                             <!-- Display no colors found message -->

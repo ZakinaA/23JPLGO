@@ -8,45 +8,113 @@
         {{ parent() }}
     {% endblock %}
 	{% block body %}
-        <div class="page-content">
-
-            <p>
-        <section class="tables py-0">
+    <div class="bg-dash-dark-2 py-4">
         <div class="container-fluid">
-        <div class="row gy-4">
-        <div class="col-xxl-12">
-        <div class="card mb-0">
-        <div class="card-header">
-            <h3 class="h4 mb-0">Consultation de l'instrument {{ 'n° ' ~ instrument.id }}</h3>
+            <h2 class="h5 mb-0">Instruments</h2>
         </div>
-        <div class="card-body pt-0">
-        <div class="table-responsive">
-            <table class="table mb-0 table-striped table-hover">
+    </div>
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('instrumentLister') }}">Instruments</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Instrument {{ instrument.id }}</li>
+            </ol>
+        </nav>
+    </div>
+<section class="tables py-0">
+    <div class="container-fluid">
+        <div class="row gy-4">
+            <div class="col-xxl-12">
+                <div class="card mb-0">
+                    <div class="card-header">
+                        <h3 class="h4 mb-0">Consultation de l'instrument {{ 'n° ' ~ instrument.id }}</h3>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="table-responsive">
+                            <table class="table mb-0 table-striped table-hover">
+                                <tr>
+                                    <th>
+                                        Id :
+                                    </th>
+                                    <td>
+                                        {{ instrument.id }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Nom :
+                                    </th>
+                                    <td>
+                                        {{ instrument.numSerie }}
+                                    </td>
+                                    <td rowspan="9" class="imgEtu">
+                                        {% set photo = 'img/instrument/' ~ instrument.cheminImage ~ '.jpg' %}
+                                        <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}" width="300" height="200"/></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Date d'achat :
+                                    </th>
+                                    <td>
+                                        {{ instrument.dateAchat | date("d/m/Y") }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Prix d'achat :
+                                    </th>
+                                    <td>
+                                        {{ instrument.prixAchat ~ '€' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Utilisation :
+                                    </th>
+                                    <td>
+                                        {{ instrument.utilisation }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Marque :
+                                    </th>
+                                    <td>
+                                        {{ instrument.marque.libelle }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Type d'Instrument :
+                                    </th>
+                                    <td>
+                                        {{ instrument.TypeInstrument.libelle }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Classe Instrument :
+                                    </th>
+                                    <td>
+                                        {{ instrument.TypeInstrument.ClasseInstrument.libelle }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Couleur :
+                                    </th>
+                                    <td>
+                                        <ul>
+                                            {% for couleur in instrument.couleurs %}
+                                                <li>{{ couleur.Nom }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                </tr>
 
-
-                <tr><td>Id : </td><td>{{ instrument.id }} </td></tr>
-                <tr><td>Nom : </td><td>{{ instrument.numSerie }}</td>
-                    <td rowspan="9" class="imgEtu">
-                        {% set photo = 'img/instrument/' ~ instrument.cheminImage ~ '.jpg' %}
-                        <span class="zoom"><img src="{{ asset(photo | trans )}}" title="{{ instrument.cheminImage }}" alt="{{ instrument.cheminImage }}" width="300" height="200"/></span>
-                    </td>
-                </tr>
-                <tr><td>Date d'achat : </td><td>{{ instrument.dateAchat | date("d/m/Y") }}</td></tr>
-                <tr><td>Prix d'achat : </td><td>{{ instrument.prixAchat ~ '€' }}</td></tr>
-                <tr><td>Utilisation : </td><td>{{ instrument.utilisation }}</td></tr>
-                <tr><td>Marque : </td><td>{{ instrument.marque.libelle }}</td></tr>
-                <tr><td>Type d'Instrument : </td><td>{{ instrument.TypeInstrument.libelle }}</td></tr>
-                <tr><td>Classe Instrument : </td><td>{{ instrument.TypeInstrument.ClasseInstrument.libelle }}</td></tr>
-                <tr><td>Couleur : </td>
+                <tr>
                     <td>
-                        <ul>
-                            {% for couleur in instrument.couleurs %}
-                                <li>{{ couleur.Nom }}</li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                </tr>
-                <tr><td>
                         <a href="{{ path('instrumentModifier', { 'id': instrument.id }) }}">
                             <button type="button" class="btn btn-outline-secondary">
                                 <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
@@ -58,9 +126,10 @@
                                 <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
                             </button>
                         </a>
-                    </td></tr>
+                    </td>
+                </tr>
+
             </table>
-                <!-- Display interventions -->
             <h6>Interventions:</h6>
             <div class="card-body pt-0">
                 <div class="table-responsive">
@@ -85,7 +154,13 @@
 
             <!-- Button to go back to the list of instruments -->
             <a href="{{ path('instrumentLister') }}">Retour à la liste des instruments</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+
     {% endblock %}
     {% block footer %}
         {{ parent() }}

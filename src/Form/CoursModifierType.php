@@ -29,7 +29,7 @@ class CoursModifierType extends AbstractType
             ->add('typeCours', EntityType::class, array('class' => 'App\Entity\TypeCours','choice_label' => 'libelle', 'attr' => ['class' => 'form-control'] ))
             ->add('professeur', EntityType::class, array('class' => 'App\Entity\Professeur','choice_label' => 'nom', 'attr' => ['class' => 'form-control'] ))
             ->add('typeInstrument', EntityType::class, array('class' => 'App\Entity\TypeInstrument','choice_label' => 'libelle', 'attr' => ['class' => 'form-control'] ))
-            ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau Cours'))
+            ->add('enregistrer', SubmitType::class, array('label' => 'Modifier Cours'))
         ;
     }
 

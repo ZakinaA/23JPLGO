@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <br>
+        <section class="pt-0">
+            <div class="container-fluid">
+                <div class="row gy-4">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="h4 mb-0">Ajouter un accessoire</h3>
+                            </div>
+                            <div class="card-body pt-0">
+                                <form method="post" action="{{ path('accessoireAjouter') }}">
+                                    {{ form_start(form) }}
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="libelle">Libellé de l'accessoire</label>
+                                        {{ form_widget(form.libelle) }}
+                                    </div>
+
+                                    {{ form_end(form) }}
+                                </form>
+
+                                <a href="{{ path('accessoireLister') }}">Voir la liste des accessoires</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

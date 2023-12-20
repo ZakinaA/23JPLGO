@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="bg-dash-dark-2 py-4">
+        <div class="container-fluid">
+            <h2 class="h5 mb-0">Couleurs</h2>
+        </div>
+    </div>
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('couleurLister') }}">Couleurs</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Couleur {{ couleur.id }}</li>
+            </ol>
+        </nav>
+    </div>
+        <section class="tables py-0">
+            <div class="container-fluid">
+                <div class="row gy-4">
+                    <div class="col-xxl-12">
+                        <div class="card mb-0">
+                            <div class="card-header">
+                                <h3 class="h4 mb-0">Consultation de la couleur {{ couleur.nom }}</h3>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="table-responsive">
+                                    <table class="table mb-0 table-striped table-hover">
+                                        <tr><td>ID : </td><td>{{ couleur.id }}</td></tr>
+                                        <tr><td>Nom : </td><td>{{ couleur.nom }}</td></tr>
+                                    </table>
+                                </div>
+
+                                <!-- Display instruments using the color -->
+                                <h6>Instruments utilisant cette couleur :</h6>
+                                <div class="card-body pt-0">
+                                    <div class="table-responsive">
+                                        <table class="table mb-0 table-striped table-sm">
+                                            <tr>
+                                                <th>ID de l'Instrument :</th>
+                                                <th>Nom de l'Instrument :</th>
+                                            </tr>
+                                            {% for instrument in couleur.instruments %}
+                                                <tr>
+                                                    <td>{{ instrument.id }}</td>
+                                                    <td>{{ instrument.numSerie }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ path('couleurModifier', { 'id': couleur.id }) }}">
+                                                        <button type="button" class="btn btn-outline-secondary">
+                                                            <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/editIcon.png" width="30px" height="30px">
+                                                        </button>
+                                                    </a>
+
+                                                    <a href="{{ path('couleurSupprimer', { 'id': couleur.id }) }}" onclick="return confirm('Êtes vous sûr de vouloir supprimer cette couleur');">
+                                                        <button type="button" class="btn btn-outline-danger">
+                                                            <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/deleteIcon.png" width="30px" height="30px">
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- Button to go back to the list of colors -->
+                                <a href="{{ path('couleurLister') }}">Retour à la liste des couleurs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
