@@ -9,9 +9,20 @@
 {% endblock %}
 
 {% block body %}
-    <div class="page-content">
-        <h2>LISTE DES TYPES D'INSTRUMENTS</h2>
-
+    <div class="bg-dash-dark-2 py-4">
+        <div class="container-fluid">
+            <h2 class="h5 mb-0">Types Instruments</h2>
+        </div>
+    </div>
+    <!-- Breadcrumb-->
+    <div class="container-fluid py-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 py-3 px-0">
+                <li class="breadcrumb-item"><a href="{{ path('typeInstrumentLister') }}">Types Instruments</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Liste</li>
+            </ol>
+        </nav>
+    </div>
         <section class="tables py-0">
             <div class="container-fluid">
                 <div class="row gy-4">
@@ -32,7 +43,6 @@
                                             <th></th>
                                         </tr>
 
-                                        <!-- Modify the loop to display type details as before -->
                                         {% for typeInstrument in typesInstruments %}
                                             <tr>
                                                 <td>{{ typeInstrument.id }}</td>
@@ -61,7 +71,7 @@
                                                 </td>
                                             </tr>
                                         {% else %}
-                                            <!-- Display no types found message -->
+
                                             <tr>
                                                 <td colspan="4">Aucun type d'instrument n'a été trouvé.</td>
                                             </tr>
@@ -74,5 +84,5 @@
                 </div>
             </div>
         </section>
-    </div>
+
 {% endblock %}
