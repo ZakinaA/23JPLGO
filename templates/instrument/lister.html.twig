@@ -25,14 +25,17 @@
     </div>
 
     <!-- Search Bar -->
-    <td>
-    <form method="get" action="{{ path('instrumentLister') }}">
+    <div>
+    <form method="get" action="{{ path('instrumentLister') }}" aria-label="Text input with radio button">
+
         <label for="search">Rechercher :</label>
         <input type="text" id="search" name="search" value="{{ app.request.query.get('search') }}">
-        <button type="submit">Rechercher</button>
+        <button type="submit" class="btn btn-primary">Rechercher</button>
     </form>
     </td>
 <br>
+
+            </div>
 
             <section class="tables py-0">
                 <div class="container-fluid">
@@ -40,7 +43,9 @@
                         <div class="col-xxl-11">
                             <div class="card mb-0">
                                 <div class="card-header">
-                                    <h3 class="h4 mb-0"></h3>
+
+                                    <h3 class="h4 mb-0">Liste des instruments</h3>
+
                                 </div>
                                 <div class="card-body pt-0">
                                     <div class="table-responsive">
@@ -70,6 +75,7 @@
                             <img alt="boutonAjouter" src="/23JPLGO/public/assets/img/consultIcon.png" width="30px" height="30px">
                         </button>
                     </a>
+
                 </td>
                 <td>
                     <a href="{{ path('instrumentModifier', { 'id': instrument.id }) }}">
@@ -85,6 +91,7 @@
                         </button>
                     </a>
                 </td>
+
 
             </tr>
         {% else %}

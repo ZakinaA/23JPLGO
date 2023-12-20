@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -21,8 +22,8 @@ class InstrumentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('numSerie', TextType::class)
-            ->add('dateAchat')
+            ->add('numSerie', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('dateAchat', DateType::class, ['widget' => 'single_text', 'format' => 'yyyy-MM-dd', 'attr' => ['class' => 'form-control']])
             ->add('prixAchat', MoneyType::class, [
                 'currency' => 'EUR', // Adjust the currency based on your requirements
                 'constraints' => [
@@ -31,11 +32,12 @@ class InstrumentType extends AbstractType
                         'message' => 'Le prix d\'achat doit être supérieur à zéro.',
                     ]),
                 ],
+                'attr' => ['class' => 'form-control']
             ])
-            ->add('utilisation', TextType::class)
-            ->add('cheminImage', TextType::class)
-            ->add('marque', EntityType::class, array('class' => 'App\Entity\Marque','choice_label' => 'libelle' ))
-            ->add('TypeInstrument', EntityType::class, array('class' => 'App\Entity\TypeInstrument','choice_label' => 'libelle' ))
+            ->add('utilisation', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('cheminImage', TextType::class, array('attr' => ['class' => 'form-control']))
+            ->add('marque', EntityType::class, array('class' => 'App\Entity\Marque','choice_label' => 'libelle', 'attr' => ['class' => 'form-control'] ))
+            ->add('TypeInstrument', EntityType::class, array('class' => 'App\Entity\TypeInstrument','choice_label' => 'libelle', 'attr' => ['class' => 'form-control'] ))
             ->add('couleurs', EntityType::class, [
                 'class' => Couleur::class,
                 'choice_label' => 'nom', // Replace 'name' with the actual property you want to display

@@ -279,3 +279,14 @@ professeurSupprimer:
 interventionConsulter:
     path: /gestionnaire/intervention/consulter/{id}
     controller: App\Controller\InterventionController::consulter
+
+
+# Routes générales
+
+login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+accueil:
+    path: /accueil
+    controller: App\Controller\AccueilController::accueil
