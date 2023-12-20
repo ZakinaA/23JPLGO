@@ -9,9 +9,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="page-content">
-        <h5>AJOUTER UN ACCESSOIRE</h5>
-
+    <br>
         <section class="pt-0">
             <div class="container-fluid">
                 <div class="row gy-4">
@@ -29,24 +27,17 @@
                                         {{ form_widget(form.libelle) }}
                                     </div>
 
-                                    <!-- Add other form fields as needed -->
-
-
-
                                     {{ form_end(form) }}
                                 </form>
 
-                                <!-- Add a link to go back to the lister page -->
                                 <a href="{{ path('accessoireLister') }}">Voir la liste des accessoires</a>
 
-                                <!-- Add any additional content or scripts as needed -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
 {% endblock %}
 
 {% block footer %}

@@ -9,9 +9,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="page-content">
-        <h5>MODIFICATION D'UN TYPE D'INSTRUMENT</h5>
-
+    <br>
         <section class="pt-0">
             <div class="container-fluid">
                 <div class="row gy-4">
@@ -28,12 +26,14 @@
                                         <label class="form-label" for="exampleInputEmail1">Libellé du type d'instrument</label>
                                         {{ form_widget(form.libelle) }}
                                     </div>
-
-                                    <!-- Add other form fields as needed, e.g., for ClasseInstrument association -->
-
                                     <div class="mb-3">
-                                        <button type="submit">Modifier</button>
+                                        <label class="form-label" for="exampleInputEmail1">Classe d'instrument</label>
+                                        {{ form_widget(form.classeInstrument) }}
                                     </div>
+                                    <div class="mb-3">
+                                        {{ form_widget(form.save) }}
+                                    </div>
+
 
                                     {{ form_end(form) }}
                                 </form>
@@ -44,8 +44,6 @@
             </div>
         </section>
 
-
-    </div>
 {% endblock %}
 
 {% block footer %}

@@ -9,9 +9,6 @@
 {% endblock %}
 
 {% block body %}
-    <div class="page-content">
-        <h5>MODIFICATION D'UN ACCESSOIRE</h5>
-
         <section class="pt-0">
             <div class="container-fluid">
                 <div class="row gy-4">
@@ -29,14 +26,9 @@
                                         {{ form_widget(form.libelle) }}
                                     </div>
 
-                                    <!-- Add other form fields as needed -->
-
-
-
                                     {{ form_end(form) }}
                                 </form>
 
-                                <!-- Add a link to go back to the consultation page -->
                                 <a href="{{ path('accessoireConsulter', {'id': accessoire.id}) }}">Retour à la consultation de l'accessoire</a>
                             </div>
                         </div>
@@ -44,7 +36,6 @@
                 </div>
             </div>
         </section>
-    </div>
 {% endblock %}
 
 {% block footer %}

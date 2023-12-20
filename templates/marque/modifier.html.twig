@@ -9,9 +9,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="page-content">
-        <h5>MODIFICATION D'UNE MARQUE</h5>
-
+    <br>
         <section class="pt-0">
             <div class="container-fluid">
                 <div class="row gy-4">
@@ -29,14 +27,9 @@
                                         {{ form_widget(form.libelle) }}
                                     </div>
 
-                                    <!-- Add other form fields as needed -->
-
-
-
                                     {{ form_end(form) }}
                                 </form>
 
-                                <!-- Add any additional content or scripts as needed -->
                             </div>
                         </div>
                     </div>
@@ -44,9 +37,8 @@
             </div>
         </section>
 
-        <!-- Add a link to go back to the consultation page -->
         <a href="{{ path('marqueLister') }}">Retour à la liste des marques</a>
-    </div>
+
 {% endblock %}
 
 {% block footer %}
