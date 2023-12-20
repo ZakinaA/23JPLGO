@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+        <h5>MODIFICATION D'UNE MARQUE</h5>
+
+        <section class="pt-0">
+            <div class="container-fluid">
+                <div class="row gy-4">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="h4 mb-0">Modifier une marque</h3>
+                            </div>
+                            <div class="card-body pt-0">
+                                <form method="post" action="{{ path('marqueModifier', {'id': marque.id}) }}">
+                                    {{ form_start(form) }}
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="exampleInputEmail1">Nom de la marque</label>
+                                        {{ form_widget(form.libelle) }}
+                                    </div>
+
+                                    <!-- Add other form fields as needed -->
+
+
+
+                                    {{ form_end(form) }}
+                                </form>
+
+                                <!-- Add any additional content or scripts as needed -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add a link to go back to the consultation page -->
+        <a href="{{ path('marqueLister') }}">Retour à la liste des marques</a>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
